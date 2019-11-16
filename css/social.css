@@ -1,0 +1,162 @@
+.social {
+    position: fixed;
+    right: 0px;
+    bottom: 1px;
+}
+
+.tooltips {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltips .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: red;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    /* Position the tooltip */
+    position: absolute;
+    right: 60px;
+    bottom: 10px;
+    z-index: 1;
+}
+
+.tooltips:hover .tooltiptext {
+    visibility: visible;
+}
+
+.social2 {
+    position: fixed;
+    right: 0px;
+    bottom: 1px;
+    padding: 15px;
+}
+
+.container-msg-box {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+/* 
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.buttons {
+    box-shadow: 0px 5px 11px -2px rgba(0, 0, 0, 0.18), 0px 4px 12px -7px rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    display: block;
+    width: 56px;
+    height: 56px;
+    margin: 20px auto 0;
+    position: relative;
+    -webkit-transition: all .1s ease-out;
+    transition: all .1s ease-out;
+}
+
+.buttons:active,
+.buttons:focus,
+.buttons:hover {
+    box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
+}
+
+.buttons:not(:last-child) {
+    width: 40px;
+    height: 40px;
+    margin: 20px auto 0;
+    opacity: 0;
+    -webkit-transform: translateY(50px);
+    -ms-transform: translateY(50px);
+    transform: translateY(50px);
+}
+
+.social2:hover .buttons:not(:last-child) {
+    opacity: 1;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    margin: 15px auto 0;
+}
+
+
+/* Unessential styling for sliding up buttons at differnt speeds */
+
+/* 
+.buttons:not(:last-child):nth-last-child(2) {
+    -webkit-transition-delay: 50ms;
+    transition-delay: 25ms;
+    width: 50px;
+    height: 50px;
+    background-image: url('../images/mail_circle.png');
+    background-size: contain;
+}
+.buttons:not(:last-child):nth-last-child(3) {
+    -webkit-transition-delay: 80ms;
+    transition-delay: 40ms;
+    width: 50px;
+    height: 50px;
+    background-image: url('../images/phone_circle.png');
+    background-size: contain;
+}
+
+.buttons:not(:last-child):nth-last-child(4) {
+    -webkit-transition-delay: 100ms;
+    transition-delay: 60ms;
+    width: 50px;
+    height: 50px;
+    background-image: url('../images/line_circle.png');
+    background-size: contain;
+}
+
+.buttons:not(:last-child):nth-last-child(5) {
+    -webkit-transition-delay: 125ms;
+    transition-delay: 80ms;
+    width: 50px;
+    height: 50px;
+    background-image: url('../images/Facebook_Messenger_circle.png');
+    background-size: contain;
+}  */
+
+
+/* Show tooltip content on hover */
+
+[tooltip]:before {
+    bottom: 25%;
+    font-family: arial;
+    font-weight: 600;
+    border-radius: 2px;
+    background: #585858;
+    color: #fff;
+    content: attr(tooltip);
+    font-size: 12px;
+    visibility: hidden;
+    opacity: 0;
+    padding: 5px 7px;
+    margin-right: 12px;
+    position: absolute;
+    right: 100%;
+    white-space: nowrap;
+}
+
+[tooltip]:hover:before,
+[tooltip]:hover:after {
+    visibility: visible;
+    opacity: 1;
+}
+
+.mobile-fab-tip {
+	position: fixed;
+	right: 85px;
+	padding:0px 0.5rem;
+	text-align: right;
+	background-color: #323232;
+	border-radius: 2px;
+	color: #FFF;
+	width:auto;
+}

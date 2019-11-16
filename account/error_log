@@ -1,0 +1,12 @@
+[25-Jan-2019 07:53:37 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home3/teijung/public_html/smartbestbuys.com/menu_mobile.php on line 3
+[25-Jan-2019 07:53:37 America/Chicago] PHP Warning:  mysqli_set_charset() expects parameter 1 to be mysqli, boolean given in /home3/teijung/public_html/smartbestbuys.com/menu_mobile.php on line 5
+[25-Jan-2019 07:53:37 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home3/teijung/public_html/smartbestbuys.com/menu_mobile.php on line 18
+[25-Jan-2019 07:53:37 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home3/teijung/public_html/smartbestbuys.com/menu_mobile.php on line 20
+[25-Jan-2019 07:53:37 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home3/teijung/public_html/smartbestbuys.com/menu_mobile.php on line 51
+[25-Jan-2019 07:53:37 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home3/teijung/public_html/smartbestbuys.com/menu_mobile.php on line 53
+[25-Jan-2019 07:53:37 America/Chicago] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, boolean given in /home3/teijung/public_html/smartbestbuys.com/menu_mobile.php on line 188
+[25-Jan-2019 07:53:37 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home3/teijung/public_html/smartbestbuys.com/menu.php on line 3
+[25-Jan-2019 07:53:37 America/Chicago] PHP Warning:  mysqli_set_charset() expects parameter 1 to be mysqli, boolean given in /home3/teijung/public_html/smartbestbuys.com/menu.php on line 5
+[25-Jan-2019 07:53:37 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home3/teijung/public_html/smartbestbuys.com/menu.php on line 17
+[25-Jan-2019 07:53:37 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home3/teijung/public_html/smartbestbuys.com/menu.php on line 19
+[25-Jan-2019 07:53:37 America/Chicago] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, boolean given in /home3/teijung/public_html/smartbestbuys.com/menu.php on line 60

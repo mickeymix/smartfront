@@ -1,0 +1,47 @@
+.alert {
+    padding:10px 15px;
+    border-radius:0px;
+}
+.alert-info {
+    color: #4986a3;
+    border-color: #7fb7d1;
+}
+.alert-info .alert-link {
+    color: #4986a3;
+}
+
+
+.page-header{
+	color: #fff;
+	padding: 0.2em;
+	margin: 0.5em  auto;
+	font-size: 1.5em;
+	font-weight: normal;
+	background: #ff0000; /* Old browsers */
+	background: -moz-linear-gradient(top,  #ff0000 0%, #c20000 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff0000), color-stop(100%,#c20000)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #ff0000 0%,#c20000 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #ff0000 0%,#c20000 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #ff0000 0%,#c20000 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #337ab7 0%,#052650 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0000', endColorstr='#c20000',GradientType=0 ); /* IE6-9 */
+}
+
+.label{
+	font-size: 13px;
+	font-family: tahoma;
+	font-weight: normal;
+}
+/*.list-group-item div {
+	width: 18%;
+	display: inline-block;
+	text-align: center;
+}
+.list-group-item div img {
+	width: 100%;
+	
+}
+.list-group-item div:first-child {
+	width: 5%;
+	display: inline-block;
+}*/

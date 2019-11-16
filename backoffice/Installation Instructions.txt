@@ -1,0 +1,19 @@
+1.Extract the phpcharts files to your homesite folder. The result whould be "yourhomesite/phpcharts". 
+
+2.Copy the index.php file from the the directory "phpcharts/índex.php" to your "yourhomesite" directory. Use this index.php file instead of your own. 
+
+3.Go into the code in the new "index.php" and change 
+define("CHARTS_SOURCE", ""); 
+to 
+define("CHARTS_SOURCE", "phpcharts/"); 
+
+4. Start moving your old "index.php" information to the new "index.php".
+
+5.The directory that contains index.php must be set to CHMOD 777.
+Which makes it´s possible to create chart images at real-time. 
+777 signify access to read and write.
+Other directories where you want to create chart images must also be set to 777.
+
+
+
+(You don´t have to do it like this, but it may be the easiest way for beginners)
