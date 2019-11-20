@@ -94,6 +94,54 @@
         color: white;
     }
 </style>
+
+<style>
+
+    @media screen and (min-width:830px) {
+        .dialogmodalButton {
+            position:absolute;
+            width:100%;
+            color:white;
+            /*bottom:0;*/
+            left:0;
+            padding-left:15px;
+            padding-right:15px;
+            font-size:5px;
+            padding-top: 100px;
+            z-index:5;"
+        }
+    }
+
+    @media screen and (min-width:0)and (max-width:699px) {
+        .dialogmodalButton {
+            position:absolute;
+            width:100%;
+            color:white;
+            /*bottom:0;*/
+            left:0;
+            padding-left:15px;
+            padding-right:15px;
+            font-size:5px;
+            padding-top: 70px;
+            z-index:5;"
+        }
+    }
+    @media screen and (min-width:700px)and (max-width:829px) {
+        .dialogmodalButton {
+            position:absolute;
+            width:100%;
+            color:white;
+            /*bottom:0;*/
+            left:0;
+            padding-left:15px;
+            padding-right:15px;
+            font-size:5px;
+            padding-top: 70px;
+            z-index:5;"
+        }
+    }
+
+</style>
 <? $conn = mysqli_connect($host, $user, $pass, $dbname);
 mysqli_set_charset($conn, "utf8");
 $sql = "SELECT * FROM email_menu_config_master WHERE email_menu_id ='1'";
@@ -123,16 +171,7 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
                              style="position:relative;  height: 300px; background: url('backoffice/<? echo $result['email_image_right'] ?>');">
 
 
-                            <div style="position:absolute;
-               					width:100%;
-               					color:white;
-               					bottom:0;
-               					left:0;
-               					padding-left:15px;
-               					padding-right:15px;
-				   				font-size:17px;
-				   				padding-top: 100px;
-               					z-index:5;">
+                            <div class="dialogmodalButton">
                                 <div class="md-form mb-5">
                                     <input type="text" id="subNameForm3" class="form-control validate"
                                            placeholder="<? echo $result['email_name_place_holder'] ?>">
@@ -221,26 +260,17 @@ while ($result3 = mysqli_fetch_assoc($query3)) { ?>
                     </button>
                     <img class="lazy" data-src="backoffice/<? echo $result3['email_image_title'] ?>"/>
                 </div>
-                <div class="modal-body" style="height: 300px">
+                <div class="modal-body" style="height: 0px">
                     <div class="row">
                         <div class="col-xs-6"
-                             style=" height: 300px; background: url('backoffice/<? echo $result3['email_image_left'] ?>');">
+                             style=" height: 300px; background: url('backoffice/<? echo $result3['email_image_left'] ?>');background-repeat-y: no-repeat; background-repeat-x:no-repeat; background-size: contain">
                             <img class="lazy""/>
                         </div>
                         <div class="col-xs-6"
-                             style="position:relative;  height: 300px; background: url('backoffice/<? echo $result3['email_image_right'] ?>');">
+                             style="position:relative;  height: 300px; background: url('backoffice/<? echo $result3['email_image_right'] ?>'); background-repeat-y: no-repeat; background-repeat-x:no-repeat; background-size: contain">
 
 
-                            <div style="position:absolute;
-               					width:100%;
-               					color:white;
-               					bottom:0;
-               					left:0;
-               					padding-left:15px;
-               					padding-right:15px;
-				   				font-size:17px;
-				   				padding-top: 100px;
-               					z-index:5;">
+                            <div class="dialogmodalButton">
                                 <div class="md-form mb-5">
                                     <input type="text" id="subNameForm3" class="form-control validate"
                                            placeholder="<? echo $result3['email_name_place_holder'] ?>">
@@ -252,13 +282,12 @@ while ($result3 = mysqli_fetch_assoc($query3)) { ?>
                                     <input type="email" id="subEmailForm4" class="form-control validate"
                                            placeholder="<? echo $result3['email_email_place'] ?>">
                                 </div>
-                                <div class="modal-footer">
-                                    <button class="btn" style="background-color: transparent;" onclick="subEmail()">
-                                        <img class="lazy"
-                                             data-src="backoffice/<? echo $result3['email_button_image'] ?>"/>
-                                    </button>
+                                <button class="btn" style="background-color: transparent;" onclick="subEmail()">
+                                    <img class="lazy" id="subemailWhitepaper"
+                                         data-src="backoffice/<? echo $result3['email_button_image'] ?>"/>
+                                </button>
 
-                                </div>
+
                             </div>
 
 
