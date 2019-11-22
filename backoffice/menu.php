@@ -217,6 +217,15 @@
 
                 </ul>
             </li>
+            <li>
+                <a href="#">ตั้งต่า lead <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="ma_lead_customer.php">แสดงค่า Lead ลูกค้า</a>
+                    </li>
+
+                </ul>
+            </li>
         </ul>
 
     </div>

@@ -36,6 +36,9 @@ try {
     mysqli_set_charset($conn, "utf8");
     $sql5 = "SELECT * FROM white_paper_master where paper_id = '".$_POST['paper_id']."' limit 1";
 
+    $sql = "INSERT INTO white_paper_download_master (download_name,download_email,download_paperid,download_source) VALUES ('".$_POST['nameInput']."','".$_POST['email']."','".$_POST['paper_id']."','".$_POST['pageSource']."')";
+    $conn->query($sql);
+
     $result5 = $conn->query($sql5);
 
     while ($row2 = $result5->fetch_assoc()) {

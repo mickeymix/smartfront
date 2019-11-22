@@ -75,6 +75,7 @@ if ($_GET["action"] == "logout") {
 
             while ($result = mysqli_fetch_assoc($query)) {
                 $keyword_email = $result['keyword'];
+               $head_art =  $result['head_art'];
 
                 $countClick = $result['clickcount'];
 
@@ -149,7 +150,7 @@ if ($_GET["action"] == "logout") {
                         <input type="hidden" id="paper_id" value="3"/>
                         <input type="button" value="<? echo $row["name_button"] ?>"
                                style="width:60%; text-align:center; display: inline; font-size:20px;"
-                               onclick="add_email_artical(9 ,'<?php echo $keyword_email; ?>');"/>
+                               onclick="add_email_artical(9 ,'<?php echo $head_art; ?>');"/>
                         <div style="height:130px">
                             <p class="art">
 

@@ -264,7 +264,7 @@ while ($result3 = mysqli_fetch_assoc($query3)) { ?>
                     <div class="row">
                         <div class="col-xs-6"
                              style=" height: 300px; background: url('backoffice/<? echo $result3['email_image_left'] ?>');background-repeat-y: no-repeat; background-repeat-x:no-repeat; background-size: contain">
-                            <img class="lazy""/>
+
                         </div>
                         <div class="col-xs-6"
                              style="position:relative;  height: 300px; background: url('backoffice/<? echo $result3['email_image_right'] ?>'); background-repeat-y: no-repeat; background-repeat-x:no-repeat; background-size: contain">
@@ -272,17 +272,17 @@ while ($result3 = mysqli_fetch_assoc($query3)) { ?>
 
                             <div class="dialogmodalButton">
                                 <div class="md-form mb-5">
-                                    <input type="text" id="subNameForm3" class="form-control validate"
+                                    <input type="text" id="subNameFormWhitePaper" class="form-control validate"
                                            placeholder="<? echo $result3['email_name_place_holder'] ?>">
 
                                 </div>
                                 <br>
 
                                 <div class="md-form mb-4">
-                                    <input type="email" id="subEmailForm4" class="form-control validate"
+                                    <input type="email" id="subEmailFormWhitePaper" class="form-control validate"
                                            placeholder="<? echo $result3['email_email_place'] ?>">
                                 </div>
-                                <button class="btn" style="background-color: transparent;" onclick="subEmail()">
+                                <button class="btn" style="background-color: transparent;" onclick="subSendwhitePaper()">
                                     <img class="lazy" id="subemailWhitepaper"
                                          data-src="backoffice/<? echo $result3['email_button_image'] ?>"/>
                                 </button>
@@ -738,7 +738,8 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
         function subSendwhitePaper() {
             var email = $("#subEmailFormWhitePaper").val().trim();
             var titleid = $(".Whitepaper").attr("title")
-            var nameInput = $("#subNameFormWhitePaper").val();
+            var pageSource = $(".Whitepaper").attr("alt")
+            var nameInput = $("#subNameFormWhitePaper").val().trim();
             // alert(email)
             if (email === "") {
                 alert("Plese input your email.");
@@ -752,7 +753,9 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
             }
             $.post("sendEmail_ajax.php", {
                     'email': email,
-                    'paper_id': titleid
+                    'paper_id': titleid,
+                    'nameInput':nameInput,
+                'pageSource':pageSource
                 }, function (result) {
                     // alert(result);
                     if (result.status === '0') // Success
@@ -806,7 +809,7 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
         // )
 
 
-        function add_email_artical(url_page, keyword_email) {
+        function add_email_artical(url_page, pageSource) {
 
             var email = $("#email-customer").val();
             var id_art = $("#id_art").val();
@@ -825,19 +828,10 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
 
             $.post("sendEmail_ajax.php", {
                     'email': email.trim(),
-                    'paper_id': url_page
+                    'paper_id': url_page,'nameInput':null,
+                    'pageSource':pageSource
                 }, function (result) {
 
-                    // alert(result);
-                    // if (result.status === '0')
-                    // {
-                    //     alert(result.message);
-                    //
-                    // } else // Err
-                    // {
-                    //
-                    //
-                    // }
                 }
             )
             jQuery.noConflict();
