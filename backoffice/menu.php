@@ -100,9 +100,6 @@
                 <a href="#">ข้อมูลลูกค้า<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="ma_email.php">Follow Email</a>
-                    </li>
-                    <li>
                         <a href="ma_img_email.php">จัดการภาพ Email</a>
                     </li>
 
@@ -224,6 +221,9 @@
                         <a href="ma_lead_customer.php">แสดงค่า Lead ลูกค้า</a>
                     </li>
 
+                    <li>
+                        <a href="ma_email.php">แสดงค่า LEAD Email CATALOGS</a>
+                    </li>
                 </ul>
             </li>
         </ul>
