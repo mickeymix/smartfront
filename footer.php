@@ -161,14 +161,14 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
                     </button>
                     <img class="lazy" data-src="backoffice/<? echo $result['email_image_title'] ?>"/>
                 </div>
-                <div class="modal-body" style="height: 300px">
+                <div class="modal-body" style="height: 0px">
                     <div class="row">
                         <div class="col-xs-6"
-                             style=" height: 300px; background: url('backoffice/<? echo $result['email_image_left'] ?>');">
+                             style=" height: 300px; background: url('backoffice/<? echo $result['email_image_left'] ?>');background-repeat-y: no-repeat; background-repeat-x:no-repeat; background-size: contain">
 
                         </div>
                         <div class="col-xs-6"
-                             style="position:relative;  height: 300px; background: url('backoffice/<? echo $result['email_image_right'] ?>');">
+                             style="position:relative;  height: 300px; background: url('backoffice/<? echo $result['email_image_right'] ?>'); background-repeat-x:no-repeat; background-size: contain">
 
 
                             <div class="dialogmodalButton">
@@ -182,14 +182,13 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
                                 <div class="md-form mb-4">
                                     <input type="email" id="subEmailForm4" class="form-control validate"
                                            placeholder="<? echo $result['email_email_place'] ?>">
-                                </div>
-                                <div class="modal-footer">
+
                                     <button class="btn" style="background-color: transparent;" onclick="subEmail()">
                                         <img class="lazy"
                                              data-src="backoffice/<? echo $result['email_button_image'] ?>"/>
                                     </button>
-
                                 </div>
+
                             </div>
 
 
