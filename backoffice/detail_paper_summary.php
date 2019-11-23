@@ -18,7 +18,7 @@ mysqli_set_charset($conn, "utf8");
         <div id="page-wrapper">
             <div id="page-inner">
                 <div style="height:10px;"></div>
-
+    
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">
 
@@ -69,5 +69,4 @@ mysqli_set_charset($conn, "utf8");
     </div>
 <?
 $conn->close();
-include 'footer.php';
-?>
+include 'footer.php';?>
