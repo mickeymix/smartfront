@@ -168,7 +168,7 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
 
                         </div>
                         <div class="col-xs-6"
-                             style="position:relative;  height: 300px; background: url('backoffice/<? echo $result['email_image_right'] ?>'); background-repeat-x:no-repeat; background-size: contain">
+                             style="position:relative;  height: 300px; background: url('backoffice/<? echo $result['email_image_right'] ?>'); background-repeat-y: no-repeat;background-repeat-x:no-repeat; background-size: contain">
 
 
                             <div class="dialogmodalButton">
