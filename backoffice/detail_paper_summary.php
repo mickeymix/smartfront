@@ -30,6 +30,7 @@ mysqli_set_charset($conn, "utf8");
                             <th>Email</th>
                             <th>เลขที่เอกสาร</th>
                             <th>หน้าที่กด</th>
+                            <th>วันที่กดขอ</th>
                             <th>Re-marketing</th>
                         </tr>
                         </thead>
@@ -52,6 +53,7 @@ mysqli_set_charset($conn, "utf8");
                                 <td><?php echo $result['download_email']; ?> </td>
                                 <td><?php echo $result['download_paperid']; ?> </td>
                                 <td><?php echo $result['download_source']; ?> </td>
+                                <td><?php echo $result['download_date']; ?> </td>
                                 <td>
                                     <button class="btn btn-success"><i class="fa fa-insert "></i>Re-marketing</button>
                                 </td>
