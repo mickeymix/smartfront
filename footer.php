@@ -112,7 +112,7 @@
         }
     }
 
-    @media screen and (min-width:0)and (max-width:699px) {
+    @media screen and (min-width:350px)and (max-width:699px) {
         .dialogmodalButton {
             position:absolute;
             width:100%;
@@ -123,6 +123,20 @@
             padding-right:15px;
             font-size:5px;
             padding-top: 70px;
+            z-index:5;"
+        }
+    }
+    @media screen and (min-width:0px)and (max-width:351px) {
+        .dialogmodalButton {
+            position:absolute;
+            width:100%;
+            color:white;
+            /*bottom:0;*/
+            left:0;
+            padding-left:15px;
+            padding-right:15px;
+            font-size:5px;
+            padding-top: 50px;
             z-index:5;"
         }
     }

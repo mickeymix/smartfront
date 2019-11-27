@@ -240,7 +240,7 @@ while ($result1 = mysqli_fetch_assoc($query)) {
             <div class="row">
                 <div class="col-sm-12">
                     <div class="col-xs-12 head-line-pd">
-                        <h1><? echo ($headline == "") ? "จะดีกว่ามั้ย ? กรวยจราจร ซื้อทีเดียวใช้ได้ยาวถึง 5 ปี!" : $headline; ?></h1>
+                        <h1 id="ProductDisplayHeadline"><? echo ($headline == "") ? "จะดีกว่ามั้ย ? กรวยจราจร ซื้อทีเดียวใช้ได้ยาวถึง 5 ปี!" : $headline; ?></h1>
 
                     </div>
                 </div>
@@ -256,7 +256,7 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                                        value="false"/>
                                 <h6 id="ProductDisplayName-get"
                                     itemprop="name itemReviewed"><? echo $product_title_th; ?></h6>
-                                <h5>
+                                <h5  id="ProductDisplayCode-get">
                                     รหัสสินค้า :<? echo $_GET["product_code"]; ?>
                                 </h5>
 
@@ -646,7 +646,7 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                                              style="margin-bottom:0px;">
 
                                             <div class="quick-facts printAtFullWidth">
-                                                <h2> <? echo ($sub_headline == "") ? "SUB HEADLINE" : $sub_headline; ?></h2>
+                                                <h2 id="ProductDisplaySubHeadline"> <? echo ($sub_headline == "") ? "SUB HEADLINE" : $sub_headline; ?></h2>
                                             </div>
 
                                         </div>
@@ -656,7 +656,7 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                                         <div id="quickFacts-test" class="col-xs-12 col-md-12 quick-facts"
                                              style="margin-bottom:0px;">
 
-                                            <div class="quick-facts printAtFullWidth">
+                                            <div class="quick-facts printAtFullWidth" id="ProductDisplayDescription">
                                                 <? echo ($product_description_th == "") ? "NO Description" : $product_description_th; ?>
                                             </div>
 
@@ -705,7 +705,7 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                                                 <? $counterTwo++ ?>
                                             <? } ?>
                                         </div>
-                                    <?}?>
+                                    <? } ?>
 
                                     <br> <br>
 
@@ -723,7 +723,7 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                                                 <? $counterThree++ ?>
                                             <? } ?>
                                         </div>
-                                    <?}?>
+                                    <? } ?>
 
                                 </div>
 
@@ -979,10 +979,9 @@ while ($result1 = mysqli_fetch_assoc($query)) {
         // };
         $(".btn-group > .smartvaliation").click(function () {
             $(".btn-group > .smartvaliation").removeClass("label-danger").addClass("label-default");
-         
+
             $(this).addClass("label-danger");
             inquiryProductValiation();
-
 
 
         });
@@ -1006,17 +1005,31 @@ while ($result1 = mysqli_fetch_assoc($query)) {
             var valiationOne = $(".btn-group > .smartvaliation.label-danger").text();
             var valiationTwo = $(".btn-group > .smartvaliation2.label-danger").text();
             var valiationThree = $(".btn-group > .smartvaliation3.label-danger").text();
-            console.log(valiationOne);
-            console.log(valiationTwo);
-            console.log(valiationThree);
+            // console.log(valiationOne);
+            // console.log(valiationTwo);
+            // console.log(valiationThree);
 
-            if (valiationTwo===''){
+            console.log('<?echo $id_valiation?>');
+            if (valiationTwo !== '') {
                 console.log("isnull blank")
-            }
-            if (valiationThree===''){
+            } else if (valiationThree !== '') {
                 console.log("isnull blank")
-            }
+            }else{
+                $.post("valiation_product_ajax.php", {
+                        'valiationOne': valiationOne,
+                        'idValiation':'<?echo $id_valiation?>'
+                    }, function (result) {
+                    console.log(result);
+                    document.getElementById("ProductDisplayName-get").innerHTML = result.productResult['product_title_th'];
+                    document.getElementById("ProductDisplayCode-get").innerHTML = "รหัสสินค้า: "+result.productResult['product_code'];
+                    document.getElementById("ProductDisplayHeadline").innerHTML = result.productResult['headline'];
+                    document.getElementById("ProductDisplaySubHeadline").innerHTML = result.productResult['sub_headline'];
+                    document.getElementById("ProductDisplayDescription").innerHTML = result.productResult['product_description_th'];
 
+
+                    }
+                )
+            }
 
 
         }
