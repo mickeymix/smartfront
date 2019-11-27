@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="teijung_tf@134.209.102.131" uuid="0c1a1cdc-a6f6-4cb1-a9e0-8372d6d1864f">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://134.209.102.131:3306/teijung_tf</jdbc-url>
+    </data-source>
+  </component>
+</project>
