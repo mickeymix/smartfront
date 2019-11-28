@@ -122,11 +122,11 @@
             padding-left:15px;
             padding-right:15px;
             font-size:5px;
-            padding-top: 70px;
+            padding-top: 50px;
             z-index:5;"
         }
     }
-    @media screen and (min-width:0px)and (max-width:351px) {
+    @media screen and (min-width:0px)and (max-width:349px) {
         .dialogmodalButton {
             position:absolute;
             width:100%;
