@@ -14,5 +14,5 @@
 		$user = "mixing"; // Username 
 		$pass = "mixing1327"; // Password 
 		$dbname = "smart_db"; // ชื่อฐานข้อมูล
-	
+
 ?>

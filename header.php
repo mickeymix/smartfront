@@ -1,4 +1,4 @@
-<? ob_start(); ?>
+<?php ob_start(); ?>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -246,7 +246,7 @@ if ($_GET["action"] == "logoutfacebook") {
 <div id="mask"></div>
 <div id="modalWrapper"></div>
 
-<?
+<?php
 include 'menu_mobile.php';
 ?>
 
@@ -325,8 +325,6 @@ include 'menu_mobile.php';
 -->
                 </div>
             </div>
-
-
         </div>
 
 
@@ -346,7 +344,7 @@ include 'menu_mobile.php';
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="header-nav-collapse">
 
-                    <?
+                    <?php
                     include 'menu.php';
                     ?>
 
@@ -377,7 +375,7 @@ include 'menu_mobile.php';
                                 <div class="dropdown">
                                     <li class="store-user">
                                         <a href="#">
-                                            <? echo $_SESSION['firstname'] . " " . $_SESSION['lastname']; ?></a>
+                                            <?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname']; ?></a>
                                     </li>
                                     <div class="dropdown-content">
                                         <li class="store-cart">
@@ -390,11 +388,11 @@ include 'menu_mobile.php';
                                 </div>
 
 
-                            <? } else { ?>
-                                <? if (isset($_SESSION['facebook_id']) && !empty($_SESSION['facebook_id'])) { ?>
+                            <?php } else { ?>
+                                <?php if (isset($_SESSION['facebook_id']) && !empty($_SESSION['facebook_id'])) { ?>
                                     <div class="dropdown">
                                         <a href="#">
-                                            <? echo $_SESSION['customer_name'] ?></a>
+                                            <?php echo $_SESSION['customer_name'] ?></a>
                                         <div class="dropdown-content">
                                             <li class="store-cart">
                                                 <a href="index.php?action=logoutfacebook"><span
@@ -407,11 +405,11 @@ include 'menu_mobile.php';
                                     </div>
 
 
-                                <? } else { ?>
+                                <?php } else { ?>
                                     <li class="store-user"><a href="login.php">Login</a> <i>/</i> <a
                                                 href="register_smart.php">Register</a></li>
-                                <? } ?>
-                            <? } ?>
+                                <?php } ?>
+                            <?php } ?>
                             <li class="store-cart"><a href="#"><img class="cart-icon"
                                                                     src="https://media.trafficsafetystore.com/image/upload/c_limit,dpr_2.0,f_auto,q_auto:best,w_auto/v1/images/cart-icon-2x.png"></a>
                             </li>&nbsp;&nbsp;
@@ -490,11 +488,11 @@ include 'menu_mobile.php';
                 <a href="javascript:void(0)" class="menu-option left-border dont-print">
                     <span class="ion-ios7-person-outline icon"></span>
                 </a>
-            <? } else { ?>
+            <?php } else { ?>
                 <a href="login.php" class="menu-option left-border dont-print">
                     <span class="ion-ios7-person-outline icon"></span>
                 </a>
-            <? } ?>
+            <?php } ?>
             <a href="javascript:void(0)" class="menu-option dont-print">
                 <span class="ion-ios7-cart-outline icon dont-print"></span>
             </a>
@@ -558,11 +556,6 @@ include 'menu_mobile.php';
                 } else {
                     alert("กรุณาใส่ชื่อหรือรหัสสินค้าที่ต้องการจะค้นหา")
                 }
-
-
-                // console.log(nameInput)
-
-
             }
 
         </script>
@@ -574,7 +567,6 @@ include 'menu_mobile.php';
             });
         </script>
         <div class="mobile-search col-xs-12 dont-print">
-
             <form action="/Search" method="GET">
                 <input type="search" name="q" class="form-control" placeholder="Search for a product...">
             </form>
