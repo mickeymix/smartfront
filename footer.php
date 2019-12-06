@@ -196,11 +196,11 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
                                 <div class="md-form mb-4">
                                     <input type="email" id="subEmailForm4" class="form-control validate"
                                            placeholder="<? echo $result['email_email_place'] ?>">
-
-                                    <button class="btn" style="background-color: transparent;" onclick="subEmail()">
-                                        <img class="lazy"
+                                    <br><br>
+<!--                                    <button class="btn" style="background-color: transparent;" onclick="subEmail()">-->
+                                        <img class="lazy" id="subEmail"
                                              data-src="backoffice/<? echo $result['email_button_image'] ?>"/>
-                                    </button>
+<!--                                    </button>-->
                                 </div>
 
                             </div>
@@ -294,11 +294,14 @@ while ($result3 = mysqli_fetch_assoc($query3)) { ?>
                                 <div class="md-form mb-4">
                                     <input type="email" id="subEmailFormWhitePaper" class="form-control validate"
                                            placeholder="<? echo $result3['email_email_place'] ?>">
-                                </div>
-                                <button class="btn" style="background-color: transparent;" onclick="subSendwhitePaper()">
+                                    <br><br>
                                     <img class="lazy" id="subemailWhitepaper"
                                          data-src="backoffice/<? echo $result3['email_button_image'] ?>"/>
-                                </button>
+                                </div>
+
+<!--                                <button class="btn" style="background-color: transparent;" onclick="subSendwhitePaper()">-->
+
+<!--                                </button>-->
 
 
                             </div>
@@ -677,6 +680,13 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
 
             }
 
+            $("#subEmail").click(function () {
+                subEmail();
+            })
+
+            $("#subemailWhitepaper").click(function () {
+                subSendwhitePaper();
+            })
 
         })
 
@@ -710,6 +720,7 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
 
             //alert(url_page +"?email="+email+"&action=email&id_art=" + id_art);
         }
+
 
         function subEmail() {
             var email = $("#subEmailForm4").val().trim();
