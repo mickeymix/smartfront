@@ -167,16 +167,14 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
 
         <div class="modal-dialog" role="document">
             <div class="modal-content" style="padding-bottom: 0px">
-                <div class="modal-header text-center">
 
-                    <button type="button" class="close model_close_right" data-dismiss="modal"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <img class="lazy" data-src="backoffice/<? echo $result['email_image_title'] ?>"/>
-                </div>
                 <div class="modal-body" style="height: 0px">
                     <div class="row">
+                        <button type="button" class="close model_close_right" data-dismiss="modal"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <img class="lazy" data-src="backoffice/<? echo $result['email_image_title'] ?>"/>
                         <div class="col-xs-6"
                              style=" height: 300px; background: url('backoffice/<? echo $result['email_image_left'] ?>');background-repeat-y: no-repeat; background-repeat-x:no-repeat; background-size: contain">
 
@@ -226,15 +224,7 @@ while ($result2 = mysqli_fetch_assoc($query2)) { ?>
          aria-labelledby="myModalLabel" aria-hidden="true" style="top:20%">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header text-center">
 
-                    <button type="button" class="close model_close_right" data-dismiss="modal"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <img class="lazy" data-src="backoffice/<? echo $result2['email_image_title'] ?>"/>
-
-                </div>
                 <div class="modal-body mx-3">
                     <div class="row">
 
@@ -246,6 +236,15 @@ while ($result2 = mysqli_fetch_assoc($query2)) { ?>
 
 
                     </div>
+
+                </div>
+                <div class="modal-header text-center">
+
+                    <button type="button" class="close model_close_right" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <img class="lazy" data-src="backoffice/<? echo $result2['email_image_title'] ?>"/>
 
                 </div>
 
@@ -265,15 +264,13 @@ while ($result3 = mysqli_fetch_assoc($query3)) { ?>
          aria-labelledby="myModalLabel" aria-hidden="true" style="top:20%">
         <div class="modal-dialog" role="document">
             <div class="modal-content" style="padding-bottom: 0px">
-                <div class="modal-header text-center">
 
+                <div class="modal-body" style="height: 0px">
                     <button type="button" class="close model_close_right" data-dismiss="modal"
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <img class="lazy" data-src="backoffice/<? echo $result3['email_image_title'] ?>"/>
-                </div>
-                <div class="modal-body" style="height: 0px">
                     <div class="row">
                         <div class="col-xs-6"
                              style=" height: 300px; background: url('backoffice/<? echo $result3['email_image_left'] ?>');background-repeat-y: no-repeat; background-repeat-x:no-repeat; background-size: contain">
@@ -326,13 +323,13 @@ while ($result4 = mysqli_fetch_assoc($query4)) { ?>
          aria-labelledby="myModalLabel" aria-hidden="true" style="top:20%">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header text-center">
+                <div class="modal-header text-center"  style="background: url('backoffice/<? echo $result3['email_image_title'] ?>'); background-repeat-y: no-repeat; background-repeat-x:no-repeat; background-size: contain">
 
                     <button type="button" class="close model_close_right" data-dismiss="modal"
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <img class="lazy" data-src="backoffice/<? echo $result4['email_image_title'] ?>"/>
+<!--                    <img class="lazy" data-src="backoffice/--><?// echo $result4['email_image_title'] ?><!--"/>-->
 
                 </div>
                 <div class="modal-body mx-3">
@@ -472,7 +469,7 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
 
 
                 <li class="post-summary">
-                    <font size="4"> ศูนย์ช่วยเหลือ </font>
+                    <span style="font-size: medium; "> ศูนย์ช่วยเหลือ </span>
                     <hr>
                 </li>
                 <? $conn = mysqli_connect($host, $user, $pass, $dbname);
