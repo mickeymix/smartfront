@@ -4,7 +4,6 @@ include 'head.php';
 
 $paper_id = $_GET["paper_id"];
 
-
 $conn = mysqli_connect($host, $user, $pass, $dbname);
 mysqli_set_charset($conn, "utf8");
 ?>
@@ -37,7 +36,7 @@ mysqli_set_charset($conn, "utf8");
                         <tbody>
 
                         <?
-                        $sql = "SELECT * FROM white_paper_download_master";
+                        $sql = "SELECT * FROM white_paper_download_master WHERE download_paperid = '".$paper_id."'";
                         $query = mysqli_query($conn, $sql);
                         $i = 0;
                         while ($result = mysqli_fetch_assoc($query)) {
