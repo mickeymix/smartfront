@@ -36,9 +36,9 @@ try {
     mysqli_set_charset($conn, "utf8");
     $sql = "SELECT * FROM email_teamplate_master ";
     $queryEmail = mysqli_query($conn, $sql);
-
-    $insertscript = "INSERT INTO email_customer(email, keyword,customer_name, insert_date,) values ('".$_POST['email_customer']."','Catalogs','".$_POST['customer_name']."',SYSDATE())";
-    mysqli_query($conn, $insertscript);
+    echo "'".$_POST['email_customer']."'";
+    $insertscript = "INSERT INTO email_customer(email, keyword,customer_name, insert_date) VALUES ('".$_POST['email_customer']."','Catalogs','".$_POST['customer_name']."',SYSDATE())";
+    $conn->query($insertscript);
     while ($resultEmail = mysqli_fetch_assoc($queryEmail)) {
         /*                                ,'".<?php echo $row['paper_link']?>."','".<?php echo $row['paper_email_template']?>."','".<?php echo $row['paper_name']?>."'*/
         $mail->setFrom('info@smartbestbuys.com');
