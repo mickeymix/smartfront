@@ -1025,6 +1025,7 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                     document.getElementById("ProductDisplayHeadline").innerHTML = result.productResult['headline'];
                     document.getElementById("ProductDisplaySubHeadline").innerHTML = result.productResult['sub_headline'];
                     document.getElementById("ProductDisplayDescription").innerHTML = result.productResult['product_description_th'];
+                    document.getElementById("tab-description").innerHTML = result.productResult['content_prod_th'];
 
 
                     }
