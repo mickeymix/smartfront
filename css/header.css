@@ -1,0 +1,173 @@
+.hero {
+    height: 398.19px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #054769;
+    color: white;
+    padding: 3.4em;
+}
+
+#index-hero {
+    background-image: url("images/silde_image.png");
+    background-size: cover;
+    font-size: 1.5em;
+}
+
+#index-hero h1 {
+    color: white;
+    font-size: 3em;
+    margin-bottom: .5em;
+    margin-top: 0;
+    top: 0;
+}
+
+.glyphicon-star {
+    Color: #F0AD4E;
+}
+
+.popular-item-desc {
+    height: 38px;
+}
+
+.popular-item {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.popular-item a img {
+    margin-bottom: 5%;
+}
+
+.popular-item > p:nth-child(4) {
+    height: 40px;
+}
+
+.popular-item > a.btn.btn-primary {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.popular-item span.price {
+    color: #2a4b8e;
+    font-weight: bold;
+}
+
+.popular-item h3 {
+    font-weight: bold;
+}
+
+.callouts {
+    background-color: #e8ebee;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 0;
+}
+
+.callouts > div:first-child {
+    border-right: 3px solid #727272;
+}
+
+
+#index-popular-heading > h2 span {
+    background: #fff;
+    padding: 0 15px;
+    position: relative;
+    z-index: 1;
+}
+
+#index-popular-heading > h2:before {
+    background: #d8e6f3;
+    content: "";
+    display: block;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left: 0;
+}
+
+
+@media screen and (max-width: 767px) {
+
+    #index-hero h1 {
+        font-size: 2.3em;
+    }
+}
+
+
+@media screen and (max-width: 575px) {
+
+    #index-hero h1 {
+        font-size: 1.5em;
+    }
+
+    .hero {
+        padding: 1.7em;
+        height: 250px;
+    }
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+.item {
+    position: relative;
+    padding-top: 20px;
+    display: inline-block;
+}
+
+.notify-badge {
+    position: absolute;
+    right: -10px;
+    top: 10px;
+    background: red;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    padding: 5px 10px;
+    font-size: 10px;
+    display: inline-block;
+    min-width: 30px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    vertical-align: baseline;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.product_show_detail_ordre { 
+    color: black;
+    font: 13px sans-serif;
+}

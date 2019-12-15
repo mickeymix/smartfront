@@ -1,23 +1,14 @@
-<? session_start(); ?>
+<?php session_start(); ?>
 <?php
 include 'backoffice/conn.php';
-
-
-
 if ($_GET["action"] == "logout") {
     session_destroy();
     header("Location: index.php");
 }
 ?>
-
 <?php
-
-
 $conn = mysqli_connect($host, $user, $pass, $dbname);
-
 mysqli_set_charset($conn, "utf8");
-
-
 $sql = "SELECT * FROM common_smart_master where common_smart_id='" . $_GET["common_smart_id"] . "'";
 $query = mysqli_query($conn, $sql);
 while ($result = mysqli_fetch_assoc($query)) {
@@ -32,19 +23,17 @@ while ($result = mysqli_fetch_assoc($query)) {
 <head id="Head1">
 
     <script>
-        <?
+        <?php
         echo $tag_google;
         ?>
     </script>
 
-
-    <title><? echo $product_title_th;  ?><? echo $headline;  ?></title>
-    <meta name="Keywords" content="<? echo $keyword;  ?>" />
-    <meta name="description" content="<? echo $sub_headline;  ?>" />
+    <title><?php echo $product_title_th;  ?><?php echo $headline;  ?></title>
+    <meta name="Keywords" content="<?php echo $keyword;  ?>" />
+    <meta name="description" content="<?php echo $sub_headline;  ?>" />
     <meta charset="utf8">
 
-
-    <?
+    <?php
     include 'header.php';
     ?>
     <link rel="stylesheet" media="screen, projection" href="css/drift-basic.css">
@@ -53,8 +42,6 @@ while ($result = mysqli_fetch_assoc($query)) {
         ol {
             list-style-type: decimal;
         }
-    </style>
-    <style type="text/css">
         .detail {
             position: relative;
             width: 50%;
@@ -64,19 +51,15 @@ while ($result = mysqli_fetch_assoc($query)) {
     </style>
     <script src="js/jquery.fancybox.js"></script>
     <script src="js/nextprv.js"></script>
-
-
 </head>
-
 <body>
-
     <div class="content-wrapper row">
         <div class="quick-facts printAtFullWidth">
-            <? echo ($common_content == "") ? "NO Content" : $common_content; ?>
+            <?php echo ($common_content == "") ? "NO Content" : $common_content; ?>
         </div>
     </div>
 
-    <?
+    <?php
 	// mysqli_close($conn);
 	include 'footer.php';
 	?>

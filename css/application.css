@@ -3,7 +3,6 @@
 
 
 
-
 /* Container */
 
 
@@ -76,7 +75,6 @@ float: left;
 .slider_control-nav-item.is-active {
   opacity: 0.6;
   background: #000;
- //cursor: default;
 }
 
 .slider_arrow {

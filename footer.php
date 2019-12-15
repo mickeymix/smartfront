@@ -1,5 +1,4 @@
 <link href="css\buttonnenu.css" rel="stylesheet">
-
 <link rel="stylesheet" href="css/kc.fab.css"/>
 
 <style>
@@ -155,8 +154,93 @@
         }
     }
 
+    .latest-posts .feed-image {
+        display: none;
+    }
+
+    #footer-hours {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    #footer-hours ul {
+        padding-left: 5px;
+        list-style-type: none;
+    }
+
+    #mobileContactBar.opened {
+        bottom: 192px !important;
+    }
+
+     /* Hide Olark button*/
+     @media screen and (max-width: 767px) {
+        #olark-wrapper .olark-launch-button {
+            display: none !important;
+        }
+    }
+
+    #phone-footer {
+        padding: 0 !important;
+        color: #efefef;
+        background: rgba(27, 48, 107, 0.9) !important;
+    }
+
+    #phone-footer .collapsing {
+        transition-timing-function: ease-in-out;
+        transition-delay: 0s;
+        transition-duration: 0.12s;
+    }
+
+    #mobileContactBar {
+        padding: 10px 5px;
+        overflow-x: hidden;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        background: linear-gradient(to bottom, #376bf8 0%, #336699 100%);
+        background: #376bf8;
+        transition-property: bottom;
+        transition-timing-function: ease-in-out;
+        transition-delay: 0s;
+        transition-duration: 0.17s;
+    }
+
+    #mobileContactBar.opened {
+        bottom: 105px;
+    }
+
+    #mobileContactChevron {
+        margin-right: 15px;
+    }
+
+    #mobileContactList {
+        height: 0;
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    #mobileContactList.opened {
+        height: 200px !important;
+        margin-bottom: 0;
+    }
+
+    #mobileContactList li {
+        list-style-type: none;
+        height: 25%;
+        padding: 14px 0;
+        border-bottom: 1px solid #376bf8;
+        font-size: 14px;
+    }
+
+    #mobileContactBar.opened {
+        bottom: 250px;
+    }
+
 </style>
-<? $conn = mysqli_connect($host, $user, $pass, $dbname);
+<?php
+
+$conn = mysqli_connect($host, $user, $pass, $dbname);
 mysqli_set_charset($conn, "utf8");
 $sql = "SELECT * FROM email_menu_config_master WHERE email_menu_id ='1'";
 $query = mysqli_query($conn, $sql);
@@ -173,50 +257,48 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <img class="lazy" data-src="backoffice/<? echo $result['email_image_title'] ?>"/>
+                    <img class="lazy" data-src="backoffice/<?php echo $result['email_image_title'] ?>"/>
                 </div>
                 <div class="modal-body" style="height: 0px">
                     <div class="row">
                         <div class="col-xs-6"
-                             style=" height: 300px; background: url('backoffice/<? echo $result['email_image_left'] ?>');background-repeat-y: no-repeat; background-repeat-x:no-repeat; background-size: contain">
+                             style=" height: 300px; background: url('backoffice/<?php echo $result['email_image_left'] ?>');background-repeat-y: no-repeat; background-repeat-x:no-repeat; background-size: contain">
 
                         </div>
                         <div class="col-xs-6"
-                             style="position:relative;  height: 300px; background: url('backoffice/<? echo $result['email_image_right'] ?>'); background-repeat-y: no-repeat;background-repeat-x:no-repeat; background-size: contain">
+                             style="position:relative;  height: 300px; background: url('backoffice/<?php echo $result['email_image_right'] ?>'); background-repeat-y: no-repeat;background-repeat-x:no-repeat; background-size: contain">
 
 
                             <div class="dialogmodalButton">
                                 <div class="md-form mb-5">
                                     <input type="text" id="subNameForm3" class="form-control validate"
-                                           placeholder="<? echo $result['email_name_place_holder'] ?>">
+                                           placeholder="<?php echo $result['email_name_place_holder'] ?>">
 
                                 </div>
                                 <br>
 
                                 <div class="md-form mb-4">
                                     <input type="email" id="subEmailForm4" class="form-control validate"
-                                           placeholder="<? echo $result['email_email_place'] ?>">
+                                           placeholder="<?php echo $result['email_email_place'] ?>">
 
                                     <button class="btn" style="background-color: transparent;" onclick="subEmail()">
                                         <img class="lazy"
-                                             data-src="backoffice/<? echo $result['email_button_image'] ?>"/>
+                                             data-src="backoffice/<?php echo $result['email_button_image'] ?>"/>
                                     </button>
                                 </div>
-
                             </div>
-
-
                         </div>
-
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
-<? } ?>
+<?php } ?>
 
-<? $conn = mysqli_connect($host, $user, $pass, $dbname);
+<?php  
+
+$conn = mysqli_connect($host, $user, $pass, $dbname);
 mysqli_set_charset($conn, "utf8");
 $sql2 = "SELECT * FROM email_menu_config_master WHERE email_menu_id ='4'";
 $query2 = mysqli_query($conn, $sql2);
@@ -232,30 +314,26 @@ while ($result2 = mysqli_fetch_assoc($query2)) { ?>
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <img class="lazy" data-src="backoffice/<? echo $result2['email_image_title'] ?>"/>
+                    <img class="lazy" data-src="backoffice/<?php echo $result2['email_image_title'] ?>"/>
 
                 </div>
                 <div class="modal-body mx-3">
                     <div class="row">
 
                         <div class="col-md">
-                            <a target="_blank" href="<? echo $result2['email_success_link'] ?>"><img
+                            <a target="_blank" href="<?php echo $result2['email_success_link'] ?>"><img
                                         class="lazy"
-                                        data-src="backoffice/<? echo $result2['email_success_dialog_image'] ?>"/></a>
+                                        data-src="backoffice/<?php echo $result2['email_success_dialog_image'] ?>"/></a>
                         </div>
-
-
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
-<? } ?>
+<?php } ?>
 
 
-<? $conn = mysqli_connect($host, $user, $pass, $dbname);
+<?php $conn = mysqli_connect($host, $user, $pass, $dbname);
 mysqli_set_charset($conn, "utf8");
 $sql3 = "SELECT * FROM email_menu_config_master WHERE email_menu_id ='3'";
 $query3 = mysqli_query($conn, $sql3);
@@ -271,49 +349,42 @@ while ($result3 = mysqli_fetch_assoc($query3)) { ?>
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <img class="lazy" data-src="backoffice/<? echo $result3['email_image_title'] ?>"/>
+                    <img class="lazy" data-src="backoffice/<?php echo $result3['email_image_title'] ?>"/>
                 </div>
                 <div class="modal-body" style="height: 0px">
                     <div class="row">
                         <div class="col-xs-6"
-                             style=" height: 300px; background: url('backoffice/<? echo $result3['email_image_left'] ?>');background-repeat-y: no-repeat; background-repeat-x:no-repeat; background-size: contain">
-
+                             style=" height: 300px; background: url('backoffice/<?php echo $result3['email_image_left'] ?>');background-repeat-y: no-repeat; background-repeat-x:no-repeat; background-size: contain">
                         </div>
                         <div class="col-xs-6"
-                             style="position:relative;  height: 300px; background: url('backoffice/<? echo $result3['email_image_right'] ?>'); background-repeat-y: no-repeat; background-repeat-x:no-repeat; background-size: contain">
-
-
+                             style="position:relative;  height: 300px; background: url('backoffice/<?php echo $result3['email_image_right'] ?>'); background-repeat-y: no-repeat; background-repeat-x:no-repeat; background-size: contain">
                             <div class="dialogmodalButton">
                                 <div class="md-form mb-5">
                                     <input type="text" id="subNameFormWhitePaper" class="form-control validate"
-                                           placeholder="<? echo $result3['email_name_place_holder'] ?>">
-
+                                           placeholder="<?php echo $result3['email_name_place_holder'] ?>">
                                 </div>
                                 <br>
-
                                 <div class="md-form mb-4">
                                     <input type="email" id="subEmailFormWhitePaper" class="form-control validate"
-                                           placeholder="<? echo $result3['email_email_place'] ?>">
+                                           placeholder="<?php echo $result3['email_email_place'] ?>">
                                 </div>
                                 <button class="btn" style="background-color: transparent;" onclick="subSendwhitePaper()">
                                     <img class="lazy" id="subemailWhitepaper"
-                                         data-src="backoffice/<? echo $result3['email_button_image'] ?>"/>
+                                         data-src="backoffice/<?php echo $result3['email_button_image'] ?>"/>
                                 </button>
-
-
                             </div>
-
-
                         </div>
-
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
-<? } ?>
-<? $conn = mysqli_connect($host, $user, $pass, $dbname);
+<?php } ?>
+
+<?php
+
+$conn = mysqli_connect($host, $user, $pass, $dbname);
 mysqli_set_charset($conn, "utf8");
 $sql4 = "SELECT * FROM email_menu_config_master WHERE email_menu_id ='2'";
 $query4 = mysqli_query($conn, $sql4);
@@ -324,34 +395,31 @@ while ($result4 = mysqli_fetch_assoc($query4)) { ?>
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
-
                     <button type="button" class="close model_close_right" data-dismiss="modal"
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <img class="lazy" data-src="backoffice/<? echo $result4['email_image_title'] ?>"/>
+                    <img class="lazy" data-src="backoffice/<?php echo $result4['email_image_title'] ?>"/>
 
                 </div>
                 <div class="modal-body mx-3">
                     <div class="row">
 
                         <div class="col-md">
-                            <a target="_blank" href="<? echo $result4['email_success_link'] ?>"><img
+                            <a target="_blank" href="<?php echo $result4['email_success_link'] ?>"><img
                                         class="lazy"
-                                        data-src="backoffice/<? echo $result4['email_success_dialog_image'] ?>"/></a>
+                                        data-src="backoffice/<?php echo $result4['email_success_dialog_image'] ?>"/></a>
                         </div>
-
-
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
-<? } ?>
+<?php } ?>
 
-<? $conn = mysqli_connect($host, $user, $pass, $dbname);
+<?php
+
+$conn = mysqli_connect($host, $user, $pass, $dbname);
 mysqli_set_charset($conn, "utf8");
 $sql5 = "SELECT * FROM email_menu_config_master WHERE email_menu_id ='5'";
 $query5 = mysqli_query($conn, $sql5);
@@ -367,33 +435,28 @@ while ($result5 = mysqli_fetch_assoc($query5)) { ?>
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <img class="lazy" data-src="backoffice/<? echo $result5['email_image_title'] ?>"/>
+                    <img class="lazy" data-src="backoffice/<?php echo $result5['email_image_title'] ?>"/>
 
                 </div>
                 <div class="modal-body mx-3">
                     <div class="row">
 
                         <div class="col-md">
-                            <a target="_blank" href="<? echo $result5['email_success_link'] ?>"><img
+                            <a target="_blank" href="<?php echo $result5['email_success_link'] ?>"><img
                                         class="lazy"
-                                        data-src="backoffice/<? echo $result5['email_success_dialog_image'] ?>"/></a>
+                                        data-src="backoffice/<?php echo $result5['email_success_dialog_image'] ?>"/></a>
                         </div>
-
-
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
-<? } ?>
+<?php } ?>
 
 <?php
 
 // use PHPMailer\PHPMailer\PHPMailer;
 // use PHPMailer\PHPMailer\Exception;
-
 
 $conn = mysqli_connect($host, $user, $pass, $dbname);
 mysqli_set_charset($conn, "utf8");
@@ -404,12 +467,8 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
     <div class="follow-us row">
         <br/>
         <section class="latest-posts col-sm-3 hidden-xs dont-print">
-
             <ul class="posts">
-
                 <li class="post-summary">
-
-
                     <table>
                         <tr>
                             <td><img src="images/logotf.png" width="150px"></td>
@@ -428,19 +487,16 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
                     E-mai:sale@smartbestbuys.com<br/>
                     Line:@trafficthai
                 </li>
-
             </ul>
         </section>
         <section class="latest-posts col-sm-3 hidden-xs dont-print">
             <ul class="posts">
-
                 <li class="post-summary">
                     <font size="4"> แค็ตตาล็อค ร้านไทยจราจร </font>
                     <hr>
                 </li>
                 <li>
                     <a data-toggle="modal" data-target="#modalSubscriptionForm"><img src="images/downloadcat.png"></a>
-
                 </li>
                 <br/>
                 <li class="post-summary">
@@ -457,35 +513,31 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
                                    style="color:black;" id="ft-email"/>
                         </div>
                         <input type="button" value="ส่งเลย" style="background-color:red;" onclick="add_email99();"/>
-
                     </div>
-
                 </li>
-
             </ul>
         </section>
         <section class="latest-posts col-sm-3 hidden-xs dont-print">
             <ul class="posts">
-
-
                 <li class="post-summary">
                     <font size="4"> ศูนย์ช่วยเหลือ </font>
                     <hr>
                 </li>
-                <? $conn = mysqli_connect($host, $user, $pass, $dbname);
+                <?php
+                
+                $conn = mysqli_connect($host, $user, $pass, $dbname);
                 mysqli_set_charset($conn, "utf8");
                 $sql = "SELECT * FROM common_smart_master";
                 $query = mysqli_query($conn, $sql);
                 while ($result = mysqli_fetch_assoc($query)) { ?>
-                    <a href="service_menu.php?common_smart_id=<? echo $result['common_smart_id'] ?>">
+                    <a href="service_menu.php?common_smart_id=<?php echo $result['common_smart_id'] ?>">
                         <li class="post-summary">
-                            <? echo $result['common_menu'] ?>
+                            <?php echo $result['common_menu'] ?>
                         </li>
                     </a>
-                <? } ?>
+                <?php } ?>
             </ul>
         </section>
-
 
         <!-- /latest-tweets -->
         <!-- contact-us -->
@@ -547,23 +599,19 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
 
                         <li><i class="ion-printer"></i> E-mail:sale@smartbestbuys.com</li>
                     </ul>
-
-
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
                         <img src="images/dbd.png"/>
                     </div>
                 </div>
-
             </div>
+
             <ul class="locations row">
                 <li class="post-summary">
-
                 </li>
-
-
             </ul>
+
         </section>
     </div>
     <!-- end follow-us row -->
@@ -575,56 +623,32 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
         <div class="navbar-dark row">
             <ul class="footer-links">
 
-                <? $conn = mysqli_connect($host, $user, $pass, $dbname);
+                <?php
+                
+                $conn = mysqli_connect($host, $user, $pass, $dbname);
                 mysqli_set_charset($conn, "utf8");
                 $sql = "SELECT * FROM common_smart_master";
                 $query = mysqli_query($conn, $sql);
                 while ($result = mysqli_fetch_assoc($query)) { ?>
-                    <a href="service_menu.php?common_smart_id=<? echo $result['common_smart_id'] ?>">
+                    <a href="service_menu.php?common_smart_id=<?php echo $result['common_smart_id'] ?>">
                         <li class="post-summary">
-                            <? echo $result['common_menu'] ?>
+                            <?php echo $result['common_menu'] ?>
                         </li>
                     </a>
-                <? } ?>
+                <?php } ?>
 
                 <li>Copyright &copy;2008 www.trafficthai.com &#8482; All Rights Reserved</li>
                 <li class="serverID">01</li>
             </ul>
         </div>
     </footer>
-
-    <style>
-        .latest-posts .feed-image {
-            display: none;
-        }
-
-        #footer-hours {
-            padding-left: 5px;
-            padding-right: 5px;
-        }
-
-        #footer-hours ul {
-            padding-left: 5px;
-            list-style-type: none;
-        }
-    </style>
-
-
     <div id="phone-footer">
-
-
         <ul id="mobileContactList" class="collapse dont-print">
             <li><b>Customer Service Hours</b><br> Mon-Thur: 8am-5:30pm ET <br> Friday: 8am-5pm ET</li>
             <li><a class="dont-print mobileContactLink" href="tel:800-983-0021">Call us: <b>800-983-0021</b></a></li>
             <li><a class="dont-print mobileContactLink" href="mailto:contact@trafficsafetystore.com">Email: Traffic
                     Safety Store</a></li>
         </ul>
-        <style>
-            #mobileContactBar.opened {
-                bottom: 192px !important;
-            }
-        </style>
-
         <p class="print-only">
             <span class="glyphicon glyphicon-earphone glyphicon-position-static"></span>
             800-429-9030 &nbsp;
@@ -637,7 +661,7 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
     <div id="dialog_email" title="ร้านไทยจราจร" style="display:none;">
         <p>ได้รับ อีเมล เรียบร้อยแล้วค่ะ</p>
     </div>
-    <input type="hidden" id="action" value="<? echo $_GET[" action"]; ?>"/>
+    <input type="hidden" id="action" value="<?php echo $_GET[" action"]; ?>"/>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -649,11 +673,13 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
             // 	$(".social2").css("display", "block");
             // 	$(".social").css("display", "none");
             // });
+            
             $('#mobileContactBar, #mobileHeaderPhoneButton').click(function () {
                 $('#mobileContactBar').toggleClass('opened');
                 $('#mobileContactMessage').toggle();
                 $('#mobileContactChevron').toggle();
             })
+            
             $('#mobileContact-olarkLaunch').click(function () {
                 $('#mobileContactList').collapse('hide');
                 $('#mobileContactBar').toggleClass('opened');
@@ -664,27 +690,20 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
             var action = $("#action").val();
 
             if (action == "email") {
-
-
                 $("#dialog_email").dialog({
                     show: "slide",
                     modal: true,
                     autoOpen: false
                 });
-
                 $("#dialog_email").dialog("open");
                 return false;
-
             }
-
-
-        })
+        });
 
         function validateEmail(email) {
-            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            var re = "/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/";
             return re.test(email);
         }
-
 
         function add_email99() {
 
@@ -701,14 +720,10 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
 
                 return false;
             }
+
             var url_page = "";
             var url_page = "index.php";
-
-
             location.href = url_page + "?email=" + email + "&action=email&id_art=" + id_art + "&keyword_email=SnBnBlog";
-
-
-            //alert(url_page +"?email="+email+"&action=email&id_art=" + id_art);
         }
 
         function subEmail() {
@@ -732,17 +747,13 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
                     'email_customer': email,
                     'customer_name': nameInput
                 }, function (result) {
-                    // alert(result);
-                    if (result.status === '0') // Success
-                    {
+                    // status success
+                    if (result.status === '0'){
                         alert(result.message);
-
-                    } else // Err
-                    {
-
-                    }
+                    } 
                 }
             )
+
             jQuery.noConflict();
             $("#modalSubscriptionForm").modal("toggle");
             $("#modalSubscriptionSuccess").modal("toggle");
@@ -756,14 +767,14 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
             // alert(email)
             if (email === "") {
                 alert("Plese input your email.");
-
                 return false;
             }
+
             if (!validateEmail(email)) {
                 alert("Fomat email found.");
-
                 return false;
             }
+
             $.post("sendEmail_ajax.php", {
                     'email': email,
                     'paper_id': titleid,
@@ -784,7 +795,6 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
             jQuery.noConflict();
             $("#modalwhitepaper").modal("toggle");
             $("#modalWhitePaperSuccess").modal("toggle");
-
 
         }
 
@@ -891,23 +901,18 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
             // location.href = url_page + "?email=" + email + "&action=email&id_art=" + id_art + "&keyword_email=" + keyword_email + "&id_testimo=" + id_testimo;
         }
     </script>
-    <?
+    <?php
 
     if ($_GET["action"] == "email") {
-
 
         $email = $_GET["email"];
         $keyword = $_GET["keyword_email"];
 
         $conn = mysqli_connect($host, $user, $pass, $dbname);
-
         mysqli_set_charset($conn, "utf8");
 
-
         if ($keyword == "SnBnBlog") {
-
             $sql = "INSERT INTO email_customer (email, insert_date , keyword ) VALUES ('$email',SYSDATE() , '$keyword') ";
-
             if ($conn->query($sql) === TRUE) {
             } else {
                 $alert = "Error: " . $sql . "<br>" . $conn->error;
@@ -916,7 +921,6 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
         } else {
 
             $str = explode(",", $keyword);
-
             foreach ($str as $value) {
                 $sql = "INSERT INTO email_customer (email, insert_date , keyword ) VALUES ('$email',SYSDATE() , '$value') ";
 
@@ -927,8 +931,6 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
                 }
             }
         }
-
-
         $conn->close();
     }
 
@@ -991,7 +993,7 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
                 <script>
                     $("#modalSubscriptionSuccess").modal("toggle");
                 </script>
-                <?
+                <?php
             } catch (Exception $e) {
                 //throw $th;
                 echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -1002,8 +1004,10 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
 
     ?>
 
-<? }
+<?php
+ }
 $conn->close(); ?>
+
 <?php if ($_GET['action'] == "subEmail") { ?>
     <script>
         //$(document).ready(function(){
@@ -1011,78 +1015,8 @@ $conn->close(); ?>
         //});
     </script>
 <?php } ?>
-<style>
-    /* Hide Olark button*/
-    @media screen and (max-width: 767px) {
-        #olark-wrapper .olark-launch-button {
-            display: none !important;
-        }
-    }
-
-    #phone-footer {
-        padding: 0 !important;
-        color: #efefef;
-        background: rgba(27, 48, 107, 0.9) !important;
-    }
-
-    #phone-footer .collapsing {
-        transition-timing-function: ease-in-out;
-        transition-delay: 0s;
-        transition-duration: 0.12s;
-    }
-
-    #mobileContactBar {
-        padding: 10px 5px;
-        overflow-x: hidden;
-        width: 100%;
-        bottom: 0;
-        left: 0;
-        position: absolute;
-        background: linear-gradient(to bottom, #376bf8 0%, #336699 100%);
-        background: #376bf8;
-        transition-property: bottom;
-        transition-timing-function: ease-in-out;
-        transition-delay: 0s;
-        transition-duration: 0.17s;
-    }
-
-    #mobileContactBar.opened {
-        bottom: 105px;
-    }
-
-    #mobileContactChevron {
-        margin-right: 15px;
-    }
-
-    #mobileContactList {
-        height: 0;
-        list-style-type: none;
-        padding-left: 0;
-    }
-
-    #mobileContactList.opened {
-        height: 200px !important;
-        margin-bottom: 0;
-    }
-
-    #mobileContactList li {
-        list-style-type: none;
-        height: 25%;
-        padding: 14px 0;
-        border-bottom: 1px solid #376bf8;
-        font-size: 14px;
-    }
-</style>
-
-<style>
-    #mobileContactBar.opened {
-        bottom: 250px;
-    }
-</style>
-
 
 </div>
-
 
 <script type="text/javascript">
 
@@ -1136,16 +1070,16 @@ $conn->close(); ?>
         });
 
         $('#clickOrder').click(function () {
-            <? setcookie('cart', 'mixmix', time() + 60 * 100000, '/');?>
+            <?php setcookie('cart', 'mixmix', time() + 60 * 100000, '/');?>
         });
 
         const xmidimd = $("img[src='https://smartbestbuys.com/images/quotation.png']");
         xmidimd.click(function () {
             console.log('ddedede');
-            <? if(!isset($_COOKIE['cart'])) {
-            ?> console.log('midmidiwdwi')<?
+            <?php if(!isset($_COOKIE['cart'])) {
+            ?> console.log('midmidiwdwi')<?php
             } else{
-            ?> console.log('mixmximxi')<?
+            ?> console.log('mixmximxi')<?php
             }?>
         })
         // $.("img[src*='https://smartbestbuys.com/images/quotation.png']").click(function () {
@@ -1451,25 +1385,23 @@ $conn->close(); ?>
 
 
         <input id="testtest" value="support_order.php" name="testtest" hidden="true">
-        <input id="titleMail" value="<? echo $result['msg_email'] ?>" name="titleMail" hidden="true">
+        <input id="titleMail" value="<?php echo $result['msg_email'] ?>" name="titleMail" hidden="true">
 
-        <input id="phoneIntent" value="tel:<? echo $result['val_phone'] ?>" name="phoneIntent" hidden="true">
-        <input id="phoneTitle" value="<? echo $result['msg_phone'] ?>" name="phoneTitle" hidden="true">
+        <input id="phoneIntent" value="tel:<?php echo $result['val_phone'] ?>" name="phoneIntent" hidden="true">
+        <input id="phoneTitle" value="<?php echo $result['msg_phone'] ?>" name="phoneTitle" hidden="true">
 
-        <input id="lineIntent" value="<? echo $result['val_line'] ?>" name="lineIntent" hidden="true">
-        <input id="lineTitle" value="<? echo $result['msg_line'] ?>" name="lineTitle" hidden="true">
+        <input id="lineIntent" value="<?php echo $result['val_line'] ?>" name="lineIntent" hidden="true">
+        <input id="lineTitle" value="<?php echo $result['msg_line'] ?>" name="lineTitle" hidden="true">
 
-        <input id="fbIntent" value="<? echo $result['val_facebook'] ?>" name="fbIntent" hidden="true">
-        <input id="fbTitle" value="<? echo $result['msg_fb'] ?>" name="fbTitle" hidden="true">
+        <input id="fbIntent" value="<?php echo $result['val_facebook'] ?>" name="fbIntent" hidden="true">
+        <input id="fbTitle" value="<?php echo $result['msg_fb'] ?>" name="fbTitle" hidden="true">
 
-        <input id="title_flow" value="<? echo $result['btn_msg'] ?>" name="fbTitle" hidden="true">
+        <input id="title_flow" value="<?php echo $result['btn_msg'] ?>" name="fbTitle" hidden="true">
 
-    <? } ?>
+    <?php } ?>
 </div>
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
 <script src="js/kc.fab.js"></script>
 <script>
-
     $(document).ready(function () {
         var links = [{
             "icon": "images/logotf.png",
@@ -1508,11 +1440,9 @@ $conn->close(); ?>
             // 	"title": "ปิดหน้าต่างช่วยเหลือ"
 
             // }
-        ]
+        ];
+
         $('.kc_fab_wrapper').kc_fab(links);
-    })
+    });
+
 </script>
-
-</body>
-
-</html>

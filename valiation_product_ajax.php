@@ -13,10 +13,5 @@ while ($resultValiation = mysqli_fetch_assoc($queryEmail)) {
     while ($resultprodut= mysqli_fetch_assoc($queryproduct)) {
         echo json_encode(array('status' => '1', 'message' => "success", 'productResult' => $resultprodut));
     }
-
-
-
 }
-
-
 ?>

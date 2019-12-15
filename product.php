@@ -1,9 +1,6 @@
-<?  session_start(); ?>
+<?php   session_start(); ?>
 <?php
 include 'backoffice/conn.php';
-
-
-
 if($_GET["action"] == "logout"){
 	session_destroy();
 	 header( "Location: index.php" );
@@ -13,14 +10,11 @@ if($_GET["action"] == "logout"){
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head id="Head1">
-
     <title>ร้านไทยจราจร</title>
 
-<?
+<?php
 include 'header.php';
-
 $conn = mysqli_connect($host, $user, $pass, $dbname);
-
 mysqli_set_charset($conn,"utf8");
 ?>
 
@@ -34,29 +28,14 @@ mysqli_set_charset($conn,"utf8");
         <main class="main container" role="main">
 
             <div class="row tss-breadcrumbs">
-                <div class="col-xs-12"><a href="index.php">Home</a> &nbsp;&nbsp;>&nbsp;&nbsp;<? echo $_GET["product_category_title_th"]; ?> &nbsp;&nbsp;>&nbsp;&nbsp;<? echo $_GET["product_type_title_th"]; ?></div>
+                <div class="col-xs-12"><a href="index.php">Home</a> &nbsp;&nbsp;>&nbsp;&nbsp;<?php echo $_GET["product_category_title_th"]; ?> &nbsp;&nbsp;>&nbsp;&nbsp;<?php echo $_GET["product_type_title_th"]; ?></div>
             </div>
 
             <section class="content category-page">
                 <header>
-                    <h1><? echo $_GET["product_type_title_th"]; ?></h1>
+                    <h1><?php echo $_GET["product_type_title_th"]; ?></h1>
                 </header>
                 <br>
-<!--
-                <div id="catDescSlidedown" style="display:none;">
-
-                    <div id="category-blurb" class="category-desc">
-
-                        <img class="categortPageHeadImg cld-responsive" data-src="https://media.trafficsafetystore.com/image/upload/c_limit,dpr_auto,f_auto,q_auto:best,w_250/v1/i/traffic-cones-head-230x230.jpg" src="https://media.trafficsafetystore.com/image/upload/c_limit,dpr_auto,f_auto,q_auto:best,w_250/v1/i/traffic-cones-head-230x230.jpg">
-                        <br>
-                        <p><b>You've reached the largest stock of <span style="font-size:18px;"> MUTCD Compliant </span> traffic cones in the nation.</b>
-                            <br>
-                            <br>As one of America's largest traffic cone suppliers, all road cones, parking cones, and driving safety products are READY TO SHIP. <a href="traffic-cones\orange-lime.html">Orange traffic cones</a>, <a href="https://www.trafficsafetystore.com/traffic-cones/looper-tubes">looper tubes</a>, and <a href="traffic-cones\collapsible-light-up.html">collapsible traffic cones</a> - <i>Delivered Fast</i>!</p>
-                        <p>Choose black-bottom reflective road cones - a great solution for <a href="traffic-cones\construction.html" title="Construction Cones">construction</a> or soccer practice. We also offer valet cones, blue accessibility cones, and pop-up LED cones. Add your logo to any <a href="traffic-cones\custom.html">custom traffic cones</a>.
-                    </div>
-
-                </div>
--->
                 <ul class="product-list row">
 			<?php
 			 $perpage = 24;
@@ -66,10 +45,7 @@ mysqli_set_charset($conn,"utf8");
 				$page = 1;
 			 }
 		 
-			$start = ($page - 1) * $perpage;
-			 
-			 
-			 
+			 $start = ($page - 1) * $perpage;
 			 $sql = "SELECT a.product_type_title_th,a.product_category_title_th,a.product_code ,a.product_title_th ,a.product_description_th ,(SELECT image FROM product_image WHERE a.product_code = product_code ORDER BY INSERT_DATE ASC LIMIT 1 ) AS image_product FROM product_main a WHERE product_type_code = '".$_GET["product_type_code"]."'  ORDER BY INSERT_DATE DESC limit {$start} , {$perpage}";
 			 $query = mysqli_query($conn, $sql);
 			 
@@ -81,9 +57,8 @@ mysqli_set_charset($conn,"utf8");
                             <div class="sale-ribbon red">
                                 <span class="cornerRibbonText col-xs-12" style="font-size:20px;top:26px;left:-27px">On Sale</span>
                             </div>
-
                             <img class="product-list-thumbnail cld-responsive"  
-							src="backoffice/<?echo ($result['image_product']=="") ? 'images/noimage.jpg' : $result['image_product']; ?>" alt="<?php echo $result['product_title_th']; ?>">
+							src="backoffice/<?php echo ($result['image_product']=="") ? 'images/noimage.jpg' : $result['image_product']; ?>" alt="<?php echo $result['product_title_th']; ?>">
                             <span class="product-list-name"><?php echo $result['product_code']; ?></span>
                         </a>
 
@@ -93,15 +68,8 @@ mysqli_set_charset($conn,"utf8");
                     </li>
 			 <?php
 			  }
-			 ?> 
-                  
-					
-					
-					
-					
-
+			 ?>
                 </ul>
-
             </section>
 			
 			<?php
@@ -120,19 +88,19 @@ mysqli_set_charset($conn,"utf8");
 							 </li >
 								 <?php for($i=1;$i<=$total_page;$i++){ ?>
 								 
-								 <?
+								 <?php 
 								 if($i == $page){
 								?>	 
 									<li class='active'><a  href="product.php?page=<?php echo $i; ?>&product_type_code=<?php echo $_GET["product_type_code"]; ?>"><?php echo $i; ?></a></li>
-								<?	
+								<?php 
 								}else{
 								?>
 									<li><a href="product.php?page=<?php echo $i; ?>&product_type_code=<?php echo $_GET["product_type_code"]; ?>"><?php echo $i; ?></a></li>
-								<?	
+								<?php 
 								}
 								 ?>
 									
-								 <?php } ?>
+								<?php } ?>
 							 <li>
 						 <a href="product.php?page=<?php echo $total_page;?>&product_type_code=<?php echo $_GET["product_type_code"]; ?>" aria-label="Next">
 							 <span aria-hidden="true">&raquo;</span>
@@ -143,7 +111,7 @@ mysqli_set_charset($conn,"utf8");
 
         </main>
     </div>
-<?
+<?php
 mysqli_close($conn);
 include 'footer.php';
 ?>

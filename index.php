@@ -2,10 +2,14 @@
 <?php session_start(); ?>
 <?php
 include 'backoffice/conn.php';
- if ($_GET["action"] == "logout") {
-	session_destroy();
-	header("Location: index.php");
- }
+
+if(!empty($_GET)) { 
+	if ($_GET["action"] == "logout") {
+		session_destroy();
+		header("Location: index.php");
+ 	}
+}
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -51,7 +55,7 @@ include 'backoffice/conn.php';
 					$query = mysqli_query($conn, $sql);
 					$i = 0;
 					while ($result = mysqli_fetch_assoc($query)) {?>
-                        <a href="<? echo $result['coverlink'] ?>"> <img style="width: 100%;  height: auto;" data-lazy="backoffice/<? echo $result['coverImage'] ?>" alt="<? echo $result['coveralt'] ?>"> </a>
+                        <a href="<?php echo $result['coverlink'] ?>"> <img style="width: 100%;  height: auto;" data-lazy="backoffice/<?php echo $result['coverImage'] ?>" alt="<?php echo $result['coveralt'] ?>"> </a>
 
                 <?php } ?>
             </div>
@@ -83,8 +87,11 @@ include 'backoffice/conn.php';
                     while ($result = mysqli_fetch_assoc($query)) {
                         ?>
 
-                        <div class="col-sm-6 col-md-3 popular-item"><a target="_blank" href="product_detail.php?product_code=<?php echo $result['product_code']; ?>&product_type_title_th=<?php echo $result['product_type_title_th']; ?>
-											&product_category_title_th=<?php echo $result['product_category_title_th']; ?>"> <img  data-lazy="backoffice/<? echo ($result['image_product'] == "") ? 'images/noimage.jpg' : $result['image_product']; ?>" alt="<?php echo $result['product_title_th']; ?>"> </a>
+                        <div class="col-sm-6 col-md-3 popular-item">
+                            <a target="_blank" href="product_detail.php?product_code=<?php echo $result['product_code']; ?>&product_type_title_th=<?php echo $result['product_type_title_th']; ?>
+											&product_category_title_th=<?php echo $result['product_category_title_th']; ?>">
+                                <img  data-lazy="backoffice/<? echo ($result['image_product'] == '') ? 'images/noimage.jpg' : $result['image_product']; ?>" alt="<?php echo $result['product_title_th']; ?>">
+                            </a>
                             <div style="height:20px;">
                                 <h5><a target="_blank" href="product_detail.php?product_code=<?php echo $result['product_code']; ?>&product_type_title_th=<?php echo $result['product_type_title_th']; ?>
 											&product_category_title_th=<?php echo $result['product_category_title_th']; ?>"><?php echo $result['product_code']; ?></a></h5>
@@ -125,7 +132,7 @@ include 'backoffice/conn.php';
                         ?>
 
                         <div class="col-sm-6 col-md-3 popular-item"><a target="_blank" href="product_detail.php?product_code=<?php echo $result['product_code']; ?>&product_type_title_th=<?php echo $result['product_type_title_th']; ?>
-											&product_category_title_th=<?php echo $result['product_category_title_th']; ?>"> <img data-lazy="backoffice/<? echo ($result['image_product'] == "") ? 'images/noimage.jpg' : $result['image_product']; ?>" alt="<?php echo $result['product_title_th']; ?>"> </a>
+											&product_category_title_th=<?php echo $result['product_category_title_th']; ?>"> <img data-lazy="backoffice/<?php echo ($result['image_product'] == "") ? 'images/noimage.jpg' : $result['image_product']; ?>" alt="<?php echo $result['product_title_th']; ?>"> </a>
                             <div style="height:20px;">
                                 <h5><a target="_blank" href="product_detail.php?product_code=<?php echo $result['product_code']; ?>&product_type_title_th=<?php echo $result['product_type_title_th']; ?>
 											&product_category_title_th=<?php echo $result['product_category_title_th']; ?>"><?php echo $result['product_code']; ?></a></h5>
@@ -199,29 +206,29 @@ include 'backoffice/conn.php';
             ?>
 			<div class="row">
 				<div id="index-popular-heading" class="col-sm-12 text-center index-popular-products">
-					<h2><span><?echo  $result['service_top_title']?></span></h2>
+					<h2><span><?php echo  $result['service_top_title']?></span></h2>
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col-sm-4 ">
-					<div class="col-xs-12 col-md-12"><a href="<?echo $result['service_link_one']?>" target="_blank">
-                            <img class="cld-responsive img-responsive center-block lazy" data-src="backoffice/<?echo  $result['service_img_one']?>" height="250" width="250" alt="shipping truck icon">
+					<div class="col-xs-12 col-md-12"><a href="<?php echo $result['service_link_one']?>" target="_blank">
+                            <img class="cld-responsive img-responsive center-block lazy" data-src="backoffice/<?php echo  $result['service_img_one']?>" height="250" width="250" alt="shipping truck icon">
                         </a></div>
 					<div class="col-xs-12 col-md-12 text-center">
-						<h2><?echo  $result['service_title_one']?></h2>
+						<h2><?php echo  $result['service_title_one']?></h2>
 					</div>
 				</div>
 				<div class="col-sm-4">
-                    <div class="col-xs-12 col-md-12"><a href="<?echo $result['service_link_two']?>" target="_blank"><img  class="cld-responsive img-responsive center-block lazy" data-src="backoffice/<?echo  $result['service_img_two']?>" height="250" width="250" alt="customer service icon"></a></div>
+                    <div class="col-xs-12 col-md-12"><a href="<?php echo $result['service_link_two']?>" target="_blank"><img  class="cld-responsive img-responsive center-block lazy" data-src="backoffice/<?php echo  $result['service_img_two']?>" height="250" width="250" alt="customer service icon"></a></div>
 					<div class="col-xs-12 col-md-12 text-center">
-						<h2><?echo  $result['service_title_two']?></h2>
+						<h2><?php echo  $result['service_title_two']?></h2>
 					</div>
 				</div>
 				<div class="col-sm-4">
-                    <div class="col-xs-12 col-md-12"><a href="<?echo $result['service_link_three']?>" target="_blank"><img  class="cld-responsive img-responsive center-block lazy" data-src="backoffice/<?echo  $result['service_img_three']?>" height="250" width="250" alt="customer service icon"></a></div>
+                    <div class="col-xs-12 col-md-12"><a href="<?php echo $result['service_link_three']?>" target="_blank"><img  class="cld-responsive img-responsive center-block lazy" data-src="backoffice/<?php echo  $result['service_img_three']?>" height="250" width="250" alt="customer service icon"></a></div>
 					<div class="col-xs-12 col-md-12 text-center">
-						<h2><?echo  $result['service_title_three']?></h2>
+						<h2><?php echo  $result['service_title_three']?></h2>
 					</div>
 				</div>
 			</div>
@@ -290,8 +297,8 @@ include 'backoffice/conn.php';
 
                 <ul id="rig">
                     <li>
-                        <a class="rig-cell" href="<? echo $result['linktestimo'] ?>">
-                            <img class="rig-img" src="<? echo 'backoffice/' . $result['image_logo'] . '' ?>">
+                        <a class="rig-cell" href="<?php  echo $result['linktestimo'] ?>">
+                            <img class="rig-img" src="<?php  echo 'backoffice/' . $result['image_logo'] . '' ?>">
                             <span class="rig-overlay"></span>
                             <span class="rig-text">Lorem Ipsum Dolor</span>
                         </a>
