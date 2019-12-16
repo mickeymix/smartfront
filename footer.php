@@ -251,7 +251,6 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
 
         <div class="modal-dialog" role="document">
             <div class="modal-content" style="padding-bottom: 0px">
-                <div class="modal-header text-center">
 
                     <button type="button" class="close model_close_right" data-dismiss="modal"
                             aria-label="Close">
@@ -261,6 +260,11 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
                 </div>
                 <div class="modal-body" style="height: 0px">
                     <div class="row">
+                        <button type="button" class="close model_close_right" data-dismiss="modal"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <img class="lazy" data-src="backoffice/<? echo $result['email_image_title'] ?>"/>
                         <div class="col-xs-6"
                              style=" height: 300px; background: url('backoffice/<?php echo $result['email_image_left'] ?>');background-repeat-y: no-repeat; background-repeat-x:no-repeat; background-size: contain">
 
@@ -279,11 +283,11 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
 
                                 <div class="md-form mb-4">
                                     <input type="email" id="subEmailForm4" class="form-control validate"
-                                           placeholder="<?php echo $result['email_email_place'] ?>">
+                                           placeholder="<? echo $result['email_email_place'] ?>">
 
                                     <button class="btn" style="background-color: transparent;" onclick="subEmail()">
                                         <img class="lazy"
-                                             data-src="backoffice/<?php echo $result['email_button_image'] ?>"/>
+                                             data-src="backoffice/<? echo $result['email_button_image'] ?>"/>
                                     </button>
                                 </div>
                             </div>
@@ -308,13 +312,17 @@ while ($result2 = mysqli_fetch_assoc($query2)) { ?>
          aria-labelledby="myModalLabel" aria-hidden="true" style="top:20%">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header text-center">
+                <button type="button" class="close model_close_right" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <img class="lazy" data-src="backoffice/<? echo $result2['email_image_title'] ?>"/>
 
                     <button type="button" class="close model_close_right" data-dismiss="modal"
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <img class="lazy" data-src="backoffice/<?php echo $result2['email_image_title'] ?>"/>
+                    <img class="lazy" data-src="backoffice/<? echo $result2['email_image_title'] ?>"/>
 
                 </div>
                 <div class="modal-body mx-3">
@@ -327,6 +335,7 @@ while ($result2 = mysqli_fetch_assoc($query2)) { ?>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -342,14 +351,14 @@ while ($result3 = mysqli_fetch_assoc($query3)) { ?>
     <div class="modal fade" id="modalwhitepaper" tabindex="-1" role="dialog"
          aria-labelledby="myModalLabel" aria-hidden="true" style="top:20%">
         <div class="modal-dialog" role="document">
-            <div class="modal-content" style="padding-bottom: 0px">
-                <div class="modal-header text-center">
+                <div class="modal-content" style="padding-bottom: 0px">
 
+                <div class="modal-body" style="height: 0px">
                     <button type="button" class="close model_close_right" data-dismiss="modal"
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <img class="lazy" data-src="backoffice/<?php echo $result3['email_image_title'] ?>"/>
+                    <img class="lazy" data-src="backoffice/<? echo $result3['email_image_title'] ?>"/>
                 </div>
                 <div class="modal-body" style="height: 0px">
                     <div class="row">
@@ -366,12 +375,14 @@ while ($result3 = mysqli_fetch_assoc($query3)) { ?>
                                 <br>
                                 <div class="md-form mb-4">
                                     <input type="email" id="subEmailFormWhitePaper" class="form-control validate"
-                                           placeholder="<?php echo $result3['email_email_place'] ?>">
+                                           placeholder="<? echo $result3['email_email_place'] ?>">
                                 </div>
                                 <button class="btn" style="background-color: transparent;" onclick="subSendwhitePaper()">
                                     <img class="lazy" id="subemailWhitepaper"
-                                         data-src="backoffice/<?php echo $result3['email_button_image'] ?>"/>
+                                         data-src="backoffice/<? echo $result3['email_button_image'] ?>"/>
                                 </button>
+
+
                             </div>
                         </div>
                     </div>
@@ -395,11 +406,12 @@ while ($result4 = mysqli_fetch_assoc($query4)) { ?>
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
+
                     <button type="button" class="close model_close_right" data-dismiss="modal"
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <img class="lazy" data-src="backoffice/<?php echo $result4['email_image_title'] ?>"/>
+                    <img class="lazy" data-src="backoffice/<? echo $result4['email_image_title'] ?>"/>
 
                 </div>
                 <div class="modal-body mx-3">
@@ -429,16 +441,14 @@ while ($result5 = mysqli_fetch_assoc($query5)) { ?>
          aria-labelledby="myModalLabel" aria-hidden="true" style="top:20%">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header text-center">
 
+                <div class="modal-body mx-3">
                     <button type="button" class="close model_close_right" data-dismiss="modal"
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <img class="lazy" data-src="backoffice/<?php echo $result5['email_image_title'] ?>"/>
 
-                </div>
-                <div class="modal-body mx-3">
                     <div class="row">
 
                         <div class="col-md">
@@ -520,7 +530,7 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
         <section class="latest-posts col-sm-3 hidden-xs dont-print">
             <ul class="posts">
                 <li class="post-summary">
-                    <font size="4"> ศูนย์ช่วยเหลือ </font>
+                    <span style="font-size: medium; "> ศูนย์ช่วยเหลือ </span>
                     <hr>
                 </li>
                 <?php
@@ -700,6 +710,9 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
             }
         });
 
+
+        })
+
         function validateEmail(email) {
             var re = "/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/";
             return re.test(email);
@@ -725,6 +738,7 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
             var url_page = "index.php";
             location.href = url_page + "?email=" + email + "&action=email&id_art=" + id_art + "&keyword_email=SnBnBlog";
         }
+
 
         function subEmail() {
             var email = $("#subEmailForm4").val().trim();
