@@ -33,30 +33,7 @@ else
 	}
 
 }
-
-// show order
-
-/* 
-$Total = 0;
-  $SumTotal = 0;
-
-  for($i=0;$i<=(int)$_SESSION["intLine"];$i++)
-  {
-	  if($_SESSION["product_code"][$i] != "")
-	  {
-		?>
-	  
-		product code : <?php echo $_SESSION["product_code"][$i];?> 
-        <> 
-		product amount : <?php echo $_SESSION["product_amount"][$i];?>
-        <hr>
-	  <?php
-      }
-      
-  }
-  */
-  ?>
-
+?>
 
 <!DOCTYPE html>
 <html lang="en">

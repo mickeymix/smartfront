@@ -176,7 +176,6 @@ while ($result = mysqli_fetch_assoc($queryProductImage)) {
             </form>
         </main>
     </div>
-
 <?php
 include 'footer.php';
 mysqli_close($conn);
