@@ -1,6 +1,5 @@
-<? ob_start(); ?>
-<? session_start();
-
+<?php ob_start(); ?>
+<?php session_start();
 ?>
 
 
@@ -12,12 +11,9 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>ร้านไทยจราจร</title>
 
-    <?
-
+    <?php
     require_once("header.php");
-
     require_once("account/login_user.php");
-    
     ?>
 
 <style>
@@ -52,7 +48,8 @@
 
     mysqli_set_charset($conn, "utf8");
     ?>
-<? $conn = mysqli_connect($host, $user, $pass, $dbname);
+<?php  
+$conn = mysqli_connect($host, $user, $pass, $dbname);
 			mysqli_set_charset($conn, "utf8");
 			$sql = "SELECT * FROM email_menu_config_master WHERE email_menu_id ='3'";
 			$query = mysqli_query($conn, $sql);
@@ -66,64 +63,26 @@
 								<button type="button" class="close model_close_right" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
-								<img src="backoffice/<? echo $result['email_image_title'] ?>" />
+								<img src="backoffice/<?php echo $result['email_image_title'] ?>" />
 
 							</div>
 							<div class="modal-body mx-3">
 								<div class="row">
 
 									<div class="col-md">
-										<a target="_blank" href="<? echo $result['email_success_link'] ?>"><img src="backoffice/<? echo $result['email_success_dialog_image'] ?>" /></a>
+										<a target="_blank" href="<?php echo $result['email_success_link'] ?>"><img src="backoffice/<?php echo $result['email_success_dialog_image'] ?>" /></a>
 									</div>
-
-
 								</div>
-
 							</div>
-
 						</div>
 					</div>
 				</div>
-			<? } ?>
+			<?php } ?>
 
-<!--    <div class="content-wrapper row">-->
-<!--        <main class="main container" role="main">-->
-<!---->
-<!--            <div id="myCarousel" class="carousel slide">-->
-<!--                -->
-<!--                <div class="carousel-inner">-->
-<!--                    --><?php
-//
-//                    $sql = "SELECT * FROM cover_image_title";
-//                    $query = mysqli_query($conn, $sql);
-//                    $i = 0;
-//                    while ($result = mysqli_fetch_assoc($query)) {
-//                        if ($i == 0) {
-//                            ?>
-<!--                            <div class="item active" style="width: 100%; height: auto;">-->
-<!--                                <div class="row"><a href="--><?// echo $result['coverlink'] ?><!--"> <img style="width: 100%; height: auto;" src="backoffice/--><?// echo $result['coverImage'] ?><!--" alt="--><?// echo $result['coveralt'] ?><!--"> </a></div>-->
-<!--                            </div>-->
-<!--                        --><?// } else { ?>
-<!--                            <div class="item" style="width: 100%; height: auto;">-->
-<!--                                <div class="row"><a href="--><?// echo $result['coverlink'] ?><!--"> <img style="width: 100%; height: auto;" src="backoffice/--><?// echo $result['coverImage'] ?><!--" alt="--><?// echo $result['coveralt'] ?><!--"> </a></div>-->
-<!--                            </div>-->
-<!--                        --><?// } ?>
-<!--                        --><?//
-//                        $i++;
-//                    } ?>
-<!---->
-<!--                 -->
-<!--                </div>-->
-<!--                <p><a href="#myCarousel" class="left carousel-control" data-slide="prev"><span class="icon-prev"></span><span class="sr-only">Previous</span></a><a href="#myCarousel" class="right carousel-control" data-slide="next"><span class="icon-next"></span><span class="sr-only">Next</span></a></p>-->
-<!---->
-<!---->
-<!--            </div>-->
-<!--        </main>-->
-<!--    </div>-->
     <?php if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {   ?>
 
 
-    <? } else { ?>
+    <?php } else { ?>
         <div class="alert alert-info alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -131,28 +90,19 @@
             ยินดีด้วยคุณได้รับคูปองส่วนลด <U> <a href="javascript:void(0)" onclick="messlide();">คลิกเลย </a></U>
         </div>
 
-    <? } ?>
+    <?php } ?>
 
     <div class="w3-container w3-center">
-
-
         <img src="images/10_order_management_1_2.png" width="15%"/><br><br>
-
         <h2>ขอใบเสนอราคาด่วน (ไม่เกิน 5 นาที)</h2>
     </div>
-
     <br><br>
-
     <div class="content-wrapper row">
-
-
     <div class="w3-row cf7_custom_style_1">
     <div class="w3-row">
             <div class="w3-col m4"><label style=" font-size: 20px;">ชื่อบริษัท | ชื่อหน่วยงาน</label></div>
             <div class="w3-col m8"><input style="box-shadow: 0 0 3px #000000; margin: 10px " class="w3-input" id="com_name" name="com_name" type="text"></div>
         </div>
-
-
         <br>
         <div class="w3-row">
             <div class="w3-col m4"><label style=" font-size: 20px;">ชื่อผู้ติดต่อ</label></div>
@@ -178,21 +128,16 @@
        <div class="w3-row">
        <!-- <input type="hidden" name="button_pressed" value="1" /> -->
        <div class="w3-col"><center><button class="w3-btn" style="background-color: #ac2925; width: 70%; height: 40px; margin-top: 20px;" onclick="subEmailOrder()" ><font color='white'>กดส่ง เพื่อส่งขอใบเสนอราคาด่วน!!</font></button></center></div>
-      
-       </div>
-      
+   
+       </div>      
     </div>
-      
-
-
     <br><br>
-
     <script>
 
-		function validateEmail(email) {
-			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-			return re.test(email);
-		}
+	function validateEmail(email) {
+		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return re.test(email);
+	}
 
 
     function subEmailOrder() {
@@ -249,16 +194,13 @@
 		}
     </script>
 </body>
-<?
+<?php
 	if ($_GET["action"] == "order_submit") {
 		require_once('./PHPMailer-master/src/PHPMailer.php');
 		require_once('./PHPMailer-master/src/SMTP.php');
 		require_once('./PHPMailer-master/src/Exception.php');
 		// require 'vendor/autoload.php';
 		// require 'PHPMailerAutoload.php';
-		
-
-
         // Load Composer's autoloader
 		// require 'vendor/autoload.php';
 
@@ -303,14 +245,13 @@
 				$("#modalSubscriptionSuccessOrder").modal("toggle");
 				//});
 			</script>
-		<?
+		<?php 
 		} catch (Exception $e) {
 			//throw $th;
 			echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 		}
     }
 ?>
-<?
-
+<?php
 include 'footer.php';
 ?>

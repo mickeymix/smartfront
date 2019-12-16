@@ -1,20 +1,20 @@
-<? session_start(); ?>
+<?php session_start(); ?>
 <?php
 include 'backoffice/conn.php';
 
-
-if ($_GET["action"] == "logout") {
-    session_destroy();
-    header("Location: index.php");
+if(!empty($_GET)) {
+    if(!empty($_GET['action'])){
+        if ($_GET["action"] == "logout") {
+            session_destroy();
+            header("Location: index.php");
+        }
+    }
 }
-?>
-<?php
 
+$product_code =  $_GET["product_code"];
 
 $conn = mysqli_connect($host, $user, $pass, $dbname);
-
 mysqli_set_charset($conn, "utf8");
-
 
 $sql = "SELECT * FROM product_main where product_code='" . $_GET["product_code"] . "'";
 $query = mysqli_query($conn, $sql);
@@ -41,175 +41,36 @@ while ($result1 = mysqli_fetch_assoc($query)) {
     $vali_three = $result1["vali_three"];
 }
 
-
 ?>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-            "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-    <html xmlns="http://www.w3.org/1999/xhtml">
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+            "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1">
 
     <script>
-        <?
+        <?php 
         echo $tag_google;
         ?>
     </script>
 
-
-    <title><? echo $product_title_th; ?><? echo $headline; ?></title>
-    <meta name="Keywords" content="<? echo $keyword; ?>"/>
-    <meta name="description" content="<? echo $sub_headline; ?>"/>
+    <title><?php echo $product_title_th; ?><?php echo $headline; ?></title>
+    <meta name="Keywords" content="<?php echo $keyword; ?>"/>
+    <meta name="description" content="<?php echo $sub_headline; ?>"/>
     <meta charset="utf8">
-
-
-    <?
+    <?php 
     include 'header.php';
     ?>
     <link rel="stylesheet" media="screen, projection" href="css/drift-basic.css">
     <link href="css/application.css" rel="stylesheet"/>
-    <style>
-        ol {
-            list-style-type: decimal;
-        }
-    </style>
-    <style type="text/css">
-        .demo-preview {
-            padding-top: 60px;
-            padding-bottom: 10px;
-            width: 300px;
-            margin: auto;
-            text-align: center;
+    <link href="css/product_detail.css" rel="stylesheet"/>
 
-        }
-
-        .demo-preview .label {
-            margin-right: 10px;
-            margin-bottom: 10px
-        }
-
-        .label {
-            display: inline-block;
-            line-height: 1;
-            text-align: center;
-            white-space: nowrap;
-            vertical-align: baseline;
-            padding: 10px 16px;
-            border-radius: 2px;
-            font-size: 14px;
-            font-weight: 400;
-            color: #FFF
-        }
-
-        .label.label-pill,
-        .label.label-rounded {
-            border-radius: 99999px
-        }
-
-        .label.label-square {
-            border-radius: 0
-        }
-
-        .label.label-default {
-            background-color: #B0BEC5
-        }
-
-        .label.label-primary {
-            background-color: #2196F3
-        }
-
-        .label.label-secondary {
-            background-color: #323a45;
-            color: #FFF
-        }
-
-        .label.label-info {
-            background-color: #29B6F6
-        }
-
-        .label.label-success {
-            background-color: #64DD17
-        }
-
-        .label.label-warning {
-            background-color: #FFD600
-        }
-
-        .label.label-danger {
-            background-color: #ef1c1c
-        }
-
-        .label.label-outlined {
-            border-width: 1px;
-            border-style: solid;
-            background-color: transparent
-        }
-
-        .label.label-outlined.label-default {
-            border-color: #B0BEC5;
-            color: #B0BEC5
-        }
-
-        .label.label-outlined.label-primary {
-            border-color: #2196F3;
-            color: #2196F3
-        }
-
-        .label.label-outlined.label-secondary {
-            border-color: #323a45;
-            color: #323a45
-        }
-
-        .label.label-outlined.label-info {
-            border-color: #29B6F6;
-            color: #29B6F6
-        }
-
-        .label.label-outlined.label-success {
-            border-color: #64DD17;
-            color: #64DD17
-        }
-
-        .label.label-outlined.label-warning {
-            border-color: #FFD600;
-            color: #FFD600
-        }
-
-        .label.label-outlined.label-danger {
-            border-color: #ef1c1c;
-            color: #ef1c1c
-        }
-    </style>
-    <style type="text/css">
-
-        .detail {
-            /*position: relative;*/
-            /*width: 50%;*/
-
-            /*float: left;*/
-        }
-
-        .quantity {
-            padding-top: 20px;
-            text-align: center;
-        }
-
-        .quantity input {
-            -webkit-appearance: none;
-            border: none;
-            text-align: center;
-            width: 32px;
-            font-size: 16px;
-            color: #43484D;
-            font-weight: 300;
-        }
-    </style>
     <script src="js/jquery.fancybox.js"></script>
-
+    <script src="js/jquery-2.2.4.min.js"></script>
 
     <div class="content-wrapper row">
-
         <nav class="sidebar">
-
             <div class="sideNavElement">
                 <img id="acceptGovPOsLogo" src="images/weacceptgop-logo.png"
                      alt="We Accept Government Purchase Orders"/>
@@ -220,28 +81,15 @@ while ($result1 = mysqli_fetch_assoc($query)) {
 
             <div class="row tss-breadcrumbs dont-print">
                 <div class="col-xs-12"><a href="index.php">Home</a><a
-                            href="javascript:void(0)"><? echo $_GET["product_category_title_th"]; ?></a> &nbsp;&nbsp;>&nbsp;&nbsp;<a
-                            href="javascript:void(0)"><? echo $_GET["product_type_title_th"]; ?></a></div>
+                            href="javascript:void(0)"><?php echo $_GET["product_category_title_th"]; ?></a> &nbsp;&nbsp;>&nbsp;&nbsp;<a
+                            href="javascript:void(0)"><?php echo $_GET["product_type_title_th"]; ?></a></div>
             </div>
             <br/>
 
-            <style>
-                .head-line-pd {
-                    text-align: center;
-                    padding: 25px 1px 25px 1px;
-                    background-color: #dae2e6;
-                }
-
-                .head-line-pd h4,
-                h6 {
-                    color: #727272;
-                }
-            </style>
             <div class="row">
                 <div class="col-sm-12">
                     <div class="col-xs-12 head-line-pd">
-                        <h1 id="ProductDisplayHeadline"><? echo ($headline == "") ? "จะดีกว่ามั้ย ? กรวยจราจร ซื้อทีเดียวใช้ได้ยาวถึง 5 ปี!" : $headline; ?></h1>
-
+                        <h1 id="ProductDisplayHeadline"><?php echo ($headline == "") ? "จะดีกว่ามั้ย ? กรวยจราจร ซื้อทีเดียวใช้ได้ยาวถึง 5 ปี!" : $headline; ?></h1>
                     </div>
                 </div>
             </div>
@@ -255,9 +103,9 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                                 <input type="hidden" name="runSizeSelectionTest" id="runSizeSelectionTest"
                                        value="false"/>
                                 <h6 id="ProductDisplayName-get"
-                                    itemprop="name itemReviewed"><? echo $product_title_th; ?></h6>
+                                    itemprop="name itemReviewed"><?php echo $product_title_th; ?></h6>
                                 <h5  id="ProductDisplayCode-get">
-                                    รหัสสินค้า :<? echo $_GET["product_code"]; ?>
+                                    รหัสสินค้า :<?php echo $_GET["product_code"]; ?>
                                 </h5>
 
                             </div>
@@ -267,7 +115,6 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                 <script type="text/javascript" src="js/jquery.mobile.navigate.min.js"></script>
                 <script>
                     //Get Product Name for shipping modalYoutube when modalYoutube opens
-
                     $(document).ready(function () {
                         $('#shipping-modalYoutube').on('shown.bs.modalYoutube', function (e) {
                             var displayName = $("#ProductDisplayName-get").text();
@@ -279,174 +126,23 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                 <div id="addToCartResult"></div>
 
                 <!-- check for video tab, get tab html/name (for videos in image gallery) -->
-
-
                 <div class="detailsPartial" id="replace_cdf8cffb19004750975e00212a7ca1b3">
-                    <style>
-                        /* The Modal (background) */
-                        .modalYoutube {
-                            display: none;
-                            /* Hidden by default */
-                            position: fixed;
-                            /* Stay in place */
-                            z-index: 999;
-                            /* Sit on top */
-                            padding-top: 100px;
-                            /* Location of the box */
-                            left: 0;
-                            top: 0;
-                            width: 100%;
-                            /* Full width */
-                            height: 100%;
-                            /* Full height */
-                            overflow: auto;
-                            /* Enable scroll if needed */
-                            background-color: rgb(0, 0, 0);
-                            /* Fallback color */
-                            background-color: rgba(0, 0, 0, 0.4);
-                            /* Black w/ opacity */
-                        }
-
-                        /* Modal Content */
-                        .modalYoutube-content {
-                            position: relative;
-                            background-color: #fefefe;
-                            margin: auto;
-                            padding: 0;
-                            border: 1px solid #888;
-                            width: 80%;
-                            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-                            -webkit-animation-name: animatetop;
-                            -webkit-animation-duration: 0.4s;
-                            animation-name: animatetop;
-                            animation-duration: 0.4s
-                        }
-
-                        /* Add Animation */
-                        @-webkit-keyframes animatetop {
-                            from {
-                                top: -300px;
-                                opacity: 0
-                            }
-
-                            to {
-                                top: 0;
-                                opacity: 1
-                            }
-                        }
-
-                        @keyframes animatetop {
-                            from {
-                                top: -300px;
-                                opacity: 0
-                            }
-
-                            to {
-                                top: 0;
-                                opacity: 1
-                            }
-                        }
-
-                        /* The Close Button */
-                        .close {
-                            color: black;
-                            float: right;
-                            font-size: 28px;
-                            font-weight: bold;
-                        }
-
-                        .close:hover,
-                        .close:focus {
-                            color: #000;
-                            text-decoration: none;
-                            cursor: pointer;
-                        }
-
-                        .modalYoutube-header {
-                            padding: 2px 16px;
-
-
-                        }
-
-                        .modalYoutube-body {
-                            padding: 2px 16px;
-                        }
-
-                        .modalYoutube-footer {
-                            padding: 2px 16px;
-
-                            color: white;
-                        }
-                    </style>
-                    <style>
-                        #nextImage,
-                        #prevImage {
-                            right: 0;
-                            height: 50%;
-                            top: 15% !important;
-                        }
-
-                        .image-helper {
-                            z-index: -2;
-                        }
-
-                        #thumbnail-play-image {
-                            top: 50% !important;
-                            transform: translateY(-50%);
-                            z-index: 2;
-                            pointer-events: none;
-                        }
-
-                        #productImage-4 {
-                            position: relative;
-                            top: 50%;
-                            transform: translateY(-50%);
-                            -webkit-transform: translateY(-50%);
-                            -ms-transform: translateY(-50%);
-                        }
-
-                        @media screen and (max-width: 768px) {
-                            .gallery-main-image .glyphicon-play-circle {
-                                font-size: 80px !important;
-                            }
-                        }
-
-                        @media screen and (max-width: 450px) {
-                            .gallery-main-image img {
-                                max-width: 60% !important;
-                            }
-
-                            .gallery-main-image .glyphicon-play-circle {
-                                font-size: 56px !important;
-                            }
-
-                            #gallery-video-embedded {
-                                min-width: 100% !important;
-                            }
-                        }
-                    </style>
-
                     <!-- The Modal -->
                     <div id="myModal" class="modalYoutube">
-
                         <!-- Modal content -->
                         <div class="modalYoutube-content">
                             <div class="modalYoutube-header">
                                 <span class="close">&times;</span>
-
                             </div>
                             <div class="modalYoutube-body">
-
                                 <iframe width="100%" height="480"
-                                        src="<? echo str_replace("watch?v=", "embed/", $youtube); ?>" frameborder="0"
+                                        src="<?php echo str_replace("watch?v=", "embed/", $youtube); ?>" frameborder="0"
                                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                         allowfullscreen></iframe>
                             </div>
                             <div class="modalYoutube-footer">
-
                             </div>
                         </div>
-
                     </div>
 
                     <!-- Modal for "fullscreen" video -->
@@ -457,7 +153,6 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                                     <button id="gallery-video-close" type="button" class="close"
                                             data-dismiss="modalYoutube" aria-label="Close"><span aria-hidden="true">&times;</span>
                                     </button>
-
                                 </div>
                             </div>
                         </div>
@@ -487,39 +182,35 @@ while ($result1 = mysqli_fetch_assoc($query)) {
 
                                         $sql = "SELECT image FROM product_image WHERE product_code='" . $_GET["product_code"] . "' limit 1";
                                         $query = mysqli_query($conn, $sql);
-
-
                                         $chkimg = "";
+
                                         while ($result = mysqli_fetch_assoc($query)) {
                                             $chkimg = $result['image'];
                                             ?>
 
                                             <img itemprop="image"
-                                                 src="backoffice/<? echo $result['image']; ?>?w=1200&amp;ch=DPR&amp;dpr=2"
-                                                 alt="<? echo $product_title_th; ?>"
-                                                 data-zoom="backoffice/<? echo $result['image']; ?>"
+                                                 src="backoffice/<?php echo $result['image']; ?>?w=1200&amp;ch=DPR&amp;dpr=2"
+                                                 alt="<?php echo $product_title_th; ?>"
+                                                 data-zoom="backoffice/<?php echo $result['image']; ?>"
                                                  class="drift-demo-trigger image-toggle magnified cld-responsive"/>
 
-                                            <?
+                                            <?php
                                         }
                                         ?>
                                         <div id="show_youtube"></div>
-                                        <?
+                                        <?php
                                         if ($chkimg == "") {
                                             ?>
                                             <img itemprop="image" src="backoffice/images/noimage.jpg"
                                                  class="image-toggle magnified cld-responsive"/>
-
-                                            <?
+                                            <?php
                                         }
                                         ?>
-
 
                                         <?php if ($youtube <> '') { ?>
                                             <span id="gallery-video-controls"
                                                   class="glyphicon glyphicon-play-circle hidden dont-print"></span>
                                             <div style="position:relative;" class="dont-print">
-
                                             <span id="fs-alt-button" class="glyphicon glyphicon-fullscreen hidden"
                                                   data-toggle="modalYoutube"
                                                   data-target="#videoGallery-modalYoutube"></span>
@@ -534,37 +225,26 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                                         <div class="imageText-Container row hidden-xs hidden-sm text-center">
                                             <span class="imageText freeHardware-text"></span>
                                         </div>
-
-
                                     </div>
                                 </div>
-
-
                                 <div class="imageText-Container col-lg-10 col-lg-push-2 visible-xs visible-sm text-center">
                                     <span class="imageText freeHardware-text"></span>
-
                                 </div>
 
                                 <div id="imageThumbnailWrapper" class="col-md-12 col-lg-2 col-lg-pull-13">
-                                    <!--                                    <div id="imageThumbnail-ScrollUp"-->
-                                    <!--                                         class="imageThumbnail-Scroll visible-lg col-lg-12">-->
-                                    <!--                                        <span class="glyphicon glyphicon-triangle-top"></span>-->
-                                    <!--                                    </div>-->
-                                    <?
+
+                                    <?php
                                     $sql = "SELECT COUNT(image) AS count_img FROM product_image WHERE product_code='" . $_GET["product_code"] . "'";
                                     $query = mysqli_query($conn, $sql);
                                     $count_img = 0;
                                     while ($result = mysqli_fetch_assoc($query)) {
                                         $count_img = $result['count_img'];
                                     }
-
                                     ?>
 
                                     <div id="imageThumbnailMask" class=""
                                          style="min-height: 200px">
                                         <div id="imageThumbnailCarousel" class="gallery-thumbnail previews">
-
-
                                             <?php
 
                                             $sql = "SELECT image FROM product_image WHERE product_code='" . $_GET["product_code"] . "'";
@@ -574,7 +254,7 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                                                 $i++;
                                                 ?>
                                                 <a id="imageselected" name="imageselected" data-count="<? echo $i; ?>"
-                                                   class="<? if ($i == 1) {
+                                                   class="<?php if ($i == 1) {
                                                        echo selected;
                                                    } ?> imgprd" data-full="backoffice/<? echo $result['image']; ?>">
                                                     <div class="col-xs-3 col-md-3 col-lg-12">
@@ -586,199 +266,151 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                                                         </div>
                                                     </div>
                                                 </a>
-
-
-                                                <?
+                                                <?php
                                             }
                                             ?>
 
                                             <?php
                                             if ($youtube <> '') {
-
-
                                                 $sql = "SELECT image FROM product_image WHERE product_code='" . $_GET["product_code"] . "' limit 1";
                                                 $query = mysqli_query($conn, $sql);
 
                                                 while ($result = mysqli_fetch_assoc($query)) {
 
                                                     ?>
-                                                    <a data-count="<? echo $i + 1; ?>"
+                                                    <a data-count="<?php echo $i + 1; ?>"
                                                        class="imgprd" data
-                                                       data-full="backoffice/<? echo $result['image']; ?>">
+                                                       data-full="backoffice/<?php echo $result['image']; ?>">
                                                         <div class="col-xs-3 col-md-3 col-lg-12">
                                                             <div class="gallery-thumnail-wrapper">
-                                                                <img data-src="backoffice/<? echo $result['image']; ?>"
+                                                                <img data-src="backoffice/<?php echo $result['image']; ?>"
                                                                      src="images/yt_logo_rgb_light.png"
                                                                      class="image-toggler active cld-responsive">
                                                                 <div class="imageText-hidden"></div>
                                                             </div>
                                                         </div>
                                                     </a>
-
-                                                    <?
+                                                    <?php
                                                 }
                                             }
                                             ?>
-
-
                                         </div>
                                     </div>
-                                    <!--                                    <div id="imageThumbnail-ScrollDown"-->
-                                    <!--                                         class="imageThumbnail-Scroll visible-lg col-lg-12">-->
-                                    <!--                                        <span class="glyphicon glyphicon-triangle-bottom"></span>-->
-                                    <!--                                    </div>-->
                                 </div>
-
                             </div>
                         </section>
 
-
                         <div class="col-sm-6 detail">
-                            <!--   <section  class="col-sm-6 product-order magnifier-target printVersion no-pad-onPrint" style="height:672px;">-->
-
-
                             <div>
                                 <ul>
-
-
                                     <li class="row">
                                         <div id="quickFacts-test" class="col-xs-12 col-md-12 quick-facts"
                                              style="margin-bottom:0px;">
-
                                             <div class="quick-facts printAtFullWidth">
-                                                <h2 id="ProductDisplaySubHeadline"> <? echo ($sub_headline == "") ? "SUB HEADLINE" : $sub_headline; ?></h2>
+                                                <h2 id="ProductDisplaySubHeadline"> <?php echo ($sub_headline == "") ? "SUB HEADLINE" : $sub_headline; ?></h2>
                                             </div>
-
                                         </div>
                                     </li>
 
                                     <li class="row">
                                         <div id="quickFacts-test" class="col-xs-12 col-md-12 quick-facts"
                                              style="margin-bottom:0px;">
-
                                             <div class="quick-facts printAtFullWidth" id="ProductDisplayDescription">
-                                                <? echo ($product_description_th == "") ? "NO Description" : $product_description_th; ?>
+                                                <?php echo ($product_description_th == "") ? "NO Description" : $product_description_th; ?>
                                             </div>
-
                                         </div>
                                     </li>
-
-
                                     <li class="product-quantity-actions row dont-print">
-                                        <!--    <font color="red"> *  กรุงเทพ และปริมณฑล  ค่าขนส่ง 50 บาท สั่งสินค้า 499 บาท ขึ้นไปส่งฟรี  ต่างจังหวัด -->
-                                        <? // echo ($freight == "")?"-":$freight." บาท";
-                                        ?>
-                                        </font>
                                     </li>
-
                                 </ul>
-
-
                             </div>
-                            <!--                            <div style="position: absolute; bottom: -15px;">-->
-                            <? if ($vali_one != '') { ?>
+                            
+                            <?php if ($vali_one != '') { ?>
                                 <div class="container_row">
                                     <div class="col col-lg-1">
-                                        <h5><? echo $vali_one ?></h5>
+                                        <h5><?php echo $vali_one ?></h5>
                                     </div>
                                     <div class="btn-group btn-group-sm" role="group">
-                                        <? $counterOne = 0 ?>
-                                        <? $sql1 = "SELECT * FROM valiation_answer_master where v_ori_id='$id_valiation' and v_status_active = 'true'";
+                                        <?php $counterOne = 0 ?>
+                                        <?php $sql1 = "SELECT * FROM valiation_answer_master where v_ori_id='$id_valiation' and v_status_active = 'true'";
                                         $query = mysqli_query($conn, $sql1);
                                         while ($result1 = mysqli_fetch_assoc($query)) { ?>
-                                            <button class="smartvaliation label <? if ($counterOne <= 0) { ?>label-danger<? } else { ?>label-default<? } ?> label-outlined "><? echo $result1["v_option_one"] ?></button>
-                                            <? $counterOne++ ?>
-                                        <? } ?>
+                                            <button class="smartvaliation label <?php if ($counterOne <= 0) { ?>label-danger<?php } else { ?>label-default<?php } ?> label-outlined "><?php echo $result1["v_option_one"] ?></button>
+                                            <?php $counterOne++ ?>
+                                        <?php } ?>
                                     </div>
                                     <br> <br>
-                                    <? if ($vali_two != '') { ?>
+                                    <?php if ($vali_two != '') { ?>
                                         <div class="col col-lg-1">
                                             <div style="text-align: center;"><h5><? echo $vali_two ?></h5></div>
                                         </div>
                                         <div class="btn-group btn-group-sm" role="group">
-                                            <? $counterTwo = 0 ?>
-                                            <? $sql1 = "SELECT * FROM valiation_answer_master where v_ori_id='$id_valiation' and v_status_active = 'true'";
+                                            <?php $counterTwo = 0 ?>
+                                            <?php $sql1 = "SELECT * FROM valiation_answer_master where v_ori_id='$id_valiation' and v_status_active = 'true'";
                                             $query = mysqli_query($conn, $sql1);
                                             while ($result1 = mysqli_fetch_assoc($query)) { ?>
 
-                                                <button class="smartvaliation2 label <? if ($counterTwo <= 0) { ?>label-danger<? } else { ?>label-default<? } ?> label-outlined"><? echo $result1["v_option_two"] ?></button>
-                                                <? $counterTwo++ ?>
-                                            <? } ?>
+                                                <button class="smartvaliation2 label <?php if ($counterTwo <= 0) { ?>label-danger<?php } else { ?>label-default<?php } ?> label-outlined"><?php echo $result1["v_option_two"] ?></button>
+                                                <?php $counterTwo++ ?>
+                                            <?php } ?>
                                         </div>
-                                    <? } ?>
+                                    <?php } ?>
 
                                     <br> <br>
 
-                                    <? if ($vali_three != '') { ?>
+                                    <?php if ($vali_three != '') { ?>
                                         <div class="col col-lg-1">
-                                            <div style="text-align: center;"><h5><? echo $vali_three ?></h5></div>
+                                            <div style="text-align: center;"><h5><?php echo $vali_three ?></h5></div>
                                         </div>
                                         <div class="btn-group btn-group-sm" role="group">
-                                            <? $counterThree = 0 ?>
-                                            <? $sql1 = "SELECT * FROM valiation_answer_master where v_ori_id='$id_valiation' and v_status_active = 'true'";
+                                            <?php $counterThree = 0 ?>
+                                            <?php $sql1 = "SELECT * FROM valiation_answer_master where v_ori_id='$id_valiation' and v_status_active = 'true'";
                                             $query = mysqli_query($conn, $sql1);
                                             while ($result1 = mysqli_fetch_assoc($query)) { ?>
 
-                                                <button class="smartvaliation3 label <? if ($counterThree <= 0) { ?>label-danger<? } else { ?>label-default<? } ?> label-outlined"><? echo $result1["v_option_three"] ?></button>
-                                                <? $counterThree++ ?>
-                                            <? } ?>
+                                                <button class="smartvaliation3 label <?php if ($counterThree <= 0) { ?>label-danger<?php } else { ?>label-default<?php } ?> label-outlined"><?php echo $result1["v_option_three"] ?></button>
+                                                <?php $counterThree++ ?>
+                                            <?php } ?>
                                         </div>
-                                    <? } ?>
-
+                                    <?php } ?>
                                 </div>
-
-                            <? } ?>
+                            <?php } ?>
                             <br/>
-                            <!--                                <div class="quantity">-->
-                            <!--                                    <button class="plus-btn" type="button" name="plus-btn" style="background: darkgrey">+</button>-->
-                            <!--                                    <div style="display: flex;  justify-content: center;">-->
-                            <!--                                        <input type="text" name="didinput" id="didinput"  value="1">-->
-                            <!--                                    </div>-->
-                            <!---->
-                            <!--                                    <button class="minus-btn" type="button" name="minus-btn" style="background: darkgrey">-</button>-->
-                            <!--                                </div>-->
-                            <div style="display: flex;  justify-content: center;">
-                                <img id="clickOrder" name="clickOrder" src="images/quotation.png"
-                                     style="width: 70%;">
-                            </div>
-                            <div style="display: flex;  justify-content: center;">
-                                <img id="clickLine" name="clickLine" src="images/consult_product_detail.png"
-                                     style="width: 70%">
-                            </div>
-                            <!--                            </div>-->
-                            <!--                            </section>-->
+                            <form action="product_add_order_frm.php" method="get" name="addProductOrderFrm" id="addProductOrderFrm">
+                                <div style="display: flex;  justify-content: center;">
+                                    <input type="hidden" name="product_code" id="product_code" value="<?php echo $product_code ?>">
+                                    <img id="clickOrder" name="clickOrder" src="images/quotation.png"
+                                        style="width: 70%;" onclick="addProductOrder()">                       
+                                </div>
+                                <div style="display: flex;  justify-content: center;">
+                                    <img id="clickLine" name="clickLine" src="images/consult_product_detail.png"
+                                        style="width: 70%">
+                                </div>
+                            </form>
                         </div>
                     </div>
-
                 </div>
 
-
                 <div class="tabWrapper reviewReload">
-
                     <section class="row tabWrapper-inner pageBreakAfter">
                         <div class="col-sm-12">
                             <h2 style="cursor:pointer;">
                                 <a class="tab-link tab-link-description" data-toggle="collapse"
                                    data-target="#tab-description">
                                     Description
-
                                     <span id="glyph-description"
                                           class="glyphicon glyphicon-rotate glyphicon-chevron-down glyphicon-rotate-180"></span>
                                 </a>
                             </h2>
                             <hr/>
                             <div id="tab-description" class="collapse in" itemprop="description">
-                                <? echo ($content_prod_th == "") ? "NO Content" : $content_prod_th; ?>
-
+                                <?php echo ($content_prod_th == "") ? "NO Content" : $content_prod_th; ?>
                             </div>
                         </div>
                     </section>
 
-
                     <div id="RelatedProductsTabWrapper">
-
                         <section class="row tabWrapper-inner">
-
                             <div class="col-sm-12 product-list related-product-list">
                                 <h2 style="cursor:pointer;">
                                     <a class="tab-link tab-link-relatedProducts" data-toggle="collapse"
@@ -788,16 +420,12 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                                     </a>
                                 </h2>
                                 <div class="col-xs-12 ">
-
-
                                     <div class="container_row">
                                         <div id="tab-relatedProducts" class="collapse in">
                                             <div id="carousel" class="slider slider_second">
                                                 <div class="slider_viewport">
                                                     <div class="slider_list">
                                                         <?php
-
-
                                                         $sql = "SELECT 
                                                 a.product_code_related , a.id_related
                                                 ,(SELECT image FROM product_image where a.product_code_related = product_code  LIMIT 1 ) AS img
@@ -812,13 +440,11 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                                                         while ($result = mysqli_fetch_assoc($query)) {
                                                             $i++;
                                                             ?>
-
                                                             <div class="slider_item">
-
                                                                 <a target="_blank"
                                                                    href="product_detail.php?product_code=<?php echo $result['product_code_related']; ?>&product_type_title_th=<?php echo $result['product_code_related']; ?>
                                                 &product_category_title_th=<?php echo $result['product_category_title_th']; ?>">
-                                                                    <img src="backoffice/<? echo ($result['img'] == "") ? 'images/noimage.jpg' : $result['img']; ?>">
+                                                                    <img src="backoffice/<?php echo ($result['img'] == "") ? 'images/noimage.jpg' : $result['img']; ?>">
                                                                 </a>
                                                                 <div style="height:20px; ">
                                                                     <h5><a target="_blank"
@@ -832,20 +458,17 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                                                                    href="product_detail.php?product_code=<?php echo $result['product_code_related']; ?>&product_type_title_th=<?php echo $result['product_type_title_th']; ?>
                                                             &product_category_title_th=<?php echo $result['product_category_title_th']; ?>"
                                                                    class="btn btn-primary">BUY NOW</a>
-
                                                             </div>
-
                                                             <?php
                                                         }
                                                         ?>
-                                                        <input type="hidden" id="count_rel" value="<? echo $i; ?>">
+                                                        <input type="hidden" id="count_rel" value="<?php echo $i; ?>">
                                                     </div>
                                                 </div>
                                                 <div class="slider_nav">
                                                     <div class="slider_arrow slider_arrow__left"></div>
                                                     <div class="slider_arrow slider_arrow__right"></div>
                                                 </div>
-
                                                 <div class="slider_control-nav" style="display:none;">
                                                     All this selectors must be created dynamically. They are here just
                                                     for example
@@ -853,26 +476,13 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
-
-
-                            <!--    </section> -->
-
-
                     </div>
-
-
                 </div>
-
             </article>
-
-
         </main>
     </div>
-
 
     <script src="js/Drift.js"></script>
     <script src="js/slider.js"></script>
@@ -886,9 +496,6 @@ while ($result1 = mysqli_fetch_assoc($query)) {
             hoverBoundingBox: true
         });
 
-
-    </script>
-    <script>
         // Get the modalYoutube
         var modalYoutube = document.getElementById('myModal');
 
@@ -912,8 +519,7 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                 modalYoutube.style.display = "none";
             }
         }
-    </script>
-    <script>
+
         var w = window.innerWidth;
         var itemNumber = 1;
         if (w > 800) {
@@ -925,28 +531,8 @@ while ($result1 = mysqli_fetch_assoc($query)) {
             } else {
                 itemNumber = count_rel;
             }
-
-            // $(".detail").css("width", "50%");
-
-        } else {
-            // $(".detail").css("width", "100%");
         }
-
-
-        // var $slider = $('#slider').slider();
-        // var $carousel = $('#carousel').slider({
-        //     interval: 9000,
-        //     items: itemNumber,
-        //     loop: true,
-        //     imgWidth: 315,
-        //     callback: function (number) {
-        //
-        //     }
-        // });
-    </script>
-    <script type="application/javascript">
-        // $(document).ready(function(){
-
+   
         $('a.imgprd').click(function () {
             console.log('imgprd');
             var largeImage = $(this).attr('data-full');
@@ -962,36 +548,26 @@ while ($result1 = mysqli_fetch_assoc($query)) {
             var max = $('.imgprd').length;
             console.log('max' + max);
             if (dataCount == max) {
-
-
                 $(".youtube-play").css("display", "");
-
             } else {
-
                 $(".youtube-play").css("display", "none");
             }
-
         }); // closing the listening on a click
 
-
-        // document.getElementsByName('minus-btn').onclick = function (){
-        //     console.log('dsdsdowdw');
-        // };
         $(".btn-group > .smartvaliation").click(function () {
             $(".btn-group > .smartvaliation").removeClass("label-danger").addClass("label-default");
 
             $(this).addClass("label-danger");
             inquiryProductValiation();
-
-
         });
+
         $(".btn-group > .smartvaliation2").click(function () {
             $(".btn-group > .smartvaliation2").removeClass("label-danger").addClass("label-default");
 
             $(this).addClass("label-danger");
             inquiryProductValiation();
-
         });
+
         $(".btn-group > .smartvaliation3").click(function () {
             $(".btn-group > .smartvaliation3").removeClass("label-danger").addClass("label-default");
 
@@ -1005,40 +581,34 @@ while ($result1 = mysqli_fetch_assoc($query)) {
             var valiationOne = $(".btn-group > .smartvaliation.label-danger").text();
             var valiationTwo = $(".btn-group > .smartvaliation2.label-danger").text();
             var valiationThree = $(".btn-group > .smartvaliation3.label-danger").text();
-            // console.log(valiationOne);
-            // console.log(valiationTwo);
-            // console.log(valiationThree);
-
-            console.log('<?echo $id_valiation?>');
+            
             if (valiationTwo !== '') {
                 console.log("isnull blank")
             } else if (valiationThree !== '') {
                 console.log("isnull blank")
-            }else{
+            } else {
                 $.post("valiation_product_ajax.php", {
                         'valiationOne': valiationOne,
                         'idValiation':'<?echo $id_valiation?>'
                     }, function (result) {
-                    console.log(result);
                     document.getElementById("ProductDisplayName-get").innerHTML = result.productResult['product_title_th'];
                     document.getElementById("ProductDisplayCode-get").innerHTML = "รหัสสินค้า: "+result.productResult['product_code'];
                     document.getElementById("ProductDisplayHeadline").innerHTML = result.productResult['headline'];
                     document.getElementById("ProductDisplaySubHeadline").innerHTML = result.productResult['sub_headline'];
                     document.getElementById("ProductDisplayDescription").innerHTML = result.productResult['product_description_th'];
-
-
                     }
                 )
             }
-
-
         }
-    </script>
+        
+        function addProductOrder() {
+            $("#addProductOrderFrm").submit();
+        }
 
+    </script>
     <script src="js/nextprv.js"></script>
 
-
-<?
+<?php
 mysqli_close($conn);
 include 'footer.php';
 ?>

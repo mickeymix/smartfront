@@ -1,5 +1,5 @@
-<? ob_start(); ?>
-<? session_start();
+<?php ob_start(); ?>
+<?php session_start();
 include 'backoffice/conn.php';
 header('Content-Type: application/json');
 
@@ -44,6 +44,5 @@ mysqli_set_charset($conn, "utf8");
 	{
 		echo json_encode(array('status' => '0','message'=> "Error insert data! '".$conn->error."'"));
 	}
-
 	mysqli_close($conn);
 ?>

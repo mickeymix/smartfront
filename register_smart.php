@@ -1,5 +1,5 @@
-<? ob_start(); ?>
-<? session_start();
+<?php  ob_start(); ?>
+<?php  session_start();
 require_once __DIR__ . '/facebook-sdk-v5/autoload.php';
 
 use Facebook\FacebookSession;
@@ -19,12 +19,9 @@ use Facebook\FacebookRedirectLoginHelper;
 
     <title>ร้านไทยจราจร</title>
 
-    <?
-
+    <?php
     require_once("header.php");
-
     require_once("account/login_user.php");
-x
     ?>
     <style>
         .registerbtn {
@@ -397,9 +394,7 @@ x
                 }
             }
         </script>
-
 </body>
-<?
-
+<?php 
 include 'footer.php';
 ?>

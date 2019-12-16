@@ -1,9 +1,6 @@
-<?  session_start(); ?>
+<?php  session_start(); ?>
 <?php
 include 'backoffice/conn.php';
-
-
-
 if($_GET["action"] == "logout"){
 	session_destroy();
 	 header( "Location: index.php" );
@@ -13,22 +10,13 @@ if($_GET["action"] == "logout"){
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head id="Head1">
-
     <title>ร้านไทยจราจร</title>
-
-<?
+<?php 
 ob_start();
 require_once("header.php");
-
 require_once("account/login_user.php");
-
-
-?>
- <?
  
- 
- 	if($_POST["action"] == "1"){
-	
+ 	if($_POST["action"] == "1"){	
 		$firstname = $_POST["firstname"];
 		$lastname = $_POST["lastname"];
 		$password = $_POST["password"];
@@ -295,7 +283,6 @@ require_once("account/login_user.php");
 						</span>
 					</div>
 					
-					
 					<div class="col-md-6">
 						<label for="BillingAddress_Zip">Postcode</label>
 						<span class="required_field">*</span>
@@ -338,12 +325,9 @@ require_once("account/login_user.php");
 		</div>
 		<input type="hidden" name="action" value="1" />
 	</form>
-
 			</main>
-			
         </div>
 
-<?
-
+<?php
 include 'footer.php';
 ?>

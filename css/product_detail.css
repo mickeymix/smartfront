@@ -1,0 +1,281 @@
+
+ol {
+    list-style-type: decimal;
+}
+.demo-preview {
+    padding-top: 60px;
+    padding-bottom: 10px;
+    width: 300px;
+    margin: auto;
+    text-align: center;
+
+}
+
+.demo-preview .label {
+    margin-right: 10px;
+    margin-bottom: 10px
+}
+
+.label {
+    display: inline-block;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    padding: 10px 16px;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #FFF
+}
+
+.label.label-pill,
+.label.label-rounded {
+    border-radius: 99999px
+}
+
+.label.label-square {
+    border-radius: 0
+}
+
+.label.label-default {
+    background-color: #B0BEC5
+}
+
+.label.label-primary {
+    background-color: #2196F3
+}
+
+.label.label-secondary {
+    background-color: #323a45;
+    color: #FFF
+}
+
+.label.label-info {
+    background-color: #29B6F6
+}
+
+.label.label-success {
+    background-color: #64DD17
+}
+
+.label.label-warning {
+    background-color: #FFD600
+}
+
+.label.label-danger {
+    background-color: #ef1c1c
+}
+
+.label.label-outlined {
+    border-width: 1px;
+    border-style: solid;
+    background-color: transparent
+}
+
+.label.label-outlined.label-default {
+    border-color: #B0BEC5;
+    color: #B0BEC5
+}
+
+.label.label-outlined.label-primary {
+    border-color: #2196F3;
+    color: #2196F3
+}
+
+.label.label-outlined.label-secondary {
+    border-color: #323a45;
+    color: #323a45
+}
+
+.label.label-outlined.label-info {
+    border-color: #29B6F6;
+    color: #29B6F6
+}
+
+.label.label-outlined.label-success {
+    border-color: #64DD17;
+    color: #64DD17
+}
+
+.label.label-outlined.label-warning {
+    border-color: #FFD600;
+    color: #FFD600
+}
+
+.label.label-outlined.label-danger {
+    border-color: #ef1c1c;
+    color: #ef1c1c
+}
+
+.detail {
+    /*position: relative;*/
+    /*width: 50%;*/
+    /*float: left;*/
+}
+
+.quantity {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.quantity input {
+    -webkit-appearance: none;
+    border: none;
+    text-align: center;
+    width: 32px;
+    font-size: 16px;
+    color: #43484D;
+    font-weight: 300;
+}
+.head-line-pd {
+    text-align: center;
+    padding: 25px 1px 25px 1px;
+    background-color: #dae2e6;
+}
+
+.head-line-pd h4,
+h6 {
+    color: #727272;
+}
+
+  /* The Modal (background) */
+  .modalYoutube {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 999;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modalYoutube-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+/* The Close Button */
+.close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modalYoutube-header {
+    padding: 2px 16px;
+
+
+}
+
+.modalYoutube-body {
+    padding: 2px 16px;
+}
+
+.modalYoutube-footer {
+    padding: 2px 16px;
+
+    color: white;
+}
+
+#nextImage,
+#prevImage {
+    right: 0;
+    height: 50%;
+    top: 15% !important;
+}
+
+.image-helper {
+    z-index: -2;
+}
+
+#thumbnail-play-image {
+    top: 50% !important;
+    transform: translateY(-50%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+#productImage-4 {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+}
+
+@media screen and (max-width: 768px) {
+    .gallery-main-image .glyphicon-play-circle {
+        font-size: 80px !important;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .gallery-main-image img {
+        max-width: 60% !important;
+    }
+
+    .gallery-main-image .glyphicon-play-circle {
+        font-size: 56px !important;
+    }
+
+    #gallery-video-embedded {
+        min-width: 100% !important;
+    }
+}

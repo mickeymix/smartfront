@@ -1,4 +1,6 @@
-<? ob_start(); ?>
+<?php 
+ob_start(); 
+?>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +9,12 @@
 <meta name="msapplication-TileColor" content="#FFFFFF">
 <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
 
+<link href="css\bundleAll.css?v=l9iu5N6o2fdqe0GWMhkNOcAfpZ4KAOqcc1MArYfnyxE1" rel="stylesheet">
+<link href="css\social.css" rel="stylesheet">
+<link rel="stylesheet" href="css\header.css">
+
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="js/jquery-2.2.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
 <?php
@@ -31,175 +38,7 @@ if ($_GET["action"] == "logoutfacebook") {
     header("location:index.php");
 }
 ?>
-
-
-<style type="text/css">
-    .hero {
-        height: 398.19px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-color: #054769;
-        color: white;
-        padding: 3.4em;
-    }
-
-    #index-hero {
-        background-image: url("images/silde_image.png");
-        background-size: cover;
-        font-size: 1.5em;
-    }
-
-    #index-hero h1 {
-        color: white;
-        font-size: 3em;
-        margin-bottom: .5em;
-        margin-top: 0;
-        top: 0;
-    }
-
-    .glyphicon-star {
-        Color: #F0AD4E;
-    }
-
-    .popular-item-desc {
-        height: 38px;
-    }
-
-    .popular-item {
-        padding-top: 15px;
-        padding-bottom: 15px;
-    }
-
-    .popular-item a img {
-        margin-bottom: 5%;
-    }
-
-    .popular-item > p:nth-child(4) {
-        height: 40px;
-    }
-
-    .popular-item > a.btn.btn-primary {
-        margin-top: 1em;
-        margin-bottom: 1em;
-    }
-
-    .popular-item span.price {
-        color: #2a4b8e;
-        font-weight: bold;
-    }
-
-    .popular-item h3 {
-        font-weight: bold;
-    }
-
-    .callouts {
-        background-color: #e8ebee;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        margin-bottom: 0;
-    }
-
-    .callouts > div:first-child {
-        border-right: 3px solid #727272;
-    }
-
-
-    #index-popular-heading > h2 span {
-        background: #fff;
-        padding: 0 15px;
-        position: relative;
-        z-index: 1;
-    }
-
-    #index-popular-heading > h2:before {
-        background: #d8e6f3;
-        content: "";
-        display: block;
-        height: 2px;
-        position: absolute;
-        top: 50%;
-        width: 100%;
-        left: 0;
-    }
-
-
-    @media screen and (max-width: 767px) {
-
-        #index-hero h1 {
-            font-size: 2.3em;
-        }
-    }
-
-
-    @media screen and (max-width: 575px) {
-
-        #index-hero h1 {
-            font-size: 1.5em;
-        }
-
-        .hero {
-            padding: 1.7em;
-            height: 250px;
-        }
-    }
-
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #ffffff;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-    }
-
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-    .dropdown-content a:hover {
-        background-color: #ddd;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-
-    .dropdown:hover .dropbtn {
-        background-color: #3e8e41;
-    }
-
-    .item {
-        position: relative;
-        padding-top: 20px;
-        display: inline-block;
-    }
-
-    .notify-badge {
-        position: absolute;
-        right: -10px;
-        top: 10px;
-        background: red;
-        text-align: center;
-        border-radius: 30px 30px 30px 30px;
-        color: white;
-        padding: 5px 10px;
-        font-size: 10px;
-    }
-</style>
-
 <script type="text/javascript">
-    //     $(document).ready(function() {
-    //         jQuery('#myCarousel').carousel({
-    //     interval: 8000
-    // });
 
     $("#myCarousel").on("swiperight", function (event) {
         $(this).carousel('prev');
@@ -211,8 +50,6 @@ if ($_GET["action"] == "logoutfacebook") {
     $("#modal-category-video").on('hide.bs.modal', function () {
         $("#yt-player iframe").attr("src", $("#yt-player iframe").attr("src"));
     });
-    })
-    ;
 
     function logoutMyFB() {
         FB.logout(function () {
@@ -239,17 +76,12 @@ if ($_GET["action"] == "logoutfacebook") {
 </head>
 
 
-<link href="css\bundleAll.css?v=l9iu5N6o2fdqe0GWMhkNOcAfpZ4KAOqcc1MArYfnyxE1" rel="stylesheet">
-<link href="css\social.css" rel="stylesheet">
-
-
 <div id="mask"></div>
 <div id="modalWrapper"></div>
 
-<?
-include 'menu_mobile.php';
+<?php
+    include 'menu_mobile.php';
 ?>
-
 
 <div id="site-wrapper" class="site-wrapper container">
     <!--[if lt IE 9]>
@@ -263,29 +95,32 @@ include 'menu_mobile.php';
             <nav class="site-navigation">
                 <h2 class="sr-only">Site Navigation</h2>
                 <ul class="header-links list-inline">
-
-                    <li id="headerNavHomeLink"><a href="index.php">หน้าหลัก</a></li>
-
-
-                    <li id="headerNavInstructionsLink"><a href="product_all.php">สินค้า</a></li>
-
-                    <li id="headerNacResourceLink"><a target="_blank" href="article.php">บทความ</a></li>
-
-
-                    <li id="headerNavTaxLink"><a target="_blank" href="/service_menu.php?common_smart_id=107">ทำไมต้องเรา?</a>
+                    <li id="headerNavHomeLink">
+                        <a href="index.php">หน้าหลัก</a>
                     </li>
-                    <li id="headerNavAboutLink"><a target="_blank" href="/service_menu.php?common_smart_id=108">ติดต่อเรา</a>
+                    <li id="headerNavInstructionsLink">
+                        <a href="product_all.php">สินค้า</a>
                     </li>
-                    <li id="headerNavContactLink"><a href="#">ใบเสนอราคา</a></li>
-                    <li id="headerNavContactLink"><a href="#">เปลี่ยนภาษา</a></li>
+                    <li id="headerNacResourceLink">
+                        <a target="_blank" href="article.php">บทความ</a>
+                    </li>
+                    <li id="headerNavTaxLink">
+                        <a target="_blank" href="/service_menu.php?common_smart_id=107">ทำไมต้องเรา?</a>
+                    </li>
+                    <li id="headerNavAboutLink">
+                        <a target="_blank" href="/service_menu.php?common_smart_id=108">ติดต่อเรา</a>
+                    </li>
+                    <li id="headerNavContactLink">
+                        <a href="#">ใบเสนอราคา</a>
+                    </li>
+                    <li id="headerNavContactLink">
+                        <a href="#">เปลี่ยนภาษา</a>
+                    </li>
                 </ul>
             </nav>
         </div>
         <div class="branding row dont-print">
-
-
             <div class="branding-logo dont-print">
-
                 <div style="display:inline-block;">
                     <font class="texttitleRight">02-114-7006</font><br>
                     <font class="texttitleRight">087-022-4003</font>
@@ -296,13 +131,11 @@ include 'menu_mobile.php';
                         <img width="40px" data-src="images/logotf.png" src="images/logotf.png"
                              alt="Traffic Safety Store Logo">
                     </a>
-
                 </div>
                 <!-- <a href="index.php">
                     <h2 class="sr-only">Traffic Safety Store</h2>
                     <img width="40px" data-src="images/logotf.png" src="images/logotf.png" alt="Traffic Safety Store Logo" >
                 </a> -->
-
             </div>
             <a href="index.php">
                 <p class="font-logo">
@@ -325,8 +158,6 @@ include 'menu_mobile.php';
 -->
                 </div>
             </div>
-
-
         </div>
 
 
@@ -346,7 +177,7 @@ include 'menu_mobile.php';
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="header-nav-collapse">
 
-                    <?
+                    <?php
                     include 'menu.php';
                     ?>
 
@@ -377,7 +208,7 @@ include 'menu_mobile.php';
                                 <div class="dropdown">
                                     <li class="store-user">
                                         <a href="#">
-                                            <? echo $_SESSION['firstname'] . " " . $_SESSION['lastname']; ?></a>
+                                            <?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname']; ?></a>
                                     </li>
                                     <div class="dropdown-content">
                                         <li class="store-cart">
@@ -390,11 +221,11 @@ include 'menu_mobile.php';
                                 </div>
 
 
-                            <? } else { ?>
-                                <? if (isset($_SESSION['facebook_id']) && !empty($_SESSION['facebook_id'])) { ?>
+                            <?php } else { ?>
+                                <?php if (isset($_SESSION['facebook_id']) && !empty($_SESSION['facebook_id'])) { ?>
                                     <div class="dropdown">
                                         <a href="#">
-                                            <? echo $_SESSION['customer_name'] ?></a>
+                                            <?php echo $_SESSION['customer_name'] ?></a>
                                         <div class="dropdown-content">
                                             <li class="store-cart">
                                                 <a href="index.php?action=logoutfacebook"><span
@@ -405,26 +236,114 @@ include 'menu_mobile.php';
                                             </li>
                                         </div>
                                     </div>
-
-
-                                <? } else { ?>
+                                <?php } else { ?>
                                     <li class="store-user"><a href="login.php">Login</a> <i>/</i> <a
                                                 href="register_smart.php">Register</a></li>
-                                <? } ?>
-                            <? } ?>
+                                <?php } ?>
+                            <?php } ?>
                             <li class="store-cart"><a href="#"><img class="cart-icon"
                                                                     src="https://media.trafficsafetystore.com/image/upload/c_limit,dpr_2.0,f_auto,q_auto:best,w_auto/v1/images/cart-icon-2x.png"></a>
                             </li>&nbsp;&nbsp;
                             <li class="order-cart">
-                                <!--                                <span class="ion-ios7-cart-outline icon dont-print"></span>-->
                                 <div class="item">
-                                    <a href="#">
-                                        <!--                                        <span style="height: 16px;width: 1px" class="notify-badge"></span>-->
-                                        <img class="cart-icon" src="images/order_form.png" width="30px"></a>
+                                    <!-- <a href="#" onclick="showProductOrderDetail()"> -->
+                                    <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <?php 
+                                            // Display Product Order in cart
+                                            $productOrderCount = 0;
+                                            for($i=0;$i<=(int)$_SESSION["intLine"];$i++)
+                                            {
+                                                if($_SESSION["product_code"][$i] != "")
+                                                {
+                                                   $productOrderCount += 1;
+                                                }
+                                            }
+                                      
+                                            if($productOrderCount != 0){
+                                                echo '<span style="height: 16px;width: 16px" class="notify-badge">'.$productOrderCount.'</span>';    
+                                            }
+                                        ?>
+                                        <img class="cart-icon" src="images/order_form.png" width="30px">
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-right" style="width:400px;">
+                                        
+                                        <form action="product_add_order_send_email.php" method="post">
+                                            <div class="dropdown-header text-center product_show_detail_ordre">
+                                                <strong>รายการสินค้าสำหรับเสนอใบราคา</strong>
+                                            </div>
+                                            <div class="row product_show_detail_ordre">
+                                                <div class="col-sm-12">
+                                                    <table class='table table-border product_show_detail_ordre'>
+                                                        <thead>
+                                                            <tr>
+                                                                <td class='product_show_detail_ordre'>
+                                                                    <strong>
+                                                                        รหัสสินค้า
+                                                                    </strong>  
+                                                                </td>
+                                                                <td>
+                                                                    <strong>
+                                                                        รูปสินค้า
+                                                                    </strong>
+                                                                </td>
+                                                                <td>
+                                                                    <strong>
+                                                                        ชื่อสินค้า
+                                                                    </strong>
+                                                                </td>
+                                                                <td>
+                                                                    <strong>
+                                                                        จำนวนสินค้า
+                                                                    </strong>
+                                                                </td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                            $Total = 0;
+                                                            $SumTotal = 0;
+                                                            for($i=0;$i<=(int)$_SESSION["intLine"];$i++)
+                                                            {
+                                                                    if($_SESSION["product_code"][$i] != "")
+                                                                    {
+                                                                        ?>
+
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <?php echo $_SESSION['product_code'][$i];?>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <img itemprop="image"
+                                                                                        src="backoffice/<?php echo $_SESSION['product_image'][$i];?>"
+                                                                                        class="drift-demo-trigger image-toggle magnified cld-responsive"
+                                                                                        style="width:80px;"
+                                                                                        />
+                                                                                </td>
+                                                                                <td>
+                                                                                    <?php echo $_SESSION['product_name'][$i];?>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <input type="text" name="product_amount" id="product_amount" class="form-control text-center" value="<?php echo $_SESSION['product_amount'][$i];?>">
+                                                                                </td>
+                                                                            </tr>
+                                                                    <?php
+                                                                    }
+                                                            }
+                                                            ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <button type="submit" class="btn btn-primary"> ขอใบเสนอราคา..ด่วน ! (ไม่เกิน 5 นาที) </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
 
                                 </div>
-
-
                             </li> &nbsp;&nbsp;
                             <li class="lineAds"><a target="_blank" href="http://line.me/ti/p/@trafficthai"><img
                                             class="cart-icon" src="images/lineAt_icon.png" width="30px"></a></li>&nbsp;&nbsp;&nbsp;
@@ -437,32 +356,18 @@ include 'menu_mobile.php';
                             </li>
                         </ul>
                     </nav>
-
-
-                    <!--                    <script>-->
-                    <!--                        $(function() {-->
-                    <!--                            $('#search-term').keyup(function(e) {-->
-                    <!--                                if (e.keyCode == 13) {-->
-                    <!--                                    DoSearch('/search');-->
-                    <!--                                }-->
-                    <!--                            });-->
-                    <!---->
-                    <!--                        });-->
-                    <!--                    </script>-->
-                    <!-- /.navbar-collapse -->
-                    <!-- /.container-fluid -->
                 </div>
             </div>
         </nav>
-
-
     </header>
     <header class="print-only printAtFullWidth">
         <img src="images\tss_Logo_blue.png" style="max-height: 30px; vertical-align: middle;"
              alt="Traffic Safety Store Logo">
-        <span class="pull-right" style="text-align:right; font-size:16px; font-weight:600;"><span
-                    class="glyphicon glyphicon-link glyphicon-position-static"></span> www.test.com&nbsp; <span
-                    class="glyphicon glyphicon-earphone glyphicon-position-static"></span> 02-111-5555</span>
+        <span class="pull-right" style="text-align:right; font-size:16px; font-weight:600;">
+            <span class="glyphicon glyphicon-link glyphicon-position-static"></span>
+            <span class="glyphicon glyphicon-earphone glyphicon-position-static"></span> 02-111-5555
+        </span>
+
     </header>
     <header role="banner" class="dont-print" id="mobile-header" style="padding: 0;">
 
@@ -490,11 +395,11 @@ include 'menu_mobile.php';
                 <a href="javascript:void(0)" class="menu-option left-border dont-print">
                     <span class="ion-ios7-person-outline icon"></span>
                 </a>
-            <? } else { ?>
+            <?php } else { ?>
                 <a href="login.php" class="menu-option left-border dont-print">
                     <span class="ion-ios7-person-outline icon"></span>
                 </a>
-            <? } ?>
+            <?php } ?>
             <a href="javascript:void(0)" class="menu-option dont-print">
                 <span class="ion-ios7-cart-outline icon dont-print"></span>
             </a>
@@ -510,14 +415,15 @@ include 'menu_mobile.php';
             };
 
             function toggleMobileMenu() {
-
                 $('body').toggleClass('shift-right');
                 $("#add-to-cart-floating").css('position', 'relative');
                 // switchList(gListToHide, gListToShow); 
                 switchList('mobileSubCatsFor-12', 'mobileCats');
             };
+
             localStorage.mobileMenuOpen = false;
             localStorage.menuClosedViaBackButton = false;
+            
             $(document).ready(function () {
                 $('#mobile-menu-toggle').click(function () {
                     toggleMobileMenu();
@@ -526,10 +432,16 @@ include 'menu_mobile.php';
                 });
             });
 
+            function showProductOrderDetail() { 
+                // alert("ok");
+                // On click show showProduct Detail
+                $("#showProductOrderDetail").modal('show');
+            }
+
             //on user navigation, trigger the switchList function so the back/forward buttons work as expected
             $(window).on('navigate', function (event, data) {
                 var direction = data.state.direction;
-                console.log('direction: ' + direction);
+                
                 if (localStorage.mobileMenuOpen) {
                     event.preventDefault();
                     toggleMobileMenu();
@@ -539,17 +451,14 @@ include 'menu_mobile.php';
                     toggleMobileMenu();
                     localStorage.menuClosedViaBackButton = false;
                 }
-                ;
+                
             });
 
             $("#search-menu-toggle").click(function () {
-
                 $("body").toggleClass("show-search");
                 $("#sitewideBanner").toggleClass("search-margin")
             })
-        </script>
 
-        <script>
             function onSearchProductClick() {
                 const nameInput = $("#search-term").val();
 
@@ -558,23 +467,16 @@ include 'menu_mobile.php';
                 } else {
                     alert("กรุณาใส่ชื่อหรือรหัสสินค้าที่ต้องการจะค้นหา")
                 }
-
-
-                // console.log(nameInput)
-
-
             }
 
-        </script>
-        <script>
             $(document).on("keypress", "input", function (e) {
                 if (e.which === 13) {
                     onSearchProductClick()
                 }
             });
+
         </script>
         <div class="mobile-search col-xs-12 dont-print">
-
             <form action="/Search" method="GET">
                 <input type="search" name="q" class="form-control" placeholder="Search for a product...">
             </form>

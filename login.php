@@ -40,7 +40,7 @@ if ($_GET["action"] == "logout") {
 
         mysqli_set_charset($conn, "utf8");
 
-        $username =    $_POST["username"];
+        $username = $_POST["username"];
         $password = $_POST["password"];
 
         $obj = new LoginUser();

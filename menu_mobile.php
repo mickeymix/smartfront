@@ -1,7 +1,5 @@
- <?
- 
+ <?php 
 	$conn = mysqli_connect($host, $user, $pass, $dbname);
-
 	mysqli_set_charset($conn,"utf8");
  ?>
 
@@ -32,7 +30,7 @@
                             <span class="catName"><?php echo $result['menu_name']; ?></span>
                         </li>
                     </ul>
-			 <? } ?>
+			 <?php } ?>
 
 					<ul>
                         <!-- categories -->
@@ -81,14 +79,9 @@
                     </li>
                 </a>
             
-                
-                 <? } ?>
-
-                
-
-            
+                 <?php } ?>            
         </ul>
-		<? } ?>
+		<?php } ?>
   <!--                 
         <ul id="mobileSubCatsFor-2">
             
@@ -179,17 +172,17 @@
 <footer class="site-footer dont-print">
 	<div class="navbar-dark row">
 		<ul class="footer-links">
-            <? $conn = mysqli_connect($host, $user, $pass, $dbname);
+            <?php $conn = mysqli_connect($host, $user, $pass, $dbname);
             mysqli_set_charset($conn, "utf8");
             $sql = "SELECT * FROM common_smart_master";
             $query = mysqli_query($conn, $sql);
             while ($result = mysqli_fetch_assoc($query)) { ?>
-                <a href="service_menu.php?common_smart_id=<? echo $result['common_smart_id'] ?>">
+                <a href="service_menu.php?common_smart_id=<?php echo $result['common_smart_id'] ?>">
                     <li class="post-summary">
-                        <? echo $result['common_menu'] ?>
+                        <?php echo $result['common_menu'] ?>
                     </li>
                 </a>
-            <? } ?>
+            <?php } ?>
             
 			<li>©Copyright &copy;2008 www.trafficthai.com &#8482; All Rights Reserved</li>
             <li class="serverID">01</li>
@@ -216,6 +209,6 @@
         </div>
     </div>
 	
-<?
+<?php
 mysqli_close($conn);
 ?>

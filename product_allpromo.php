@@ -1,14 +1,13 @@
-<?  session_start(); ?>
+<?php  session_start(); ?>
 <?php
 include 'backoffice/conn.php';
-
-
 
 if($_GET["action"] == "logout"){
 	session_destroy();
 	 header( "Location: index.php" );
 }	
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -16,11 +15,8 @@ if($_GET["action"] == "logout"){
 
     <title>ร้านไทยจราจร</title>
 
-<?
+<?php
 include 'header.php';
-
-
-
 $conn = mysqli_connect($host, $user, $pass, $dbname);
 
 mysqli_set_charset($conn,"utf8");
@@ -37,7 +33,7 @@ $product_type_promo_head = $_GET["product_type_promo_head"];
 
             <div class="row">
                 <div id="index-popular-heading" class="col-sm-12 text-center">
-                    <h2><span><? echo $product_type_promo_head; ?></span></h2>
+                    <h2><span><?php echo $product_type_promo_head; ?></span></h2>
                 </div>
             </div>
             <div class="row popular-products">
@@ -74,11 +70,6 @@ $product_type_promo_head = $_GET["product_type_promo_head"];
 			 <?php
 			  }
 			 ?> 
-				
-				
-
-
-
             </div>
             <?php
 
@@ -96,15 +87,15 @@ $product_type_promo_head = $_GET["product_type_promo_head"];
                         </li >
                         <?php for($i=1;$i<=$total_page;$i++){ ?>
 
-                            <?
+                            <?php
                             if($i == $page){
                                 ?>
                                 <li class='active'><a  href="product_allpromo.php?page=<?php echo $i; ?>&product_promo_type=<?php echo $product_promo_type; ?>"><?php echo $i; ?></a></li>
-                                <?
+                                <?php
                             }else{
                                 ?>
                                 <li><a href="product_allpromo.php?page=<?php echo $i; ?>&product_promo_type=<?php echo $product_promo_type; ?>"><?php echo $i; ?></a></li>
-                                <?
+                                <?php
                             }
                             ?>
 
@@ -117,7 +108,9 @@ $product_type_promo_head = $_GET["product_type_promo_head"];
                     </ul>
                 </nav></div>
 
-            <?   $sql = "SELECT * FROM service_config WHERE id = 1 ";
+            <?php
+
+            $sql = "SELECT * FROM service_config WHERE id = 1 ";
             $query = mysqli_query($conn, $sql);
 
             while ($result = mysqli_fetch_assoc($query)) {
@@ -125,33 +118,31 @@ $product_type_promo_head = $_GET["product_type_promo_head"];
 
                 <div class="row">
                     <div class="col-sm-4 ">
-                        <div class="col-xs-12 col-md-12"><a href="<?echo $result['service_link_one']?>" target="_blank">
+                        <div class="col-xs-12 col-md-12"><a href="<?php echo $result['service_link_one']?>" target="_blank">
                                 <img class="cld-responsive img-responsive center-block lazy" data-src="backoffice/<?echo  $result['service_img_one']?>" height="250" width="250" alt="shipping truck icon">
                             </a></div>
                         <div class="col-xs-12 col-md-12 text-center">
-                            <h2><?echo  $result['service_title_one']?></h2>
+                            <h2><?php echo  $result['service_title_one']?></h2>
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="col-xs-12 col-md-12"><a href="<?echo $result['service_link_two']?>" target="_blank"><img  class="cld-responsive img-responsive center-block lazy" data-src="backoffice/<?echo  $result['service_img_two']?>" height="250" width="250" alt="customer service icon"></a></div>
+                        <div class="col-xs-12 col-md-12"><a href="<?php echo $result['service_link_two']?>" target="_blank"><img  class="cld-responsive img-responsive center-block lazy" data-src="backoffice/<?php echo  $result['service_img_two']?>" height="250" width="250" alt="customer service icon"></a></div>
                         <div class="col-xs-12 col-md-12 text-center">
-                            <h2><?echo  $result['service_title_two']?></h2>
+                            <h2><?php echo  $result['service_title_two']?></h2>
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="col-xs-12 col-md-12"><a href="<?echo $result['service_link_three']?>" target="_blank"><img  class="cld-responsive img-responsive center-block lazy" data-src="backoffice/<?echo  $result['service_img_three']?>" height="250" width="250" alt="customer service icon"></a></div>
+                        <div class="col-xs-12 col-md-12"><a href="<?php echo $result['service_link_three']?>" target="_blank"><img  class="cld-responsive img-responsive center-block lazy" data-src="backoffice/<?php echo  $result['service_img_three']?>" height="250" width="250" alt="customer service icon"></a></div>
                         <div class="col-xs-12 col-md-12 text-center">
-                            <h2><?echo  $result['service_title_three']?></h2>
+                            <h2><?php echo  $result['service_title_three']?></h2>
                         </div>
                     </div>
                 </div>
-            <?}?>
-
-
+            <?php }?>
         </main>
     </div>
 
-<?
+<?php
 mysqli_close($conn);
 include 'footer.php';
 ?>

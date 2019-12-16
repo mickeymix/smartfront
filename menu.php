@@ -1,16 +1,14 @@
- <?
-
+ <?php
     $conn = mysqli_connect($host, $user, $pass, $dbname);
-
     mysqli_set_charset($conn, "utf8");
+    
     ?>
 
  <ul class="nav navbar-nav" id="header-nav-left">
 
+    <li class="dropdown" id="header-nav-categories">
 
-     <li class="dropdown" id="header-nav-categories">
-
-         <a id="TopNavToggleDropDownLink" href="#" onclick="gaNav('MainMenu')" class="dropdown-toggle dropdown-toggle-darkblue" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>All Products <span id="nav-status-indicator" class="glyphicon glyphicon-chevron-down"></span></a>
+        <a id="TopNavToggleDropDownLink" href="#" onclick="gaNav('MainMenu')" class="dropdown-toggle dropdown-toggle-darkblue" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>All Products <span id="nav-status-indicator" class="glyphicon glyphicon-chevron-down"></span></a>
          <ul class="dropdown-menu">
         
              <?php
@@ -42,34 +40,28 @@
                                          <div class="dropdown-menu-productName text-center"><?php echo $result2['name_sub_menu']; ?></div>
                                      </a>
                                  </div>
-                             <? } ?>
+                             <?php } ?>
                              <div class="topright"><a href="menu_main.php?id_menu=<?php echo $id_menu; ?>&menu_keyword=<?php echo $result['menu_keyword']; ?>" style="color: rgb(186, 37, 37)">สินค้าทั้งหมด >></a></div>
 
                          </ul>
                          
                          <div id="pointed"></div>
                          <div class="mouseAssist-miniBlock"></div>
-                        
-
-                     </div>
+                    </div>
                  </li>
-             <? } ?>
+             <?php } ?>
              <li class="dropdown-submenu">
                  <a target="_blank" href="menu_other_product.php">สินค้าเพิ่มเติม</a>
-
              </li>
-
          </ul>
      </li>
  </ul>
 
- <?
-
+ <?php
     mysqli_close($conn);
-    ?>
+?>
 
-
- <style>
+<style>
      .tt-suggestions,
      .search-product-number,
      .search-product-category {
@@ -153,8 +145,6 @@
      .input-group.input-group-sm span.twitter-typeahead .tt-dropdown-menu {
          top: 28px !important;
      }
- </style>
- <style>
      .dropdown-menu .mouseAssist-miniBlock {
          height: 42px;
          width: 42px;
@@ -169,9 +159,6 @@
          visibility: hidden;
          transition: 1s;
      }
- </style>
-
- <style>
      #pointed {
          position: absolute;
          top: 25px;
@@ -197,8 +184,6 @@
          border-top: solid 10px transparent;
      }
 
-
-
      #header-nav-main .container-fluid #header-nav-left #header-nav-categories .dropdown-menu li.dropdown-submenu .dropdown-menu.inner-dd-menu {
          width: 530px !important;
          border: 3px solid #dfdfdf !important;
@@ -209,7 +194,6 @@
          top: -30px;
          left: 0;
      }
-
 
      .dropdown-menu .dropdown-submenu .dropdown-mouseAssist {
          width: 550px;
