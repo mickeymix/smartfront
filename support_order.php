@@ -1,8 +1,7 @@
-<?php ob_start(); ?>
-<?php session_start();
+<?php 
+ob_start();
+session_start();
 ?>
-
-
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -45,11 +44,9 @@
     <?php
     include 'backoffice/conn.php';
     $conn = mysqli_connect($host, $user, $pass, $dbname);
-
     mysqli_set_charset($conn, "utf8");
-    ?>
-<?php  
-$conn = mysqli_connect($host, $user, $pass, $dbname);
+    
+	$conn = mysqli_connect($host, $user, $pass, $dbname);
 			mysqli_set_charset($conn, "utf8");
 			$sql = "SELECT * FROM email_menu_config_master WHERE email_menu_id ='3'";
 			$query = mysqli_query($conn, $sql);
@@ -99,38 +96,131 @@ $conn = mysqli_connect($host, $user, $pass, $dbname);
     <br><br>
     <div class="content-wrapper row">
     <div class="w3-row cf7_custom_style_1">
-    <div class="w3-row">
-            <div class="w3-col m4"><label style=" font-size: 20px;">ชื่อบริษัท | ชื่อหน่วยงาน</label></div>
-            <div class="w3-col m8"><input style="box-shadow: 0 0 3px #000000; margin: 10px " class="w3-input" id="com_name" name="com_name" type="text"></div>
-        </div>
-        <br>
-        <div class="w3-row">
-            <div class="w3-col m4"><label style=" font-size: 20px;">ชื่อผู้ติดต่อ</label></div>
-            <div class="w3-col m8"> <input style="box-shadow: 0 0 3px #000000; margin: 10px " class="w3-input" id="contact" name="contact" type="text"></div>
-        </div>
-        <br>
 
-        <div class="w3-row">
-            <div class="w3-col m4"><label style=" font-size: 20px;">Email</label></div>
-            <div class="w3-col m8"> <input style="box-shadow: 0 0 3px #000000; margin: 10px " class="w3-input" id="email_name" name="email_name" type="text"></div>
-        </div>
-        <br>
-        <div class="w3-row">
-            <div class="w3-col m4"><label style=" font-size: 20px;">เบอร์ติดต่อกลับ</label></div>
-            <div class="w3-col m8"> <input style="box-shadow: 0 0 3px #000000; margin: 10px " class="w3-input" id="phone_input" name="phone_input" type="number"></div>
-        </div>
-        <br>
-        <!-- <div class="w3-row"> -->
-           <label style=" font-size: 20px;">กรุณากรอกรายละเอียดของสินค้า พร้อมจำนวนที่ต้องการ และข้อมูลที่ชัดเจน เพื่อความเร็วในการเสนอราคา</label>
-            <textarea class="w3-input" id="detail_mail" name="detail_mail" style="box-shadow: 0 0 3px #000000; margin: 10px; resize: none; height: 200px"></textarea>
-        <!-- </div> -->
-       <!-- <label>Subject</label> -->
-       <div class="w3-row">
-       <!-- <input type="hidden" name="button_pressed" value="1" /> -->
-       <div class="w3-col"><center><button class="w3-btn" style="background-color: #ac2925; width: 70%; height: 40px; margin-top: 20px;" onclick="subEmailOrder()" ><font color='white'>กดส่ง เพื่อส่งขอใบเสนอราคาด่วน!!</font></button></center></div>
-   
-       </div>      
-    </div>
+	<form action="product_add_order_send_email.php" method="post">
+		<div class="w3-row">
+				<div class="w3-col m4"><label style=" font-size: 20px;">ชื่อบริษัท | ชื่อหน่วยงาน</label></div>
+				<div class="w3-col m8"><input style="box-shadow: 0 0 3px #000000; margin: 10px " class="w3-input" id="com_name" name="com_name" type="text"></div>
+			</div>
+			<br>
+			<div class="w3-row">
+				<div class="w3-col m4">
+					<label style=" font-size: 20px;">ชื่อผู้ติดต่อ</label>
+				</div>
+				<div class="w3-col m8">
+					<input style="box-shadow: 0 0 3px #000000; margin: 10px " class="w3-input" id="contact" name="contact" type="text" value="<?php echo $_SESSION['firstname'];?>  <?php echo $_SESSION['lastname']; ?>">
+				</div>
+			</div>
+			<br>
+
+			<div class="w3-row">
+				<div class="w3-col m4"><label style=" font-size: 20px;">Email</label></div>
+				<div class="w3-col m8"> <input style="box-shadow: 0 0 3px #000000; margin: 10px " class="w3-input" id="email_name" name="email_name" type="text" value="<?php echo $_SESSION['customer_email'];?>"></div>
+			</div>
+			<br>
+			<div class="w3-row">
+				<div class="w3-col m4"><label style=" font-size: 20px;">เบอร์ติดต่อกลับ</label></div>
+				<div class="w3-col m8"> <input style="box-shadow: 0 0 3px #000000; margin: 10px " class="w3-input" id="phone_input" name="phone_input" type="text" value="<?php echo $_SESSION['customer_phone'];?>"></div>
+			</div>
+			<br>
+			
+			<label style=" font-size: 20px;">กรุณากรอกรายละเอียดของสินค้า พร้อมจำนวนที่ต้องการ และข้อมูลที่ชัดเจน เพื่อความเร็วในการเสนอราคา</label>
+			<textarea class="w3-input" id="detail_mail" name="detail_mail" style="box-shadow: 0 0 3px #000000; margin: 10px; resize: none; height: 200px"></textarea>
+			<div class="w3-row">
+		
+		<br>
+		<br>
+
+			<!-- Display Product in order -->
+				<div class="">
+					<div class="text-left">
+						<strong>รายการสินค้าสำหรับเสนอใบราคา</strong>
+						<hr>
+					</div>
+					<div class="row ">
+						<div class="col-sm-12">
+								<table class='table table-border product_show_detail_ordre'>
+									<thead>
+										<tr>
+											<td class='product_show_detail_ordre'>
+												<strong>
+													รหัสสินค้า
+												</strong>  
+											</td>
+											<td>
+												<strong>
+													รูปสินค้า
+												</strong>
+											</td>
+											<td>
+												<strong>
+													ชื่อสินค้า
+												</strong>
+											</td>
+											<td>
+												<strong>
+													จำนวนสินค้า
+												</strong>
+											</td>
+										</tr>
+									</thead>
+									<tbody>
+										<?php
+										$Total = 0;
+										$SumTotal = 0;
+										for($i=0;$i<=(int)$_SESSION["intLine"];$i++)
+										{
+												if($_SESSION["product_code"][$i] != "")
+												{
+													?>
+
+														<tr>
+															<td>
+																<?php echo $_SESSION['product_code'][$i];?>
+															</td>
+															<td>
+																<img itemprop="image"
+																	src="backoffice/<?php echo $_SESSION['product_image'][$i];?>"
+																	class="drift-demo-trigger image-toggle magnified cld-responsive"
+																	style="width:80px;"
+																	/>
+															</td>
+															<td>
+																<?php echo $_SESSION['product_name'][$i];?>
+															</td>
+															<td>
+																<input type="text" name="product_amount" id="product_amount" class="form-control text-center" value="<?php echo $_SESSION['product_amount'][$i];?>">
+															</td>
+														</tr>
+												<?php
+												}
+										}
+
+										if(!isset($_SESSION["intLine"])) { 
+											?> 
+												<tr>
+													<td colspan="4" class="text-center">
+														ไม่มีสินค้า
+													</td>
+												</tr>
+											<?php 
+										}
+										
+										?>
+									</tbody>
+								</table>
+							</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<button type="submit" class="btn btn-primary" id="sendEmailProductOrder">กดส่ง เพื่อส่งขอใบเสนอราคาด่วน!!</button>
+						</div>
+					</div>
+			</div>
+	
+		</div>      
+		</div>
+	</form>
     <br><br>
     <script>
 
@@ -138,7 +228,6 @@ $conn = mysqli_connect($host, $user, $pass, $dbname);
 		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		return re.test(email);
 	}
-
 
     function subEmailOrder() {
 
@@ -189,8 +278,6 @@ $conn = mysqli_connect($host, $user, $pass, $dbname);
             + com_name + "&contact=" + contact+ "&email_name=" + email_name+ "&phone_input=" 
             + phone_input+ "&detail_mail=" + detail_mail;
 
-            
-			
 		}
     </script>
 </body>

@@ -64,17 +64,34 @@ try {
 
     // Set body email
     $bodyEmail  = "";
-    $bodyEmail .= "<table class='table table-border product_show_detail_ordre'>";
+
+    $bodyEmail .= "<style>";
+    $bodyEmail .= ".product_show_detail_ordre {";
+    $bodyEmail .= "border: 1px;";
+    $bodyEmail .= "";
+    $bodyEmail .= "}";
+    $bodyEmail .= "</style>";
+
+    // Set customer detail
+    $bodyEmail .= "<strong>ขอใบเสนอราคาด่วน</strong>";
+    $bodyEmail .= "<br>";
+    $bodyEmail .= "<strong>ชื่อบริษัท | ชื่อหน่วยงาน :</strong>". $_POST['com_name'];
+    $bodyEmail .= "<br>";
+    $bodyEmail .= "<strong>ชื่อผู้ติดต่อ :</strong>".$_POST['contact'];
+    $bodyEmail .= "<br>";
+    $bodyEmail .= "<strong>อีเมล์ : </strong>".$_POST['email_name'];
+    $bodyEmail .= "<br>";
+    $bodyEmail .= "<strong>เบอร์ติดต่อกลับ : </strong>".$_POST['phone_input'];
+    $bodyEmail .= "<br>";
+    $bodyEmail .= "<strong>รายละเอียด : </strong>".$_POST['detail_mail'];
+    $bodyEmail .= "<br>";
+
+    $bodyEmail .= "<table border='1' class='table table-border product_show_detail_ordre'>";
     $bodyEmail .= "<thead>";
     $bodyEmail .= "<tr>";
     $bodyEmail .= "<td class='product_show_detail_ordre'>";
     $bodyEmail .= "<strong>";
     $bodyEmail .= "รหัสสินค้า";
-    $bodyEmail .= "</strong>";
-    $bodyEmail .= "</td>";
-    $bodyEmail .= "<td>";
-    $bodyEmail .= "<strong>";
-    $bodyEmail .= "รูปสินค้า";
     $bodyEmail .= "</strong>";
     $bodyEmail .= "</td>";
     $bodyEmail .= "<td>";
@@ -99,31 +116,34 @@ try {
                     $bodyEmail .= $_SESSION['product_code'][$i];
                     $bodyEmail .= "</td>";
                     $bodyEmail .= "<td>";
-                    $bodyEmail .= "<img itemprop='image'";
-                    $bodyEmail .= "src='backoffice/" . $_SESSION['product_image'][$i] ."'";
-                    $bodyEmail .= "class='drift-demo-trigger image-toggle magnified cld-responsive'";
-                    $bodyEmail .= "style='width:80px;'";
-                    $bodyEmail .= "/>";
-                    $bodyEmail .= "</td>";
-                    $bodyEmail .= "<td>";
                     $bodyEmail .=  $_SESSION['product_name'][$i];
                     $bodyEmail .= "</td>";
                     $bodyEmail .= "<td>";
-                    $bodyEmail .= "<input type='text' name='product_amount' id='product_amount' class='form-control text-center' value='".  $_SESSION['product_amount'][$i]. "'>";
+                    $bodyEmail .= "<strong>".  $_SESSION['product_amount'][$i]. "</strong>";
                     $bodyEmail .= "</td>";
                     $bodyEmail .= "</tr>";
+
+                    $SumTotal +=  1; // $_SESSION['product_amount'][$i];
                 
                 }
         }
         $bodyEmail .= "</tbody>";
         $bodyEmail .= "</table>";
+        $bodyEmail .= "<br/>";
+        // $bodyEmail .= "รวมรายการทั้งหมด ". $SumTotal. "  รายการ ";
         // End set body email
 
-        //Recipients
-        $mail->setFrom('info@smartbestbuys.com');
-        $mail->addAddress($customer_email);     // Add a recipient
-        // Attachments  // Add attachments
+        //Recipients Test
+        // $mail->setFrom("sale@smartbestbuys.com");
+        // $mail->addAddress($customer_email);     
+        // Add a recipient
         
+        
+        // Send mail on product.
+        $mail->setFrom($customer_email);
+        $mail->addAddress("sale@smartbestbuys.com");
+        
+
         // Content
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = "ใบเสนอราคา คุณ ". $customer_name ;
@@ -150,3 +170,15 @@ try {
     //  throw $th;
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>
+    กำลังดำเนินการแจ้งรายการทางอีเมล์
+</body>
+</html>

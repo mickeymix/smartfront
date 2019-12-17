@@ -267,8 +267,6 @@ if ($_GET["action"] == "logoutfacebook") {
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right" style="width:400px;">
-                                        
-                                        
                                             <div class="dropdown-header text-center">
                                                 <strong>รายการสินค้าสำหรับเสนอใบราคา</strong>
                                             </div>
@@ -337,12 +335,12 @@ if ($_GET["action"] == "logoutfacebook") {
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
-                                                    <a href="product_add_order_send_email.php" class="btn btn-primary" id="sendEmailProductOrder">ขอใบเสนอราคา..ด่วน ! (ไม่เกิน 5 นาที)</a>
+                                                    <a href="support_order.php" class="btn btn-primary" id="sendEmailProductOrder">ขอใบเสนอราคา..ด่วน ! (ไม่เกิน 5 นาที)</a>
                                                 </div>
                                             </div>
                                     </div>
-
                                 </div>
+                                
                             </li> &nbsp;&nbsp;
                             <li class="lineAds"><a target="_blank" href="http://line.me/ti/p/@trafficthai"><img
                                             class="cart-icon" src="images/lineAt_icon.png" width="30px"></a></li>&nbsp;&nbsp;&nbsp;

@@ -44,20 +44,27 @@ if ($_GET["action"] == "logout") {
         $password = $_POST["password"];
 
         $sql = "select * from users where email = '". $username ."' and cus_password = '". $password ."'";
+        // $sql = "select * from users where email = '". $username ."' and password = '". $password ."'";
+
         $query = mysqli_query($conn, $sql);
         while ($result = mysqli_fetch_assoc($query)) {
             $customer_id = $result['customer_id'];
             $firstname = $result['firstname'];
             $lastname = $result['lastname'];
-
+            $customer_mobile = $result['phone'];
+            $customer_email =  $result['email'];
         }
 
         if (!empty($customer_id)) {
             $_SESSION["customer_id"] = $customer_id;
             $_SESSION["firstname"] = $firstname;
             $_SESSION["lastname"] = $lastname;
+            $_SESSION["customer_phone"] = $customer_mobile;
+            $_SESSION["customer_email"] = $customer_email; 
             header("Location:index.php");
+
         } else {
+            
             echo "<script language=\"JavaScript\">";
             echo "alert('ไม่พบ email นี้อยู่ในระบบ')";
             echo "</script>";
