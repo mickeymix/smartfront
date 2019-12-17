@@ -1,5 +1,5 @@
-<? ob_start(); ?>
-<? session_start();
+<?php ob_start(); ?>
+<?php session_start();
 
 ini_set('display_errors', 1);
 require_once __DIR__ . '/facebook-sdk-v5/autoload.php';
@@ -27,43 +27,41 @@ if ($_GET["action"] == "logout") {
     <link rel="stylesheet" href="css/register_form.css">
     <title>ร้านไทยจราจร</title>
 
-    <?
+    <?php
 
     require_once("header.php");
 
     require_once("account/login_user.php");
+
     $stats = "";
     $strAction = isset($_POST['action']) ? $_POST['action'] : '';
     if ($strAction == "1") {
-        // echo "ddwdw";
-        $conn = mysqli_connect($host, $user, $pass, $dbname);
 
+        $conn = mysqli_connect($host, $user, $pass, $dbname);
         mysqli_set_charset($conn, "utf8");
 
         $username = $_POST["username"];
         $password = $_POST["password"];
 
-        $obj = new LoginUser();
+        $sql = "select * from users where email = '". $username ."' and cus_password = '". $password ."'";
+        $query = mysqli_query($conn, $sql);
+        while ($result = mysqli_fetch_assoc($query)) {
+            $customer_id = $result['customer_id'];
+            $firstname = $result['firstname'];
+            $lastname = $result['lastname'];
 
-        $customer = $obj->Login($username, $password, $conn);
+        }
 
-        if ($customer->customer_id != null) {
-
-            $_SESSION["customer_id"] = $customer->customer_id;
-            $_SESSION["firstname"] = $customer->firstname;
-            $_SESSION["lastname"] = $customer->lastname;
-
-
-
+        if (!empty($customer_id)) {
+            $_SESSION["customer_id"] = $customer_id;
+            $_SESSION["firstname"] = $firstname;
+            $_SESSION["lastname"] = $lastname;
             header("Location:index.php");
         } else {
             echo "<script language=\"JavaScript\">";
             echo "alert('ไม่พบ email นี้อยู่ในระบบ')";
             echo "</script>";
         }
-
-
-
         mysqli_close($conn);
     }
 
@@ -100,6 +98,13 @@ if ($_GET["action"] == "logout") {
         var fbID = "";
         var fbName = "";
         var fbEmail = "";
+
+        $(document).keypress(function(event){
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if(keycode == '13'){
+                $("#FORM_11").submit();
+            }
+        });
 
         window.fbAsyncInit = function() {
             FB.init({
@@ -143,8 +148,6 @@ if ($_GET["action"] == "logout") {
                     });
                 }
             }
-
-
             bFbStatus = true;
         }
 
@@ -181,20 +184,15 @@ if ($_GET["action"] == "logout") {
             <form id="FORM_11" method="post" action="login.php" style="padding-left: 50px">
                 <div style="padding-left: 60px; padding-right: 60px">
                     <label for="email">อีเมล*</label>
-                    <input type="text" placeholder="" id="namecus" name="namecus" style="height: 40px" required>
+                    <input type="text" placeholder="" id="namecus" name="username" style="height: 40px" required>
                     <br>
                     <label for="passwordtext">รหัสผ่าน*</label>
-                    <input type="text" placeholder="" id="lastnamecus" name="lastnamecus" style="height: 40px" required>
+                    <input type="password" placeholder="" id="lastnamecus" name="password" style="height: 40px" required>
                     <br>
                     <input type="hidden" name="action" value="1">
                     <button type="submit" class="submitButton">เข้าสู่ระบบ</button>
                 </div>
                 <br>
-
-
-
-
-
             </form>
             <center>
                 <p style="padding-left: 50px">หรือ</p>
@@ -212,27 +210,19 @@ if ($_GET["action"] == "logout") {
         </div>
         <div class="w3-half w3-container">
             <div style="border:1px; border-style:solid; border-color:#ececec; background-color:#fafafa; padding: 1em; height: 300px">
-                <div style="height: 300px; 
-  position: relative;">
+                <div style="height: 300px; position: relative;">
 
                     <div class="mixmixmxi">
                        <center><h2>สมาชิกใหม่?</h2></center> <br>
                        <center>
-
                        <p>
                             สมัครสมาชิกเพื่อรับโปรโมชั่น สิทธิพิเศษ จากร้านไทยจราจร และเพิ่มความสะดวกรวดเร็วในการสั่งซื้อสินค้าครั้งต่อไป
                         </p>
                        </center>
-                       
                        <br>
                        <center><a href="register_smart.php" rel="noopener"><button type="submit" class="submitButton">สมัครสมาชิก</button></a></center>
                     </div>
-
-
-
-                   
                 </div>
-
             </div>
         </div>
     </div>
@@ -312,7 +302,6 @@ if ($_GET["action"] == "logout") {
 
 </body>
 
-<?
-
+<?php
 include 'footer.php';
 ?>

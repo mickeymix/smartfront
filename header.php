@@ -268,79 +268,78 @@ if ($_GET["action"] == "logoutfacebook") {
 
                                     <div class="dropdown-menu dropdown-menu-right" style="width:400px;">
                                         
-                                        <form action="product_add_order_send_email.php" method="post">
-                                            <div class="dropdown-header text-center product_show_detail_ordre">
+                                        
+                                            <div class="dropdown-header text-center">
                                                 <strong>รายการสินค้าสำหรับเสนอใบราคา</strong>
                                             </div>
-                                            <div class="row product_show_detail_ordre">
+                                            <div class="row ">
                                                 <div class="col-sm-12">
-                                                    <table class='table table-border product_show_detail_ordre'>
-                                                        <thead>
-                                                            <tr>
-                                                                <td class='product_show_detail_ordre'>
-                                                                    <strong>
-                                                                        รหัสสินค้า
-                                                                    </strong>  
-                                                                </td>
-                                                                <td>
-                                                                    <strong>
-                                                                        รูปสินค้า
-                                                                    </strong>
-                                                                </td>
-                                                                <td>
-                                                                    <strong>
-                                                                        ชื่อสินค้า
-                                                                    </strong>
-                                                                </td>
-                                                                <td>
-                                                                    <strong>
-                                                                        จำนวนสินค้า
-                                                                    </strong>
-                                                                </td>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <?php
-                                                            $Total = 0;
-                                                            $SumTotal = 0;
-                                                            for($i=0;$i<=(int)$_SESSION["intLine"];$i++)
-                                                            {
-                                                                    if($_SESSION["product_code"][$i] != "")
-                                                                    {
-                                                                        ?>
+                                                        <table class='table table-border product_show_detail_ordre'>
+                                                            <thead>
+                                                                <tr>
+                                                                    <td class='product_show_detail_ordre'>
+                                                                        <strong>
+                                                                            รหัสสินค้า
+                                                                        </strong>  
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            รูปสินค้า
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            ชื่อสินค้า
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            จำนวนสินค้า
+                                                                        </strong>
+                                                                    </td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php
+                                                                $Total = 0;
+                                                                $SumTotal = 0;
+                                                                for($i=0;$i<=(int)$_SESSION["intLine"];$i++)
+                                                                {
+                                                                        if($_SESSION["product_code"][$i] != "")
+                                                                        {
+                                                                            ?>
 
-                                                                            <tr>
-                                                                                <td>
-                                                                                    <?php echo $_SESSION['product_code'][$i];?>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <img itemprop="image"
-                                                                                        src="backoffice/<?php echo $_SESSION['product_image'][$i];?>"
-                                                                                        class="drift-demo-trigger image-toggle magnified cld-responsive"
-                                                                                        style="width:80px;"
-                                                                                        />
-                                                                                </td>
-                                                                                <td>
-                                                                                    <?php echo $_SESSION['product_name'][$i];?>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <input type="text" name="product_amount" id="product_amount" class="form-control text-center" value="<?php echo $_SESSION['product_amount'][$i];?>">
-                                                                                </td>
-                                                                            </tr>
-                                                                    <?php
-                                                                    }
-                                                            }
-                                                            ?>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <?php echo $_SESSION['product_code'][$i];?>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <img itemprop="image"
+                                                                                            src="backoffice/<?php echo $_SESSION['product_image'][$i];?>"
+                                                                                            class="drift-demo-trigger image-toggle magnified cld-responsive"
+                                                                                            style="width:80px;"
+                                                                                            />
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <?php echo $_SESSION['product_name'][$i];?>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <input type="text" name="product_amount" id="product_amount" class="form-control text-center" value="<?php echo $_SESSION['product_amount'][$i];?>">
+                                                                                    </td>
+                                                                                </tr>
+                                                                        <?php
+                                                                        }
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
-                                                    <button type="submit" class="btn btn-primary"> ขอใบเสนอราคา..ด่วน ! (ไม่เกิน 5 นาที) </button>
+                                                    <a href="product_add_order_send_email.php" class="btn btn-primary" id="sendEmailProductOrder">ขอใบเสนอราคา..ด่วน ! (ไม่เกิน 5 นาที)</a>
                                                 </div>
                                             </div>
-                                        </form>
                                     </div>
 
                                 </div>
@@ -429,11 +428,10 @@ if ($_GET["action"] == "logoutfacebook") {
                     toggleMobileMenu();
                     localStorage.mobileMenuOpen = !localStorage.mobileMenuOpen;
                     history.pushState(localStorage.mobileMenuOpen, "");
-                });
+                });                
             });
 
             function showProductOrderDetail() { 
-                // alert("ok");
                 // On click show showProduct Detail
                 $("#showProductOrderDetail").modal('show');
             }

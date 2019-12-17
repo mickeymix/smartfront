@@ -1,4 +1,7 @@
 <?php
+ob_start();
+session_start();
+
 include 'backoffice/conn.php';
 
 if(!empty($_GET)) {
@@ -8,6 +11,10 @@ if(!empty($_GET)) {
             header("Location: index.php");
         }
     }
+}
+
+if(!isset($_SESSION['customer_id'])) {
+    header('Location: login.php');
 }
 
 $customer_id = $_SESSION["customer_id"];
@@ -129,7 +136,14 @@ try {
             unset($_SESSION['product_code'][$i]); 
             unset($_SESSION['product_image'][$i]);
             unset($_SESSION['product_amount'][$i]);
+            unset($_SESSION['intLine'][$i]);
         }
+        
+        unset($_SESSION['intLine']);
+        unset($_SESSION['product_code']); 
+        unset($_SESSION['product_image']);
+        unset($_SESSION['product_amount']);
+
     mysqli_close($conn);
     header("location:index.php");
 } catch (Exception $e) {
