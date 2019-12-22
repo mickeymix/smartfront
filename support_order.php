@@ -123,11 +123,6 @@ session_start();
 				<div class="w3-col m8"> <input style="box-shadow: 0 0 3px #000000; margin: 10px " class="w3-input" id="phone_input" name="phone_input" type="text" value="<?php echo $_SESSION['customer_phone'];?>"></div>
 			</div>
 			<br>
-			
-			<label style=" font-size: 20px;">กรุณากรอกรายละเอียดของสินค้า พร้อมจำนวนที่ต้องการ และข้อมูลที่ชัดเจน เพื่อความเร็วในการเสนอราคา</label>
-			<textarea class="w3-input" id="detail_mail" name="detail_mail" style="box-shadow: 0 0 3px #000000; margin: 10px; resize: none; height: 200px"></textarea>
-			<div class="w3-row">
-		
 		<br>
 		<br>
 

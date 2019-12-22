@@ -163,7 +163,7 @@ mysqli_set_charset($conn,"utf8");
             $query = mysqli_query($conn, $sql);
 
             while ($result = mysqli_fetch_assoc($query)) {
-                ?>?>
+                ?>
                 <div class="row">
                     <div id="index-popular-heading" class="col-sm-12 text-center index-popular-products">
                         <h2><span><?echo  $result['service_top_title']?></span></h2>

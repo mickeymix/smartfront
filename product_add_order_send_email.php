@@ -83,7 +83,7 @@ try {
     $bodyEmail .= "<br>";
     $bodyEmail .= "<strong>เบอร์ติดต่อกลับ : </strong>".$_POST['phone_input'];
     $bodyEmail .= "<br>";
-    $bodyEmail .= "<strong>รายละเอียด : </strong>".$_POST['detail_mail'];
+    // $bodyEmail .= "<strong>รายละเอียด : </strong>".$_POST['detail_mail'];
     $bodyEmail .= "<br>";
 
     $bodyEmail .= "<table border='1' class='table table-border product_show_detail_ordre'>";
@@ -134,8 +134,8 @@ try {
         // End set body email
 
         //Recipients Test
-        // $mail->setFrom("sale@smartbestbuys.com");
-        // $mail->addAddress($customer_email);     
+        //$mail->setFrom('sarunyoo.ceofreealife@gmail.com');
+        //$mail->addAddress($customer_email);     
         // Add a recipient
         
         
@@ -166,8 +166,9 @@ try {
 
     mysqli_close($conn);
     header("location:index.php");
+
 } catch (Exception $e) {
-    //  throw $th;
+      throw $th;
 }
 ?>
 <!DOCTYPE html>

@@ -94,6 +94,10 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                 </div>
             </div>
 
+            <?php 
+            include 'product_sale_up.php';
+            ?>
+
             <article itemscope itemtype="http://schema.org/Product" class="item-details">
                 <div class="row" id="productDetailTitleRow">
                     <div class="col-sm-6">
@@ -120,7 +124,6 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                             var displayName = $("#ProductDisplayName-get").text();
                             $('#ProductDisplayName-set').text(displayName);
                         });
-
                     });
                 </script>
                 <div id="addToCartResult"></div>
@@ -444,7 +447,7 @@ while ($result1 = mysqli_fetch_assoc($query)) {
                                                                 <a target="_blank"
                                                                    href="product_detail.php?product_code=<?php echo $result['product_code_related']; ?>&product_type_title_th=<?php echo $result['product_code_related']; ?>
                                                 &product_category_title_th=<?php echo $result['product_category_title_th']; ?>">
-                                                                    <img src="backoffice/<?php echo ($result['img'] == "") ? 'images/noimage.jpg' : $result['img']; ?>">
+                                                                    <img src="backoffice/<?php echo ($result['img'] == "") ? 'images/noimage.jpg' : $result['img']; ?>" style="width: 180px; heigth:180px;">
                                                                 </a>
                                                                 <div style="height:20px; ">
                                                                     <h5><a target="_blank"

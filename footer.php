@@ -695,7 +695,7 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
                 $('#mobileContactBar').toggleClass('opened');
                 $('#mobileContactMessage').toggle();
                 $('#mobileContactChevron').toggle();
-            })
+            });
 
             var action = $("#action").val();
 
@@ -709,9 +709,6 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
                 return false;
             }
         });
-
-
-        })
 
         function validateEmail(email) {
             var re = "/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/";
