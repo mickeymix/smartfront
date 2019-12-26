@@ -250,14 +250,7 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
          aria-labelledby="myModalLabel" aria-hidden="true" style="top:20%">
 
         <div class="modal-dialog" role="document">
-            <div class="modal-content" style="padding-bottom: 0px">
 
-                    <button type="button" class="close model_close_right" data-dismiss="modal"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <img class="lazy" data-src="backoffice/<?php echo $result['email_image_title'] ?>"/>
-                </div>
                 <div class="modal-body" style="height: 0px">
                     <div class="row">
                         <button type="button" class="close model_close_right" data-dismiss="modal"
@@ -353,14 +346,13 @@ while ($result3 = mysqli_fetch_assoc($query3)) { ?>
         <div class="modal-dialog" role="document">
                 <div class="modal-content" style="padding-bottom: 0px">
 
+
                 <div class="modal-body" style="height: 0px">
                     <button type="button" class="close model_close_right" data-dismiss="modal"
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <img class="lazy" data-src="backoffice/<? echo $result3['email_image_title'] ?>"/>
-                </div>
-                <div class="modal-body" style="height: 0px">
                     <div class="row">
                         <div class="col-xs-6"
                              style=" height: 300px; background: url('backoffice/<?php echo $result3['email_image_left'] ?>');background-repeat-y: no-repeat; background-repeat-x:no-repeat; background-size: contain">
@@ -377,7 +369,7 @@ while ($result3 = mysqli_fetch_assoc($query3)) { ?>
                                     <input type="email" id="subEmailFormWhitePaper" class="form-control validate"
                                            placeholder="<? echo $result3['email_email_place'] ?>">
                                 </div>
-                                <button class="btn" style="background-color: transparent;" onclick="subSendwhitePaper()">
+                                <button class="btn" style="background-color: transparent;" >
                                     <img class="lazy" id="subemailWhitepaper"
                                          data-src="backoffice/<? echo $result3['email_button_image'] ?>"/>
                                 </button>
@@ -708,11 +700,20 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
                 $("#dialog_email").dialog("open");
                 return false;
             }
+
+            $("#subemailWhitepaper").click(function () {
+                subSendwhitePaper()
+            })
         });
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> master
         function validateEmail(email) {
             var re = "/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/";
-            return re.test(email);
+            return !email.match(re);
         }
 
         function add_email99() {
@@ -776,6 +777,7 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
             var pageSource = $(".Whitepaper").attr("alt")
             var nameInput = $("#subNameFormWhitePaper").val().trim();
             // alert(email)
+            console.log("mximxi"+ email)
             if (email === "") {
                 alert("Plese input your email.");
                 return false;
