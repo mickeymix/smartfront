@@ -45,10 +45,25 @@ mysqli_set_charset($conn, "utf8");
                                             </div>
                                             <p class="popular-item-desc"
                                                 style="width:200px; text-align:left; "><?php echo $result['product_title_th']; ?></p>
-                                            <a style="width:200px" target="_blank"
+                                            
+                                                <!-- 
+                                                <a style="width:200px" target="_blank"
                                                 href="product_detail.php?product_code=<?php echo $result['product_code_related']; ?>&product_type_title_th=<?php echo $result['product_type_title_th']; ?>
                                         &product_category_title_th=<?php echo $result['product_category_title_th']; ?>"
                                                 class="btn btn-primary">BUY NOW</a>
+                                                -->
+
+                                                <!-- <a style="width:200px"  href="#"  class="btn btn-primary" oneclick="add_produc">BUY NOW</a> -->
+                                                
+
+                                                <form action="product_add_order_service.php" method="post">
+                                                    <input type="hidden" name="product_code" id="product_code" value="<?php echo $_GET["product_code"]; ?>">      
+                                                    <input type="hidden" name="product_name" id="product_name" value="<?php echo $result['product_type_title_th']; ?>">      
+                                                    <input type="hidden" name="product_image" id="product_image" value="<?php echo $result['img']; ?>">      
+                                                    <input type="hidden" name="product_amount" id="product_amount" value="1">
+                                                     <button type="submit" class="btn btn-primary" oneclick="add_produc">BUY NOW</button>
+                                                </form>
+
                                         </div>
                                         <?php
                                     }
