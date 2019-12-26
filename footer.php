@@ -250,14 +250,7 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
          aria-labelledby="myModalLabel" aria-hidden="true" style="top:20%">
 
         <div class="modal-dialog" role="document">
-            <div class="modal-content" style="padding-bottom: 0px">
 
-                    <button type="button" class="close model_close_right" data-dismiss="modal"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <img class="lazy" data-src="backoffice/<?php echo $result['email_image_title'] ?>"/>
-                </div>
                 <div class="modal-body" style="height: 0px">
                     <div class="row">
                         <button type="button" class="close model_close_right" data-dismiss="modal"
