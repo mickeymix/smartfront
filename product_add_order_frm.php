@@ -93,6 +93,11 @@ while ($result = mysqli_fetch_assoc($queryProductImage)) {
                 </div>
             </div>
             <br/>
+            
+            
+            <?php 
+            include 'product_sale_up.php';
+            ?>
 
             <form action="product_add_order_service.php" method="post">
                 <input type="hidden" name="product_code" id="product_code" value="<?php echo $product_code; ?>">      

@@ -35,15 +35,12 @@ mysqli_set_charset($conn, "utf8");
                             $sql .= " pm.product_category_title_th,";
                             $sql .= " pm.product_title_th";
                             $sql .= " from product_main pm";
-                            $sql .= " where product_code in (";
-                            $sql .= "    select distinct product_code_related from product_related ";
-                            $sql .= "    where product_code = '".$_GET['product_code']."' and product_code_related != '" . $_GET['product_code'] . "' ";
-                            $sql .= " )";
+                            //$sql .= " where product_code in (";
+                            //$sql .= "    select distinct product_code_related from product_related ";
+                            //$sql .= "    where product_code = '".$_GET['product_code']."' and product_code_related != '" . $_GET['product_code'] . "' ";
+                            //$sql .= " )";
                             $sql .= " order by product_code desc limit 4 ";
 
-                           //  echo $sql;
-                                   
-                                    
                             if ($query = mysqli_query($conn, $sql)) {
                                     // $query = mysqli_query($conn, $sql);    
                                     $i = 0;
@@ -65,16 +62,6 @@ mysqli_set_charset($conn, "utf8");
                                             <p class="popular-item-desc"
                                                 style="width:200px; text-align:left; "><?php echo $result['product_title_th']; ?></p>
                                             
-                                                <!-- 
-                                                <a style="width:200px" target="_blank"
-                                                href="product_detail.php?product_code=<?php echo $result['product_code_related']; ?>&product_type_title_th=<?php echo $result['product_type_title_th']; ?>
-                                        &product_category_title_th=<?php echo $result['product_category_title_th']; ?>"
-                                                class="btn btn-primary">BUY NOW</a>
-                                                -->
-
-                                                <!-- <a style="width:200px"  href="#"  class="btn btn-primary" oneclick="add_produc">BUY NOW</a> -->
-                                                
-
                                                 <form action="product_add_order_service.php" method="post">
                                                     <input type="hidden" name="product_code" id="product_code" value="<?php echo $_GET["product_code"]; ?>">      
                                                     <input type="hidden" name="product_name" id="product_name" value="<?php echo $result['product_type_title_th']; ?>">      

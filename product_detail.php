@@ -95,7 +95,7 @@ while ($result1 = mysqli_fetch_assoc($query)) {
             </div>
 
             <?php 
-            include 'product_sale_up.php';
+            // include 'product_sale_up.php';
             ?>
 
             <article itemscope itemtype="http://schema.org/Product" class="item-details">
