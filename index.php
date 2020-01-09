@@ -82,7 +82,7 @@ if(!empty($_GET)) {
                     <?php
 
                     $sql = "SELECT a.product_type_title_th,a.product_category_title_th,a.product_code ,a.product_title_th ,a.product_description_th ,(SELECT image FROM product_image WHERE a.product_code = product_code ORDER BY INSERT_DATE ASC LIMIT 1 ) AS image_product  FROM product_main a  ,  product_promotion b  WHERE  a.product_code = b.product_code AND b.product_promo_type = 'promo' AND a.sell_with_web = '1'  ORDER BY a.INSERT_DATE";
-                    $query = mysqli_query($conn, $sql);
+					$query = mysqli_query($conn, $sql);
 
                     while ($result = mysqli_fetch_assoc($query)) {
                         ?>
@@ -390,8 +390,9 @@ if(!empty($_GET)) {
     <br />
 
     <?php 
-        mysqli_close($conn);
-        include 'footer.php';
+       
+		include 'footer.php';
+		mysqli_close($conn);
     ?>
 </body>
 </html>

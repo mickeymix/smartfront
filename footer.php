@@ -1,4 +1,4 @@
-<link href="css\buttonnenu.css" rel="stylesheet">
+<link rel="stylesheet" href="css/buttonnenu.css" >
 <link rel="stylesheet" href="css/kc.fab.css"/>
 
 <style>
@@ -705,12 +705,7 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
                 subSendwhitePaper()
             })
         });
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> master
+        
         function validateEmail(email) {
             var re = "/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/";
             return !email.match(re);

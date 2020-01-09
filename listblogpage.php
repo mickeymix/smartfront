@@ -18,13 +18,13 @@ mysqli_set_charset($conn, "utf8");
 
         $sql = "SELECT * FROM (SELECT * FROM article where start_art <= SYSDATE() ORDER BY id_art DESC LIMIT 3) sub ORDER BY id_art ASC";
         $query = mysqli_query($conn, $sql);
-        echo "<script> console.log('dsowdkwokowskows')</script>";
+        // echo "<script> console.log('dsowdkwokowskows')</script>";
         while ($result = mysqli_fetch_assoc($query)) { ?>
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="card h-100">
-                    <a target="_blank" href="article_detail.php?id_art=<?php echo $result['id_art'] ?>"><img class="card-img-top"
-                                                                                     src="backoffice/<?php echo $result['img_art'] ?>"
-                                                                                     alt=""></a>
+                    <a target="_blank" href="article_detail.php?id_art=<?php echo $result['id_art'] ?>">
+                        <img class="card-img-top" src="backoffice/<?php echo $result['img_art'] ?>" alt="">
+                    </a>
                     <div class="card-body">
                         <h4 class="card-title">
                             <a target="_blank" href="article_detail.php?id_art=<?php echo $result['id_art'] ?>"><?php echo $result['head_art'] ?></a>
