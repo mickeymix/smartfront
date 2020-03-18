@@ -3,8 +3,9 @@ include 'backoffice/conn.php';
 require_once('./PHPMailer-master/src/PHPMailer.php');
 require_once('./PHPMailer-master/src/SMTP.php');
 require_once('./PHPMailer-master/src/Exception.php');
-// require 'vendor/autoload.php';
+// require './vendor/autoload.php';
 // require 'PHPMailerAutoload.php';
+
 
 
 // Load Composer's autoloader
@@ -16,21 +17,23 @@ try {
     //Server settings
     $mail->SMTPDebug = 2; // Enable verbose debug output
     $mail->isSMTP(); // Set mailer to use SMTP
-    $mail->Host = 'mail.smartbestbuys.com'; // Specify main and backup SMTP servers
+//    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    $mail->Host = 'smtp.gmail.com'; // Specify main and backup SMTP servers
     $mail->SMTPAuth = true; // Enable SMTP authentication
-    $mail->Username = 'info@smartbestbuys.com'; // SMTP username
-    $mail->Password = 'smart67890'; // SMTP password
-    $mail->Port = 465;
-    $mail->SMTPSecure = 'ssl';
+    $mail->Username = 'sale@smartbestbuys.com'; // SMTP username
+    $mail->Password = 'smartsale70022007'; // SMTP password
+    $mail->Port = 587;
+    $mail->SMTPSecure = 'tls';
+
     $mail->SMTPAutoTLS = false;
     $mail->CharSet = 'UTF-8';
-    $mail->SMTPOptions = array(
-        'ssl' => array(
-            'verify_peer' => false,
-            'verify_peer_name' => false,
-            'allow_self_signed' => true
-        )
-    );
+//    $mail->SMTPOptions = array(
+//        'ssl' => array(
+//            'verify_peer' => false,
+//            'verify_peer_name' => false,
+//            'allow_self_signed' => true
+//        )
+//    );
 
     $conn = mysqli_connect($host, $user, $pass, $dbname);
     mysqli_set_charset($conn, "utf8");
@@ -48,7 +51,7 @@ try {
         $paper_name = $row2['paper_name'];
 
         //Recipients
-        $mail->setFrom('info@smartbestbuys.com');
+        $mail->setFrom('sale@smartbestbuys.com');
         $mail->addAddress($_POST['email']);     // Add a recipient
         // Attachments  // Add attachments
         $mail->addAttachment("/var/www/test.smartbestbuy.com/public_html/white_paper/".$paper_link);     // Add attachments

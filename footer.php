@@ -794,8 +794,7 @@ while ($result = mysqli_fetch_assoc($query)) { ?>
                     {
                         alert(result.message);
 
-                    } else // Err
-                    {
+                    } else {
 
                     }
                 }

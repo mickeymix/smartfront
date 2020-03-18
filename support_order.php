@@ -292,10 +292,10 @@ session_start();
 			//Server settings
 			// $mail->SMTPDebug = 2;                                       // Enable verbose debug output
 			$mail->isSMTP();                                            // Set mailer to use SMTP
-			$mail->Host       = 'mail.smartbestbuys.com';  // Specify main and backup SMTP servers
+			$mail->Host       = 'smartbestbuys.com';  // Specify main and backup SMTP servers
 			$mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-			$mail->Username   = 'support@smartbestbuys.com';                     // SMTP username
-			$mail->Password   = 'smart123456';                               // SMTP password
+            $mail->Username = 'sale@smartbestbuys.com'; // SMTP username
+            $mail->Password = 'smartsale70022007'; // SMTP password
 			$mail->Port = 465;
 			$mail->SMTPSecure = 'ssl';
 			$mail->SMTPAutoTLS = false;
@@ -308,7 +308,7 @@ session_start();
 				)
 			);
 			//Recipients
-			$mail->setFrom('support@smartbestbuys.com','ลูกค้าขอใบเสนอราคาด่วนจากหน้าเว็บ');
+			$mail->setFrom('info@smartbestbuys.com','ลูกค้าขอใบเสนอราคาด่วนจากหน้าเว็บ');
 			$mail->addAddress('sale@smartbestbuys.com');     // Add a recipient
 			// Attachments  // Add attachments
 
