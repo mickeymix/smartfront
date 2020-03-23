@@ -51,7 +51,7 @@ try {
         // Content
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = $resultEmail['email_title'];
-        $mail->Body = '<div><a href="https://drive.google.com/open?id=1bs6QYyIz99pztHGhEcA-LwCE--iKsgNm" > <img src="cid:downlodcatalog_email" height="300px" width="700px">  </a></div>';
+        $mail->Body = '<div><a href="bit.ly/38VTmlO" > <img src="cid:downlodcatalog_email" height="300px" width="700px">  </a></div>';
         $mail->AltBody = $resultEmail['email_altMessage'];
         $mail->send();
         // echo 'Message has been sent';
