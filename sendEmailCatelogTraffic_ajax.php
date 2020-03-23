@@ -44,12 +44,12 @@ try {
         $mail->setFrom('info@smartbestbuys.com');
         $mail->addAddress($_POST['email_customer']);     // Add a recipient
         // Attachments
-        $mail->addAttachment('/trafficthaiV9copy_Optimizer.pdf');     // Add attachments
+        $mail->AddEmbeddedImage('images/downlodcatalog_email.jpg', 'downlodcatalog_email');    // Add attachments
 
         // Content
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = $resultEmail['email_title'];
-        $mail->Body = $resultEmail['email_message'];
+        $mail->Body = "<a href='https://drive.google.com/open?id=1bs6QYyIz99pztHGhEcA-LwCE--iKsgNm' target='_blank'><img src='cid:downlodcatalog_email'></a>";
         $mail->AltBody = $resultEmail['email_altMessage'];
         $mail->send();
         // echo 'Message has been sent';
