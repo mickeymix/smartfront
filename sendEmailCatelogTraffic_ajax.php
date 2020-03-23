@@ -1,4 +1,7 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+?>
+<?php
 include 'backoffice/conn.php';
 require_once('./PHPMailer-master/src/PHPMailer.php');
 require_once('./PHPMailer-master/src/SMTP.php');
@@ -14,12 +17,11 @@ require_once('./PHPMailer-master/src/Exception.php');
 $mail = new PHPMailer\PHPMailer\PHPMailer();
 try {
     //Server settings
-    $mail->SMTPDebug = 2; // Enable verbose debug output
-    $mail->isSMTP(); // Set mailer to use SMTP
-    $mail->Host = 'mail.smartbestbuys.com';  // Specify main and backup SMTP servers
-    $mail->SMTPAuth = true;                                   // Enable SMTP authentication
-    $mail->Username = 'info@smartbestbuys.com';                     // SMTP username
-    $mail->Password = 'smart67890';                               // SMTP password
+    $mail->isSMTP();                                            // Set mailer to use SMTP
+    $mail->Host       = 'mail.smartbestbuys.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    $mail->Username   = 'support@smartbestbuys.com';                     // SMTP username
+    $mail->Password   = 'smart123456';                               // SMTP password
     $mail->Port = 465;
     $mail->SMTPSecure = 'ssl';
     $mail->SMTPAutoTLS = false;
@@ -36,20 +38,20 @@ try {
     mysqli_set_charset($conn, "utf8");
     $sql = "SELECT * FROM email_teamplate_master ";
     $queryEmail = mysqli_query($conn, $sql);
-    echo "'".$_POST['email_customer']."'";
-    $insertscript = "INSERT INTO email_customer(email, keyword,customer_name, insert_date) VALUES ('".$_POST['email_customer']."','Catalogs','".$_POST['customer_name']."',SYSDATE())";
+//    echo "'".$_GET['email_customer']."'";
+    $insertscript = "INSERT INTO email_customer(email, keyword,customer_name, insert_date) VALUES ('".$_GET['email_customer']."','Catalogs','".$_GET['customer_name']."',SYSDATE())";
     $conn->query($insertscript);
     while ($resultEmail = mysqli_fetch_assoc($queryEmail)) {
         /*                                ,'".<?php echo $row['paper_link']?>."','".<?php echo $row['paper_email_template']?>."','".<?php echo $row['paper_name']?>."'*/
-        $mail->setFrom('info@smartbestbuys.com');
-        $mail->addAddress($_POST['email_customer']);     // Add a recipient
+        $mail->setFrom('support@smartbestbuys.com');
+        $mail->addAddress($_GET['email_customer']);     // Add a recipient
         // Attachments
         $mail->AddEmbeddedImage('images/downlodcatalog_email.jpg', 'downlodcatalog_email');    // Add attachments
 
         // Content
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = $resultEmail['email_title'];
-        $mail->Body = "<a href='https://drive.google.com/open?id=1bs6QYyIz99pztHGhEcA-LwCE--iKsgNm' target='_blank'><img src='cid:downlodcatalog_email'></a>";
+        $mail->Body = '<div><a href="https://drive.google.com/open?id=1bs6QYyIz99pztHGhEcA-LwCE--iKsgNm" > <img src="cid:downlodcatalog_email" height="300px" width="700px">  </a></div>';
         $mail->AltBody = $resultEmail['email_altMessage'];
         $mail->send();
         // echo 'Message has been sent';
