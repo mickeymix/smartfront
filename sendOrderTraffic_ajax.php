@@ -1,4 +1,6 @@
-
+<?php
+header('Access-Control-Allow-Origin: *');
+?>
 <?php
 //header('Access-Control-Allow-Origin: *');
 //header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
@@ -37,15 +39,15 @@ try {                       // Enable verbose debug output
         )
     );
     //Recipients
-    $mail->setFrom('support@smartbestbuys.com','ลูกค้าขอใบเสนอราคาด่วนจากหน้าเว็บจาก "'.$_POST["com_name"].'"');
+    $mail->setFrom('support@smartbestbuys.com','ลูกค้าขอใบเสนอราคาด่วนจากหน้าเว็บจาก "'.$_GET["com_name"].'"');
     $mail->addAddress('sale@smartbestbuys.com');     // Add a recipient
     // Attachments  // Add attachments
 
     // Content
     $mail->isHTML(true);
 //    $mail-> = date("Y-m-d H:i:s").gettimeofday()["usec"];// Set email format to HTML
-    $mail->Subject = '"[REQ_Smart'.randomNumber(7).']"ใบเสนอราคาลูกค้าจาก "'.$_POST["com_name"].'" ';
-    $mail->Body    ='ขอใบเสนอราคาด่วน <br><br> ชื่อบริษัท | ชื่อหน่วยงาน : '.$_POST["com_name"].' <br> ชื่อผู้ติดต่อ : '.$_POST["contact"].' <br> Email : '.$_POST["email_name"].' <br> เบอร์ติดต่อกลับ : '.$_POST["phone_input"].' <br> รายละเอียด : '.$_POST["detail_mail"].'';
+    $mail->Subject = '"[REQ_Smart'.randomNumber(7).']"ใบเสนอราคาลูกค้าจาก "'.$_GET["com_name"].'" ';
+    $mail->Body    ='ขอใบเสนอราคาด่วน <br><br> ชื่อบริษัท | ชื่อหน่วยงาน : '.$_GET["com_name"].' <br> ชื่อผู้ติดต่อ : '.$_GET["contact"].' <br> Email : '.$_GET["email_name"].' <br> เบอร์ติดต่อกลับ : '.$_GET["phone_input"].' <br> รายละเอียด : '.$_GET["detail_mail"].'';
     // $mail->AltBody = 'Hi! This is my first e-mail sent through PHPMailer.';
     $mail->send();
     echo json_encode(array('status' => '1', 'message' => "success"));
